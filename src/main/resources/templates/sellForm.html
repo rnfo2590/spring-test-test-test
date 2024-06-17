@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>出品登録</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+	<header th:replace="header"></header>
+	<main>
+		<h3>出品登録</h3>
+		<form action="/sell" method="post">
+			
+			<ul th:if="${errorList}" class="error">
+				<li th:each="error:${errorList}" th:text="${error}"></li>
+			</ul>
+			
+			<table>
+				<tr>
+					<td>
+						<input type="file" name="image">
+					</td>
+					<td>
+						<ul>
+							<li>商品名：<input type="text" name="name" th:value="${name}"></li>
+							<li>カテゴリ：
+								<select name="condition">
+								<option value="book">本</option>
+								<option value="game">ゲーム</option>							
+								<option value="goods">雑貨</option>							
+								<option value="beauty">美容</option>
+								<option value="fashion">ファッション</option>							
+								<option value="electronics">電化製品</option>
+								</select></li>
+							<li>状態：<select name="condition">
+								<option value="A">新品、未使用</option>
+								<option value="B">未使用に近い</option>							
+								<option value="C">傷や汚れあり</option>							
+								<option value="D">状態が悪い</option>
+								</select></li>
+							<li>価格：<input type="text" name="price" th:value="${price}"></li>
+						</ul>
+					</td>
+					<td>
+						<textarea name="detail"></textarea>
+					</td>
+				</tr>
+			</table>
+			<button>登録</button>
+		</form>
+	</main>
+	<hr>
+	<footer th:replace="footer"></footer>
+</body>
+</html>
