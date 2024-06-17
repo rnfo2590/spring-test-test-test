@@ -52,10 +52,10 @@ public class ItemController {
 	//商品詳細
 	@GetMapping("/items/detail")
 	public String detail(
-			@RequestParam(value = "itemid", defaultValue = "") Integer itemid,
+			@RequestParam(value = "itemId", defaultValue = "") Integer itemId,
 			Model model) {
 		
-		Item item = itemRepository.findById(itemid).get();
+		Item item = itemRepository.findById(itemId).get();
 		System.out.println(item.getImage());
 		model.addAttribute("item", item);
 

@@ -20,7 +20,7 @@
 			<tr th:each="item:${items}">
 				<td>
 					<form action="/items/detail" method="get">
-						<input type="hidden" name="itemid" th:value="${item.id}">
+						<input type="hidden" name="itemId" th:value="${item.id}">
 						<button><img th:src="|data:image/png;base64,${item.image}|"></button>
 					</form>
 				</td>
