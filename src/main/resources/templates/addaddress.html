@@ -24,11 +24,10 @@
 				<input type="radio" name="changeAddress" th:value="${address.address}"> [[${address.address}]]
 				<br>
 			</span>
-			<input type="hidden" name="name" th:value="${customer.name}">
-			<input type="hidden" name="address" th:value="${customer.address}">
-			<input type="hidden" name="tel" th:value="${customer.tel}">
-			<input type="hidden" name="email" th:value="${customer.email}">
 			<button>変更</button>
+		</form>
+		<form action="/order/confirm" method="post">
+			<button>戻る</button>
 		</form>
 	</main>
 	<hr>

@@ -59,21 +59,15 @@ public class OrderController {
 	// 注文内容およびお客様情報内容の確認画面を表示
 	@PostMapping("/order/confirm")
 	public String confirm(
-			@RequestParam("name") String name,
-			@RequestParam("address") String address,
-			@RequestParam("tel") String tel,
-			@RequestParam("email") String email,
 			@RequestParam(name = "changeAddress", required = false) String changeAddress,
 			Model model) {
-
+		Customer customer = customerRepository.findById(account.getId()).get();
 		if (changeAddress != null) {
 			// お客様情報をまとめる
-			Customer customer = new Customer(name, changeAddress, tel, email);
+			customer.setAddress(changeAddress);
 			model.addAttribute("customer", customer);
 			System.out.println("変更");
 		} else {
-			// お客様情報をまとめる
-			Customer customer = new Customer(name, address, tel, email);
 			model.addAttribute("customer", customer);
 		}
 

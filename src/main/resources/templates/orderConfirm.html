@@ -14,7 +14,7 @@
 		<span th:replace="cartItem"></span>
 		<hr>
 		<h3>お客様情報</h3>
-		<form action="/order" method="post">
+		
 			<table border="1">
 				<tr>
 					<th>お名前</th>
@@ -22,7 +22,15 @@
 				</tr>
 				<tr>
 					<th>住所</th>
-					<td th:text="${customer.address}"></td>
+					<td>
+						[[${customer.address}]]
+					
+						<form action="/order/addaddress" method="get">
+							<input type="hidden" name="customerId" th:value="${customer.id}">
+							<input type="submit" value="送り先変更">
+						</form>
+					
+					</td>
 				</tr>
 				<tr>
 					<th>電話番号</th>
@@ -33,12 +41,10 @@
 					<td th:text="${customer.email}"></td>
 				</tr>
 			</table>
+		<form action="/order" method="post">
 			<button>この内容で注文</button>
 		</form>
-		<form action="/order/addaddress" method="get">
-			<input type="hidden" name="customerId" th:value="${customer.id}">
-			<button>送り先変更</button>
-		</form>
+		
 	</main>
 	<hr>
 	<footer th:replace="footer"></footer>
