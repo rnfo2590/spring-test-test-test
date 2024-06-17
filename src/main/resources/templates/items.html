@@ -8,7 +8,7 @@
 <body>
 	<header th:replace="header"></header>
 	<hr>
-	<nav>
+	<nav style="background-color: #3CB371;">
 		<a href="/items">全商品</a>
 		<a th:each="c:${categories}" th:href="'/items?categoryId='+${c.id}">
 			<span th:text="${c.name}" style="padding-left: 10px;"></span>
