@@ -9,13 +9,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.Address;
 import com.example.demo.entity.Customer;
 import com.example.demo.entity.Item;
 import com.example.demo.entity.Order;
 import com.example.demo.entity.OrderDetail;
 import com.example.demo.model.Account;
 import com.example.demo.model.Cart;
+import com.example.demo.repository.AddressRepository;
 import com.example.demo.repository.CustomerRepository;
 import com.example.demo.repository.OrderDetailRepository;
 import com.example.demo.repository.OrderRepository;
@@ -38,6 +41,9 @@ public class OrderController {
 	@Autowired
 	OrderDetailRepository orderDetailRepository;
 
+	@Autowired
+	AddressRepository addressRepository;
+
 	// 注文内容確認とお客様情報入力画面を表示
 	@GetMapping("/order")
 	public String index(Model model) {
@@ -50,21 +56,29 @@ public class OrderController {
 		return "orderConfirm";
 	}
 
-	//	// 注文内容およびお客様情報内容の確認画面を表示
-	//	@PostMapping("/order/confirm")
-	//	public String confirm(
-	//			@RequestParam("name") String name,
-	//			@RequestParam("address") String address,
-	//			@RequestParam("tel") String tel,
-	//			@RequestParam("email") String email,
-	//			Model model) {
-	//
-	//		// お客様情報をまとめる
-	//		Customer customer = new Customer(name, address, tel, email);
-	//		model.addAttribute("customer", customer);
-	//
-	//		return "orderConfirm";
-	//	}
+	// 注文内容およびお客様情報内容の確認画面を表示
+	@PostMapping("/order/confirm")
+	public String confirm(
+			@RequestParam("name") String name,
+			@RequestParam("address") String address,
+			@RequestParam("tel") String tel,
+			@RequestParam("email") String email,
+			@RequestParam(name = "changeAddress", required = false) String changeAddress,
+			Model model) {
+
+		if (changeAddress != null) {
+			// お客様情報をまとめる
+			Customer customer = new Customer(name, changeAddress, tel, email);
+			model.addAttribute("customer", customer);
+			System.out.println("変更");
+		} else {
+			// お客様情報をまとめる
+			Customer customer = new Customer(name, address, tel, email);
+			model.addAttribute("customer", customer);
+		}
+
+		return "orderConfirm";
+	}
 
 	// 注文する
 	@PostMapping("/order")
@@ -100,5 +114,26 @@ public class OrderController {
 		model.addAttribute("orderNumber", order.getId());
 
 		return "ordered";
+	}
+
+	// 住所変更画面の表示
+	@GetMapping("/order/addaddress")
+	public String enter(
+			@RequestParam(name = "change", required = false) String change,
+			@RequestParam(name = "addAddress", required = false) String addAddress,
+			Model model) {
+		Customer customer = customerRepository.findById(account.getId()).get();
+		model.addAttribute("customer",customer);
+		model.addAttribute("change", change);
+
+		if (addAddress != null) {
+			Address address = new Address(customer, addAddress);
+			addressRepository.save(address);
+		}
+
+		// ログインしている顧客IDでアドレステーブルを検索		
+		List<Address> addressList = addressRepository.findByCustomer_id(account.getId());
+		model.addAttribute("addressList", addressList);
+		return "addaddress";
 	}
 }

@@ -35,6 +35,10 @@
 			</table>
 			<button>この内容で注文</button>
 		</form>
+		<form action="/order/addaddress" method="get">
+			<input type="hidden" name="customerId" th:value="${customer.id}">
+			<button>送り先変更</button>
+		</form>
 	</main>
 	<hr>
 	<footer th:replace="footer"></footer>
