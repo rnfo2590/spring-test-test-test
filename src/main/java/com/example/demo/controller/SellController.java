@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SellController {
 
 	@GetMapping("/sell")
-	public String index() {
+	public String index1() {
 
 		return "/sellForm";
 	}
