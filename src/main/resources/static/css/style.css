@@ -1,49 +1,61 @@
 /* 全体 */
 body {
-	background-color: #E6FFE9; /* 背景色  */
-	text-align: center; /* 中央寄せ */
-    min-width: 900px; /* 最小幅 */
-   
+	background-color: #E6FFE9;
+	/* 背景色  */
+	text-align: center;
+	/* 中央寄せ */
+	min-width: 900px;
+	/* 最小幅 */
+
 }
+
 /* ヘッダー、ナビゲーションメニュー */
-header, nav {
+header,
+nav {
 	font-family: Garamond;
-	background-color: #CBFFD3;/* 背景色 */
-	color: #E0FFFF;  /*	文字色 */
-	padding-top: 5px; /*	 内側余白(上) */
-	padding-bottom: 5px;/*	  内側余白(下) */
+	background-color: #CBFFD3;
+	/* 背景色 */
+	color: #E0FFFF;
+	/*	文字色 */
+	padding-top: 5px;
+	/*	 内側余白(上) */
+	padding-bottom: 5px;
+	/*	  内側余白(下) */
 }
 
 
 /*フッター*/
-footer{
-	font-family:Tahoma;
+footer {
+	font-family: Tahoma;
 }
 
 
 /* ヘッダー、ナビゲーション内リンク */
-header a{
-	color: #FF5192; 
+header a {
+	color: #FF5192;
 }
 
- nav a {
-	color:  whitesmoke;
+nav a {
+	color: whitesmoke;
 }
+
 /* ヘッダー内見出し */
 header h1 {
 	font-size: 50pt;
 	margin: 10px auto;
 	font-style: Brush Script MT;
 }
+
 /* ヘッダー出品ボタン */
 .example {
-	margin-right: 50px; 
+	margin-right: 50px;
 	background-color: tomato;
-    width: 70px;
-    
-    box-sizing: border-box;
+	width: 70px;
+
+	box-sizing: border-box;
 }
-.example :hover{
+
+.example :hover {
 	background-color: #E0FFFF;
 }
 
@@ -52,39 +64,79 @@ header h1 {
 hr {
 	border-top: 2px dashed #7d8bae;
 }
+
 /* メイン */
 main {
 	background-color: #FFFFFF;
 	min-height: 50px;
 	padding: 20px;
 }
+
 /* 表線 */
-table, th, td {
+table,
+th,
+td {
 	border-collapse: collapse;
-	border: 1px solid #7d8bae;
+	/*	border: 1px solid #7d8bae;*/
 }
+
 /* 表 */
 table {
-    margin: 5px auto;
-    min-width: 800px;
+	margin: 5px auto;
+	min-width: 800px;
+
 }
+
 /* 表見出しセル */
 table th {
 	background: #3CB371;
 	color: #ffffff;
 }
 
-.ex{
-	border: 1px solid white;
+table.order_account {
+	margin-left: auto;
+	border-spacing: 0;
+	border: 1px solid #7d8bae;
+}
+
+table.order_account th {
+	color: #666666;
 	background: white;
-	color: #ffffff;
+	padding: 8px 0;
+}
+
+/*この内容で確定するボタン*/
+.order {
+	margin-right: 100px;
+	background-color: #FFD700;
+	width: 150px;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.order :hover {
+	background-color: #E0FFFF;
+}
+
+/*住所変更ボタン*/
+.change_add {
+	background-color: #DDFFFF;
+	width: 150px;
+	box-sizing: border-box;
+}
+
+.change_add :hover {
+	background-color: #E0FFFF;
 }
 
 
+
+
+
 /*総計太文字*/
-.text-bold{
-	font-weight:bold;
-	text-align:right;
+.text-bold {
+	font-weight: bold;
+	text-align: right;
 	color: red;
 }
 
