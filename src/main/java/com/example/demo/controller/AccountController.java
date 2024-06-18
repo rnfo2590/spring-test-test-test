@@ -124,10 +124,27 @@ public class AccountController {
 			return "accountForm";
 		}
 
+//		Customer customer = new Customer(name, address, tel, email, password);
+//		customerRepository.save(customer);
+		model.addAttribute("name", name);
+		model.addAttribute("address", address);
+		model.addAttribute("tel", tel);
+		model.addAttribute("email", email);
+		model.addAttribute("password",password);
+		return "accountConfirm";
+	}
+	
+	@PostMapping("/addaccount")
+	public String addaccount(
+			@RequestParam("name") String name,
+			@RequestParam("address") String address,
+			@RequestParam("tel") String tel,
+			@RequestParam("email") String email,
+			@RequestParam("password") String password,
+			Model model) {
 		Customer customer = new Customer(name, address, tel, email, password);
 		customerRepository.save(customer);
-
-		return "redirect:/";
+		return "redirect:/login";
 	}
 
 	public static boolean checkLogic(String regex, String target) {

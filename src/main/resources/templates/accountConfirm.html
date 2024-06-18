@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Confirmation</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+	<header th:replace="header"></header>
+	<hr>
+	<main>
+		<h3>以下の内容で登録します</h3>
+		<form action="/addaccount" method="post">
+			名前：[[${name}]]<br>
+			パスワード：[[${password}]]<br>
+			電話番号：[[${tel}]]<br>
+			メールアドレス：[[${email}]]<br>
+			住所：[[${address}]]<br>
+			<input type="hidden" name="name" th:value="${name}">
+			<input type="hidden" name="password" th:value="${password}">
+			<input type="hidden" name="tel" th:value="${tel}">
+			<input type="hidden" name="email" th:value="${email}">
+			<input type="hidden" name="address" th:value="${address}">
+			<button>送信</button>
+		</form>
+
+	</main>
+	<hr>
+	<footer th:replace="footer"></footer>
+</body>
+
+</html>
