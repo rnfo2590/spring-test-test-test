@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>出品登録★</title>
+<title>出品登録</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
@@ -18,22 +18,22 @@
 			<table>
 				<tr>
 					<td>
-						<input type="file" name="image" accept="image/png" onchange="previewFile(this);" required><br>
+						<input type="file" name="image" accept="image/png" required><br>
 						<img id="preview">
-						<script>
-							function previewFile(hoge){
-								var fileData = new FileReader();
-								fileData.onload = (function(){
-									document.getElementById('preview').src = fileData.result
-								});
-							}
-						</script>
+<!--						<script>-->
+<!--							function previewFile(hoge){-->
+<!--								var fileData = new FileReader();-->
+<!--								fileData.onload = (function(){-->
+<!--									document.getElementById('preview').src = fileData.result-->
+<!--								});-->
+<!--							}-->
+<!--						</script>-->
 					</td>
 					<td>
 						<ul>
 							<li>商品名：<input type="text" name="name" th:value="${name}"></li>
-							<li>カテゴリ：111
-								<select name="condition">
+							<li>カテゴリ：
+								<select name="category" th:value="${category}">
 								<option value="book">本</option>
 								<option value="game">ゲーム</option>							
 								<option value="goods">雑貨</option>							
@@ -41,7 +41,7 @@
 								<option value="fashion">ファッション</option>							
 								<option value="electronics">電化製品</option>
 								</select></li>
-							<li>状態：<select name="condition">
+							<li>状態：<select name="condition" th:value="${condition}">
 								<option value="A">新品、未使用</option>
 								<option value="B">未使用に近い</option>							
 								<option value="C">傷や汚れあり</option>							
@@ -52,7 +52,7 @@
 					</td>
 					<td>
 						商品の詳細<br>
-						<textarea name="detail"></textarea>
+						<textarea name="detail" th:value="${detail}"></textarea>
 					</td>
 				</tr>
 			</table>

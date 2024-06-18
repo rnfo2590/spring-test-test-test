@@ -1,9 +1,7 @@
 package com.example.demo.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Base64;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,27 +43,27 @@ public class SellController {
 			@RequestParam(name = "image", required = false) MultipartFile image,
 			@RequestParam(name = "detail", required = false) String detail) throws IOException {
 
-		// エラーチェック
-		List<String> errorList = new ArrayList<>();
-		if ((name == null)
-				|| (category == null)
-				|| (condition == null)
-				|| (price == null)
-				|| (image == null)
-				|| (detail == null)) {
-			errorList.add("必須項目が未入力です");
-		}
-
-		if (errorList.size() > 0) {
-			m.addAttribute("errorList", errorList);
-			m.addAttribute("name", name);
-			m.addAttribute("category", category);
-			m.addAttribute("condition", condition);
-			m.addAttribute("price", price);
-			m.addAttribute("image", image);
-			m.addAttribute("detail", detail);
-			return "/sellForm";
-		}
+		//		// エラーチェック
+		//		List<String> errorList = new ArrayList<>();
+		//		if ((name == null)
+		//				|| (category == null)
+		//				|| (condition == null)
+		//				|| (image == "")
+		//				|| (price == null)
+		//				|| (detail == null)) {
+		//			errorList.add("必須項目が未入力です");
+		//		}
+		//
+		//		if (errorList.size() > 0) {
+		//			m.addAttribute("errorList", errorList);
+		//			m.addAttribute("name", name);
+		//			m.addAttribute("category", category);
+		//			m.addAttribute("condition", condition);
+		//			m.addAttribute("price", price);
+		//			m.addAttribute("image", image);
+		//			m.addAttribute("detail", detail);
+		//			return "/sellForm";
+		//		}
 
 		String fileName = StringUtils.cleanPath(image.getOriginalFilename());
 		byte[] bytes = image.getBytes();
@@ -90,9 +88,7 @@ public class SellController {
 			@RequestParam(name = "image", required = false) byte[] image,
 			@RequestParam(name = "detail", required = false) String detail) {
 
-		//		Integer customer = account.getId();
-		//		Item item = new Item(category, customer, name, price, image, condition, detail);
-		//		itemRepository.save(item);
+		//		itemRepository.save(name, category, condition, price, image, detail);
 		return "/sellFinish";
 	}
 

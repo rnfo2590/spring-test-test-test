@@ -10,12 +10,12 @@
 		<h1 style="color: #FF5192; text-align:center">Shibakari</h1>
 	</header>
 		<form action="/sell/regist" method="post">
-			<img th:src="|data:image/png;base64,${item.image}|"><br>
-			商品名：[[${item.name}]]<br>
-			カテゴリー：[[${item.category}]]<br>
-			商品の状態：[[${item.condition}]]<br>
-			価格：[[${item.price}]]<br>
-			商品の説明：[[${item.detail}]]<br>
+			<img th:src="|data:image/png;base64,${image}|"><br>
+			商品名：[[${name}]]<br>
+			カテゴリー：[[${category}]]<br>
+			商品の状態：[[${condition}]]<br>
+			価格：[[${price}]]<br>
+			商品の説明：[[${detail}]]<br>
 		</form>
 	</main>
 	<hr>
