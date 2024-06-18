@@ -35,6 +35,18 @@ header h1 {
 	margin: 10px auto;
 	font-style: Brush Script MT;
 }
+/* ヘッダー出品ボタン */
+.example {
+	margin-right: 50px; 
+	background-color: tomato;
+    width: 70px;
+    
+    box-sizing: border-box;
+}
+.example :hover{
+	background-color: #E0FFFF;
+}
+
 
 /* 仕切り線 */
 hr {
@@ -61,6 +73,14 @@ table th {
 	background: #3CB371;
 	color: #ffffff;
 }
+
+.ex{
+	border: 1px solid white;
+	background: white;
+	color: #ffffff;
+}
+
+
 /*総計太文字*/
 .text-bold{
 	font-weight:bold;
@@ -68,16 +88,7 @@ table th {
 	color: red;
 }
 
-.example {
-	margin-right: 50px; 
-	background-color: tomato;
-    width: 70px;
-    
-    box-sizing: border-box;
-}
-.example :hover{
-	background-color: #E0FFFF;
-}
+
 
 
 

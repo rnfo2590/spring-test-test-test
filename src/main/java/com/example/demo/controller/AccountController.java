@@ -93,25 +93,25 @@ public class AccountController {
 		List<String> errorList = new ArrayList<>();
 		if (name.length() == 0 || address.length() == 0 || tel.length() == 0 || email.length() == 0
 				|| password.length() == 0) {
-			errorList.add("すべての項目を入力してください");
+			errorList.add("・すべての項目を入力してください");
 		}
 		if (checkLogic("^[0-9]+$", tel)) {
-			errorList.add("電話番号は半角数字のみ入力してください");
+			errorList.add("・電話番号は半角数字のみ入力してください");
 		}
 		if (password.length() < 8 || password.length() > 12) {
-			errorList.add("パスワードは8文字以上12文字以下にしてください");
+			errorList.add("・パスワードは8文字以上12文字以下にしてください");
 		}
 
 		// メールアドレス存在チェック
 		List<Customer> customerList = customerRepository.findByEmail(email);
 		if (customerList != null && customerList.size() > 0) {
 			// 登録済みのメールアドレスが存在した場合
-			errorList.add("このメールアドレスは既に登録済です");
+			errorList.add("・このメールアドレスは既に登録済です");
 		}
 		customerList = customerRepository.findByTel(tel);
 		if (customerList != null && customerList.size() > 0) {
 			// 登録済みの電話番号が存在した場合
-			errorList.add("この電話番号は既に登録済です");
+			errorList.add("・この電話番号は既に登録済です");
 		}
 
 		// エラー発生時は新規登録画面に戻す
