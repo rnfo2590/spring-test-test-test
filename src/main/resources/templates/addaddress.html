@@ -10,8 +10,11 @@
 	<hr>
 	<main>
 		<a href="/order/addaddress?change=change">新規追加</a>
-		
+
 		<th:block th:if="${change}">
+			<ul th:if="${errorList}" class="error">
+				<div th:each="error:${errorList}" th:text="${error}" style="color: red"></div>
+			</ul>
 			<form action="/order/addaddress" method="get">
 				新規追加：
 				<input type="text" name="addAddress">

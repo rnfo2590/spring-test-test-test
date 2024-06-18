@@ -44,7 +44,7 @@ public class OrderController {
 
 	@Autowired
 	AddressRepository addressRepository;
-	
+
 	@Autowired
 	ItemRepository itemRepository;
 
@@ -104,12 +104,12 @@ public class OrderController {
 							item.getStock()));
 		}
 		orderDetailRepository.saveAll(orderDetails);
-		
-		for(Item data : cart.getItems()) {
+
+		for (Item data : cart.getItems()) {
 			data.setStock(0);
 			itemRepository.save(data);
 		}
-		
+
 		// セッションスコープのカート情報をクリアする
 		cart.clear();
 
@@ -126,14 +126,23 @@ public class OrderController {
 			@RequestParam(name = "addAddress", required = false) String addAddress,
 			Model model) {
 		Customer customer = customerRepository.findById(account.getId()).get();
-		model.addAttribute("customer",customer);
+		model.addAttribute("customer", customer);
 		model.addAttribute("change", change);
 
-		if (addAddress != null) {
-			Address address = new Address(customer, addAddress);
-			addressRepository.save(address);
-		}
+		// エラーチェック
+		List<String> errorList = new ArrayList<>();
+			if(addAddress != null && addAddress.equals("")){
+				errorList.add("新規住所が未入力です");
+				model.addAttribute("change", "erorr");
+			}else if(addAddress != null) {
+				Address address = new Address(customer, addAddress);
+				addressRepository.save(address);
+			}
 
+			// エラー発生時は新規登録画面に戻す
+			if (errorList.size() > 0) {
+				model.addAttribute("errorList", errorList);
+			}
 		// ログインしている顧客IDでアドレステーブルを検索		
 		List<Address> addressList = addressRepository.findByCustomer_id(account.getId());
 		model.addAttribute("addressList", addressList);
