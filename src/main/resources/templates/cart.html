@@ -9,10 +9,16 @@
 	<header th:replace="header"></header>
 	<hr>
 	<main>
-		<span th:replace="cartItem"></span>
-		<form action="/order">
-			<button>注文する</button>
-		</form>
+		<h1>カート一覧</h1>
+		<th:block th:if="${cartSize}!=0">
+			<span th:replace="cartItem"></span>
+			<form action="/order">
+				<button>注文を確定する</button>
+			</form>
+		</th:block>
+		<th:block th:if="${cartSize}==0">
+			カートに何もありません
+		</th:block>
 	</main>
 	<hr>
 	<footer th:replace="footer"></footer>

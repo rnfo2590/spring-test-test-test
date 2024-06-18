@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -89,34 +91,30 @@ public class AccountController {
 
 		// エラーチェック
 		List<String> errorList = new ArrayList<>();
-		if (name.length() == 0) {
-			errorList.add("名前は必須です");
+		if (name.length() == 0 || address.length() == 0 || tel.length() == 0 || email.length() == 0
+				|| password.length() == 0) {
+			errorList.add("すべての項目を入力してください");
 		}
-		if (address.length() == 0) {
-			errorList.add("住所は必須です");
+		if (checkLogic("^[0-9]+$", tel)) {
+			errorList.add("電話番号は半角数字のみ入力してください");
 		}
-		if (address.length() == 0) {
-			errorList.add("電話番号は必須です");
+		if (password.length() < 8 || password.length() > 12) {
+			errorList.add("パスワードは8文字以上12文字以下にしてください");
 		}
-		if (email.length() == 0) {
-			errorList.add("メールアドレスは必須です");
-		}
+
 		// メールアドレス存在チェック
 		List<Customer> customerList = customerRepository.findByEmail(email);
 		if (customerList != null && customerList.size() > 0) {
 			// 登録済みのメールアドレスが存在した場合
-			errorList.add("登録済みのメールアドレスです");
+			errorList.add("このメールアドレスは既に登録済です");
 		}
 		customerList = customerRepository.findByTel(tel);
 		if (customerList != null && customerList.size() > 0) {
-			// 登録済みのメールアドレスが存在した場合
-			errorList.add("登録済みのメールアドレスです");
-		}
-		if (password.length() == 0) {
-			errorList.add("パスワードは必須です");
+			// 登録済みの電話番号が存在した場合
+			errorList.add("この電話番号は既に登録済です");
 		}
 
-		// エラー発生時はお問い合わせフォームに戻す
+		// エラー発生時は新規登録画面に戻す
 		if (errorList.size() > 0) {
 			model.addAttribute("errorList", errorList);
 			model.addAttribute("name", name);
@@ -130,5 +128,20 @@ public class AccountController {
 		customerRepository.save(customer);
 
 		return "redirect:/";
+	}
+
+	public static boolean checkLogic(String regex, String target) {
+		boolean result = false;
+		if (target == null || target.isEmpty())
+			return false;
+		// 引数に指定した正規表現regexがtargetにマッチするか確認する
+		Pattern p1 = Pattern.compile(regex); // 正規表現パターンの読み込み
+		Matcher m1 = p1.matcher(target); // パターンと検査対象文字列の照合
+		if (m1.matches()) {// 照合結果をtrueかfalseで取得
+			result = false;
+		} else {
+			result = true;
+		}
+		return result;
 	}
 }

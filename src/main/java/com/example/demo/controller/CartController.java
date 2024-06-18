@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +22,8 @@ public class CartController {
 
 	// カート内容を表示
 	@GetMapping("/cart")
-	public String index() {
+	public String index(Model model) {
+		model.addAttribute("cartSize",cart.getItems().size());
 		// cart.htmlの出力
 		return "cart";
 	}
