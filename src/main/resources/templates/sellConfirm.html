@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>出品確認</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+	<header>
+		<h1 style="color: #FF5192; text-align:center">Shibakari</h1>
+	</header>
+		<form action="/sell/regist" method="post">
+			<img th:src="|data:image/png;base64,${item.image}|"><br>
+			商品名：[[${item.name}]]<br>
+			カテゴリー：[[${item.category}]]<br>
+			商品の状態：[[${item.condition}]]<br>
+			価格：[[${item.price}]]<br>
+			商品の説明：[[${item.detail}]]<br>
+		</form>
+	</main>
+	<hr>
+	<footer th:replace="footer"></footer>
+</body>
+</html>
