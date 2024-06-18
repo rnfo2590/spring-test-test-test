@@ -10,7 +10,7 @@ INSERT INTO categories(name,creator,updater,ver_num,delete_flg)
 VALUES('電化製品','謙汰','謙汰',0,0);
 
 INSERT INTO customers(name, password, tel, email,address,creator,updater,ver_num,delete_flg)
-VALUES('木村','himitu','000111222','kimu@gmail.com','木村の村','謙汰','謙汰',0,0);
+VALUES('桃太郎','momotaro','07023481003','peach@gmail.com','品川区南品川5-3-12-801','kurumi','kurumi',0,0);
 INSERT INTO customers(name, password, tel, email,address,creator,updater,ver_num,delete_flg)
 VALUES('田町','okashi','010987654','jet@gmail.com','渋谷区渋谷2-24-12','香穂','香穂',0,0);
 
