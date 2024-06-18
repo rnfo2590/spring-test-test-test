@@ -4,5 +4,20 @@
 <!--	<span th:text="${@account.name}+' さんがログイン中'"></span>-->
 	<p style="text-align: right;">
 	<a href="/logout"><font color="#B22222">ログアウト</font></a>
+	
+	<table>
+			<tr>
+				<td>
+					<form action="/sell" method="get">
+						<input type="submit" value="出品">
+					</form>
+				</td>
+				<td>
+					<form action="/cart" method="get">
+						<input type="submit" value="カート">
+					</form>	
+				</td>
+			</tr>
+	</table>
 </p>
 </header>
