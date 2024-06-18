@@ -18,34 +18,35 @@
 			<table>
 				<tr>
 					<td>
-						<input type="file" name="image" accept="image/png" required><br>
-						<img id="preview">
-<!--						<script>-->
-<!--							function previewFile(hoge){-->
-<!--								var fileData = new FileReader();-->
-<!--								fileData.onload = (function(){-->
-<!--									document.getElementById('preview').src = fileData.result-->
-<!--								});-->
-<!--							}-->
-<!--						</script>-->
+						<input type="file" name="image" accept="image/png" onchange="previewFile(this);" required><br>
+						  <p>プレビュー</p>
+ 							 <img id="preview">
+							 <script>
+  								function previewFile(hoge){
+    								var fileData = new FileReader();
+  									fileData.onload = (function() {
+  								    //id属性が付与されているimgタグのsrc属性に、fileReaderで取得した値の結果を入力することで
+  								    //プレビュー表示している
+      									document.getElementById('preview').src = fileData.result;
+    									});
+								   fileData.readAsDataURL(hoge.files[0]);
+ 								 }
+							</script>
 					</td>
 					<td>
 						<ul>
 							<li>商品名：<input type="text" name="name" th:value="${name}"></li>
 							<li>カテゴリ：
-								<select name="category" th:value="${category}">
-								<option value="book">本</option>
-								<option value="game">ゲーム</option>							
-								<option value="goods">雑貨</option>							
-								<option value="beauty">美容</option>
-								<option value="fashion">ファッション</option>							
-								<option value="electronics">電化製品</option>
+								<select name="categoryId">
+								<span th:each="category:${categories}">
+									<option th:value="${category.id}">[[${category.name}]]</option>
+								</span>
 								</select></li>
 							<li>状態：<select name="condition" th:value="${condition}">
-								<option value="A">新品、未使用</option>
-								<option value="B">未使用に近い</option>							
-								<option value="C">傷や汚れあり</option>							
-								<option value="D">状態が悪い</option>
+								<option value="新品、未使用">新品、未使用</option>
+								<option value="未使用に近い">未使用に近い</option>							
+								<option value="傷や汚れあり">傷や汚れあり</option>							
+								<option value="状態が悪い">状態が悪い</option>
 								</select></li>
 							<li>価格：<input type="text" name="price" th:value="${price}"></li>
 						</ul>
