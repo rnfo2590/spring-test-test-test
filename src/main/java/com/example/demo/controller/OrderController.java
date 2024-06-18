@@ -20,6 +20,7 @@ import com.example.demo.model.Account;
 import com.example.demo.model.Cart;
 import com.example.demo.repository.AddressRepository;
 import com.example.demo.repository.CustomerRepository;
+import com.example.demo.repository.ItemRepository;
 import com.example.demo.repository.OrderDetailRepository;
 import com.example.demo.repository.OrderRepository;
 
@@ -43,6 +44,9 @@ public class OrderController {
 
 	@Autowired
 	AddressRepository addressRepository;
+	
+	@Autowired
+	ItemRepository itemRepository;
 
 	// 注文内容確認とお客様情報入力画面を表示
 	@GetMapping("/order")
@@ -100,7 +104,12 @@ public class OrderController {
 							item.getStock()));
 		}
 		orderDetailRepository.saveAll(orderDetails);
-
+		
+		for(Item data : cart.getItems()) {
+			data.setStock(0);
+			itemRepository.save(data);
+		}
+		
 		// セッションスコープのカート情報をクリアする
 		cart.clear();
 

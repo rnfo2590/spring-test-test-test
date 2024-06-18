@@ -23,8 +23,14 @@
 		
 	</nav>
 	<main>
-		<table>
-			<tr th:each="item:${items}">
+		<table th:each="item:${items}">
+			<tr>
+				<td colspan="3">
+					<th:block th:if="${item.stock}==1">on sell</th:block>
+					<th:block th:if="${item.stock}==0">sold out</th:block>
+				</td>
+			</tr>
+			<tr>
 				<td>
 					<form action="/items/detail" method="get">
 						<input type="hidden" name="itemId" th:value="${item.id}">
