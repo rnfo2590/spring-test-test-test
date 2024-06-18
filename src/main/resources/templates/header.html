@@ -1,23 +1,24 @@
 <header>
 	<h1 style="color: #FF5192; text-align:center fontsize=5">
-		<a href="/items">Shibakari</a></h1>
-<!--	<span th:text="${@account.name}+' さんがログイン中'"></span>-->
+		<a href="/items">Shibakari</a>
+	</h1>
+	<!--	<span th:text="${@account.name}+' さんがログイン中'"></span>-->
 	<p style="text-align: right;">
-	<a href="/logout"><font color="#B22222">ログアウト</font></a>
-	
-	<table>
-			<tr>
-				<td>
-					<form action="/sell" method="get">
-						<input type="submit" value="出品">
-					</form>
-				</td>
-				<td>
-					<form action="/cart" method="get">
-						<input type="submit" value="カート">
-					</form>	
-				</td>
-			</tr>
-	</table>
-</p>
+		<a href="/logout">
+			<font color="#B22222">ログアウト</font>
+		</a>
+
+	<div style="display: flex; justify-content:right;">
+		<form action="/sell" method="get">
+
+			<button class="example">出品</button>
+		</form>
+
+		<form action="/cart" method="get">
+			<button>カート</button>
+
+		</form>
+	</div>
+
+
 </header>

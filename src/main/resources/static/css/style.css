@@ -31,7 +31,7 @@ header a{
 }
 /* ヘッダー内見出し */
 header h1 {
-	font-size: 20pt;
+	font-size: 50pt;
 	margin: 10px auto;
 	font-style: Brush Script MT;
 }
@@ -61,6 +61,26 @@ table th {
 	background: #3CB371;
 	color: #ffffff;
 }
+/*総計太文字*/
+.text-bold{
+	font-weight:bold;
+	text-align:right;
+	color: red;
+}
+
+.example {
+	margin-right: 50px; 
+	background-color: tomato;
+    width: 70px;
+    
+    box-sizing: border-box;
+}
+.example :hover{
+	background-color: #E0FFFF;
+}
+
+
+
 /* 送信ボタン */
 /*button {*/
 /*	margin: 2px;*/

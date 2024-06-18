@@ -4,6 +4,7 @@
 		<th>商品名</th>
 		<th>値段</th>
 		<th></th>
+	
 	</tr>
 	<tr th:each="item:${@cart.items}">
 				<td>
@@ -18,8 +19,8 @@
 			</form>
 		</td>
 	</tr>
-	<tr>
-		<td align="right" colspan="4" th:text="'総計：'+${@cart.totalPrice}"></td>
-		<td></td>
-	</tr>
-</table>
+	</table>
+	
+		<div class="text-bold"> 総計：[[${@cart.totalPrice}]]
+		</div>
+	
