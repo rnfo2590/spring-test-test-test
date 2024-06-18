@@ -9,11 +9,18 @@
 	<header th:replace="header"></header>
 	<hr>
 	<nav style="background-color: #3CB371;">
-		<a href="/items">全商品</a>
-		<a th:each="c:${categories}" th:href="'/items?categoryId='+${c.id}">
-			<span th:text="${c.name}" style="padding-left: 10px;"></span>
-		</a>
 
+		<form action="/items" method="get">
+			<span th:each="category:${categories}">
+				<input type="radio" name="categoryId" th:value="${category.id}"> [[${category.name}]]
+			</span>
+			<br>
+			名前：<input type="text" name="keyword" th:value="${session.keyword}">
+			値段：<input type="text" name="minPrice" th:value="${session.minPrice}">以上
+				  <input type="text" name="maxPrice" th:value="${session.maxPrice}">以下
+			<button>検索</button>
+		</form>
+		
 	</nav>
 	<main>
 		<table>
