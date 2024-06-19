@@ -23,7 +23,7 @@ nav {
 	/*	  内側余白(下) */
 }
 
-.sell-con{
+.sell-con {
 	background-color: white;
 }
 
@@ -69,6 +69,10 @@ hr {
 	border-top: 2px dashed #7d8bae;
 }
 
+.hr1{
+	border-top: 1px solid #808080;
+}
+
 /* メイン */
 main {
 	background-color: #FFFFFF;
@@ -107,15 +111,15 @@ table.new_account th {
 	color: #666666;
 	background: white;
 	padding: 6px 0;
-	text-align:right;
-	
-	
+	text-align: right;
+
+
 }
 
-table.new_account td{
-	text-align:center;
+table.new_account td {
+	text-align: center;
 	border-left: #7d8bae;
-} 
+}
 
 
 /*個人情報確認*/
@@ -182,14 +186,69 @@ table.order_account th {
 	background-color: #E0FFFF;
 }
 
+/*注文確定ボタン*/
+.cart-order {
+	font-weight: bold;
+	background-color: #FF9933;
+	width: 170px;
+	box-sizing: border-box;
+}
 
+.cart-order :hover {
+	background-color: #E0FFFF;
+}
 
 /*総計太文字*/
 .text-bold {
+	
 	font-weight: bold;
 	text-align: right;
+	font-size: 25px;
 	color: red;
 }
+
+/*カート一覧*/
+
+.table-cart{
+	border-bottom:1px #DDDDDD solid;
+}
+
+.product-details1{
+	color: #999999;
+}
+
+.product-price1{
+	color: #999999;
+}
+
+.product-image1{
+	visibility: hidden;
+}
+
+.product-removal1{
+	visibility: hidden;
+}
+
+
+.product-image {
+	float: left;
+	width: auto;
+}
+
+.product-details {
+	
+	width: 37%;
+}
+
+.product-price {
+	
+	width: 12%;
+}
+
+.product-removal {
+	width: 50%;
+}
+
 
 
 

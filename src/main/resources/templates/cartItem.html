@@ -1,26 +1,23 @@
-<table border="1">
+<table>
 	<tr>
-		<th>画像</th>
-		<th>商品名</th>
-		<th>値段</th>
-		<th></th>
-	
-	</tr>
-	<tr th:each="item:${@cart.items}">
-				<td>
-					<img th:src="|data:image/png;base64,${item.image}|">
-				</td>
-				<td th:text="${item.name}"></td>
-				<td th:text="${item.price}"></td>
+	<td class="product-image1">Image</td>
+	<td class="product-details1">商品名</td>
+	<td class="product-price1">価格</td>
+	<td class="product-removal1">Remove</td>
+</tr>
+	<tr class="table-cart" th:each="item:${@cart.items}">
 		<td>
-			<form action="/cart/delete" method="post">
-				<input type="hidden" name="itemId" th:value="${item.id}">
-				<button>削除</button>
-			</form>
+			<img th:src="|data:image/png;base64,${item.image}|">
 		</td>
+		<td class="product-details" th:text="${item.name}"></td>
+		<td class="product-price" th:text="${item.price}"></td>
+		<td>
+	<form action="/cart/delete" method="post">
+		<input type="hidden" name="itemId" th:value="${item.id}">
+		<button class="product-removal">削除</button>
+	</form></td>
 	</tr>
-	</table>
-	
-		<div class="text-bold"> 総計：[[${@cart.totalPrice}]]
-		</div>
-	
+</table>
+
+	<div align="right" class="text-bold"> 総計：[[${@cart.totalPrice}]]
+	</div>

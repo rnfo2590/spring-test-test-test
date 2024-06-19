@@ -9,13 +9,16 @@
 	<header th:replace="header"></header>
 	<hr>
 	<main>
-		<h1>カート一覧</h1>
+		<h1 style="text-align: left;">My Cart</h1>
+		<hr class="hr1">
+	
 		<th:block th:if="${cartSize}!=0">
 			<span th:replace="cartItem"></span>
+			<div style="text-align: right;">
 			<form action="/order">
-				<button>注文を確定する</button>
+				<button class="cart-order">注文を確定する</button>
 			</form>
-		</th:block>
+		</th:block></div>
 		<th:block th:if="${cartSize}==0">
 			カートに何もありません
 		</th:block>
