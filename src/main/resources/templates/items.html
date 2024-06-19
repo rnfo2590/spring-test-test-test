@@ -25,12 +25,6 @@
 	<main>
 		<table th:each="item:${items}">
 			<tr>
-				<td colspan="3">
-					<th:block th:if="${item.stock}==1">on sell</th:block>
-					<th:block th:if="${item.stock}==0">sold out</th:block>
-				</td>
-			</tr>
-			<tr>
 				<td>
 					<th:block th:if="${item.stock}==1">
 						<form action="/items/detail" method="get">
@@ -39,7 +33,7 @@
 						</form>
 					</th:block>
 					<th:block th:if="${item.stock}==0">
-						<img th:src="|data:image/png;base64,${item.image}|">
+						<img src="/images/soldout.jpg" alt="lose">
 					</th:block>
 				</td>
 				<td th:text="${item.name}"></td>
