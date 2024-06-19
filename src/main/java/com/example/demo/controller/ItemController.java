@@ -41,62 +41,66 @@ public class ItemController {
 
 		// 商品一覧情報の取得
 		List<Item> itemList = null;
-		if (categoryId == null && keyword == null && maxPrice == null && minPrice == null ) {
+		if (categoryId == null && keyword == null && maxPrice == null && minPrice == null) {
 			itemList = itemRepository.findAll();
-		} else if(categoryId == null && keyword == null && maxPrice == null){
+		} else if (categoryId == null && keyword == null && maxPrice == null) {
 			// itemsテーブルを最低額を指定して一覧を取得
 			itemList = itemRepository.findByPriceGreaterThanEqual(minPrice);
-		} else if(categoryId == null && keyword == null && minPrice == null){
+		} else if (categoryId == null && keyword == null && minPrice == null) {
 			// itemsテーブルを最高額を指定して一覧を取得
 			itemList = itemRepository.findByPriceLessThanEqual(maxPrice);
-		} else if(categoryId == null && minPrice == null && maxPrice == null){
+		} else if (categoryId == null && minPrice == null && maxPrice == null) {
 			// itemsテーブルをキーワードを指定して一覧を取得
-			itemList = itemRepository.findByNameLike("%"+keyword+"%");
-		} else if(keyword == null && minPrice == null && maxPrice == null){
+			itemList = itemRepository.findByNameLike("%" + keyword + "%");
+		} else if (keyword == null && minPrice == null && maxPrice == null) {
 			// itemsテーブルをカテゴリーIDを指定して一覧を取得
 			itemList = itemRepository.findByCategoryId(categoryId);
-		} else if(minPrice == null && maxPrice == null){
+		} else if (minPrice == null && maxPrice == null) {
 			// itemsテーブルをカテゴリーIDとキーワードを指定して一覧を取得
-			itemList = itemRepository.findByCategoryIdAndNameLike(categoryId,"%"+keyword+"%");
-		} else if(categoryId == null && maxPrice == null){
+			itemList = itemRepository.findByCategoryIdAndNameLike(categoryId, "%" + keyword + "%");
+		} else if (categoryId == null && maxPrice == null) {
 			// itemsテーブルを最低額とキーワードを指定して一覧を取得
-			itemList = itemRepository.findByPriceGreaterThanEqualAndNameLike(minPrice,"%"+keyword+"%");
-		} else if(categoryId == null && minPrice == null){
+			itemList = itemRepository.findByPriceGreaterThanEqualAndNameLike(minPrice, "%" + keyword + "%");
+		} else if (categoryId == null && minPrice == null) {
 			// itemsテーブルを最高額とキーワードを指定して一覧を取得
-			itemList = itemRepository.findByPriceLessThanEqualAndNameLike(maxPrice,"%"+keyword+"%");
-		} else if(keyword == null && maxPrice == null){
+			itemList = itemRepository.findByPriceLessThanEqualAndNameLike(maxPrice, "%" + keyword + "%");
+		} else if (keyword == null && maxPrice == null) {
 			// itemsテーブルを最低額とカテゴリーIDを指定して一覧を取得
-			itemList = itemRepository.findByPriceGreaterThanEqualAndCategoryId(minPrice,categoryId);
-		} else if(keyword == null && minPrice == null){
+			itemList = itemRepository.findByPriceGreaterThanEqualAndCategoryId(minPrice, categoryId);
+		} else if (keyword == null && minPrice == null) {
 			// itemsテーブルを最高額とカテゴリーIDを指定して一覧を取得
-			itemList = itemRepository.findByPriceLessThanEqualAndCategoryId(maxPrice,categoryId);
-		} else if(keyword == null && categoryId == null){
+			itemList = itemRepository.findByPriceLessThanEqualAndCategoryId(maxPrice, categoryId);
+		} else if (keyword == null && categoryId == null) {
 			// itemsテーブルを最低額と最高額を指定して一覧を取得
-			itemList = itemRepository.findByPriceBetween(minPrice,maxPrice);
-		} else if(keyword == null){
+			itemList = itemRepository.findByPriceBetween(minPrice, maxPrice);
+		} else if (keyword == null) {
 			// itemsテーブルを最低額と最高額とカテゴリーIDを指定して一覧を取得
-			itemList = itemRepository.findByPriceBetweenAndCategoryId(minPrice,maxPrice,categoryId);
-		} else if(categoryId == null){
+			itemList = itemRepository.findByPriceBetweenAndCategoryId(minPrice, maxPrice, categoryId);
+		} else if (categoryId == null) {
 			// itemsテーブルを最低額と最高額とキーワードを指定して一覧を取得
-			itemList = itemRepository.findByPriceBetweenAndNameLike(minPrice,maxPrice,"%"+keyword+"%");
-		} else if(maxPrice == null){
+			itemList = itemRepository.findByPriceBetweenAndNameLike(minPrice, maxPrice, "%" + keyword + "%");
+		} else if (maxPrice == null) {
 			// itemsテーブルを最低額とカテゴリーIDとキーワードを指定して一覧を取得
-			itemList = itemRepository.findByPriceGreaterThanEqualAndCategoryIdAndNameLike(minPrice,categoryId,"%"+keyword+"%");
-		} else if(minPrice == null){
+			itemList = itemRepository.findByPriceGreaterThanEqualAndCategoryIdAndNameLike(minPrice, categoryId,
+					"%" + keyword + "%");
+		} else if (minPrice == null) {
 			// itemsテーブルを最高額とカテゴリーIDとキーワードを指定して一覧を取得
-			itemList = itemRepository.findByPriceLessThanEqualAndCategoryIdAndNameLike(maxPrice,categoryId,"%"+keyword+"%");
+			itemList = itemRepository.findByPriceLessThanEqualAndCategoryIdAndNameLike(maxPrice, categoryId,
+					"%" + keyword + "%");
 		}
 		model.addAttribute("items", itemList);
 
 		return "items";
 	}
-	
+
 	//商品詳細
 	@GetMapping("/items/detail")
 	public String detail(
 			@RequestParam(value = "itemId", defaultValue = "") Integer itemId,
 			Model model) {
-		
+
+		List<Category> categoryList = categoryRepository.findAll();
+		model.addAttribute("categories", categoryList);
 		Item item = itemRepository.findById(itemId).get();
 		System.out.println(item.getImage());
 		model.addAttribute("item", item);
