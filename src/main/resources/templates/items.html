@@ -16,13 +16,16 @@
 			</span>
 			<br>
 			名前：<input type="text" name="keyword" th:value="${session.keyword}">
-			値段：<input type="text" name="minPrice" th:value="${session.minPrice}">以上
-				  <input type="text" name="maxPrice" th:value="${session.maxPrice}">以下
+			値段：<input type="number" name="minPrice" th:value="${session.minPrice}">以上
+				  <input type="number" name="maxPrice" th:value="${session.maxPrice}">以下
 			<button>検索</button>
 		</form>
 		
 	</nav>
 	<main>
+		<ul th:if="${errorList}" class="error">
+			<div th:each="error:${errorList}" th:text="${error}" style="color: red"></div>
+		</ul>
 		<table th:each="item:${items}">
 			<tr>
 				<td>

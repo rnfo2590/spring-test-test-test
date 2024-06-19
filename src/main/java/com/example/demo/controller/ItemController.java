@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class ItemController {
 	// 商品一覧表示
 	@GetMapping("/items")
 	public String index(
-			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
+			@RequestParam(value = "categoryId", required = false) Integer categoryId,
 			@RequestParam(name = "keyword", required = false) String keyword,
 			@RequestParam(name = "maxPrice", required = false) Integer maxPrice,
 			@RequestParam(name = "minPrice", required = false) Integer minPrice,
@@ -38,7 +39,28 @@ public class ItemController {
 		// 全カテゴリー一覧を取得
 		List<Category> categoryList = categoryRepository.findAll();
 		model.addAttribute("categories", categoryList);
-
+		
+		List<String> errorList = new ArrayList<>();
+		if (maxPrice != null && minPrice != null) {
+			if(maxPrice<0 || minPrice<0) {
+				errorList.add("・値段は0以上で入力してください");
+			}else if(maxPrice<minPrice) {
+				errorList.add("・当てはまる金額はありません");
+			}
+		}else if(maxPrice != null) {
+			if(maxPrice<0) {
+				errorList.add("・値段は0以上で入力してください");
+			}
+		}else if(minPrice != null) {
+			if(minPrice<0) {
+				errorList.add("・値段は0以上で入力してください");
+			}
+		}
+		if (errorList.size() > 0) {
+			model.addAttribute("errorList", errorList);
+			return "items";
+		}
+		
 		// 商品一覧情報の取得
 		List<Item> itemList = null;
 		if (categoryId == null && keyword == null && maxPrice == null && minPrice == null) {
@@ -88,6 +110,7 @@ public class ItemController {
 			itemList = itemRepository.findByPriceLessThanEqualAndCategoryIdAndNameLike(maxPrice, categoryId,
 					"%" + keyword + "%");
 		}
+
 		model.addAttribute("items", itemList);
 
 		return "items";
