@@ -12,7 +12,7 @@
 		<h1 style="color: #FF5192; text-align:center">Shibakari</h1>
 	</header>
 	<main>
-		<h3>お客様情報</h3>
+		<h3>アカウントを作成</h3>
 
 		<form action="/account" method="post">
 
@@ -21,38 +21,38 @@
 			</ul>
 
 
-			<table>
+			<table class="new_account">
 
 				<tr>
-					<th class="add_name">名前</th>
+					<th>名前</th>
 					<td>
 						<input type="text" name="name" th:value="${name}" placeholder="名前">
 					</td>
 				</tr>
 
 				<tr>
-					<th class="add_pw">パスワード</th>
+					<th>パスワード</th>
 					<td>
 						<input type="text" name="password" placeholder="８文字以上12文字以下">
 					</td>
 				</tr>
 
 				<tr>
-					<th class="add_tel">電話番号</th>
+					<th>電話番号</th>
 					<td>
 						<input type="text" name="tel" th:value="${tel}" placeholder="ハイフン無し">
 					</td>
 				</tr>
 
 				<tr>
-					<th class="add_email">メールアドレス</th>
+					<th>メールアドレス</th>
 					<td>
 						<input type="text" name="email" th:value="${email}" placeholder="メールアドレス">
 					</td>
 				</tr>
 
 				<tr>
-					<th class="add_address">住所</th>
+					<th>住所</th>
 					<td>
 						<input type="text" name="address" th:value="${address}" placeholder="住所">
 					</td>
@@ -60,7 +60,7 @@
 
 
 			</table>
-			<button>登録</button>
+			<button class="add">登録</button>
 		</form>
 		</div>
 	</main>

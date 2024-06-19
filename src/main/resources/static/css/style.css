@@ -93,6 +93,28 @@ table th {
 	color: #ffffff;
 }
 
+/*新規登録*/
+table.new_accountt {
+	border-spacing: 0;
+	border: 1px solid #7d8bae;
+}
+
+table.new_account th {
+	color: #666666;
+	background: white;
+	padding: 6px 0;
+	text-align:right;
+	
+	
+}
+
+table.new_account td{
+	text-align:center;
+	border-left: #7d8bae;
+} 
+
+
+/*個人情報確認*/
 table.order_account {
 	margin-left: auto;
 	border-spacing: 0;
@@ -104,6 +126,20 @@ table.order_account th {
 	background: white;
 	padding: 8px 0;
 }
+
+/*登録ボタン*/
+.add {
+	background-color: #FFD700;
+	width: 100px;
+	padding: 5px;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.add :hover {
+	background-color: #E0FFFF;
+}
+
 
 /*この内容で確定するボタン*/
 .order {
