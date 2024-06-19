@@ -12,7 +12,6 @@ body {
 /* ヘッダー、ナビゲーションメニュー */
 header,
 nav {
-	/*	shibakariフォント */
 	font-family: Garamond;
 	background-color: #CBFFD3;
 	/* 背景色 */
@@ -22,6 +21,10 @@ nav {
 	/*	 内側余白(上) */
 	padding-bottom: 5px;
 	/*	  内側余白(下) */
+}
+
+.sell-con{
+	background-color: white;
 }
 
 
@@ -34,7 +37,6 @@ footer {
 /* ヘッダー、ナビゲーション内リンク */
 header a {
 	color: #FF5192;
-	/*	shibakari文字色 */
 }
 
 nav a {
@@ -143,6 +145,7 @@ table.order_account th {
 }
 
 
+
 /*この内容で確定するボタン*/
 .order {
 	margin-right: 100px;
@@ -178,7 +181,6 @@ table.order_account th {
 .sell :hover {
 	background-color: #E0FFFF;
 }
-
 
 
 
