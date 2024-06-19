@@ -43,10 +43,10 @@ public class SellController {
 	private Item item;
 
 	@GetMapping("/sell")
-	public String index(Model model) {
+	public String index(Model m) {
 		// 全カテゴリー一覧を取得
 		List<Category> categoryList = categoryRepository.findAll();
-		model.addAttribute("categories", categoryList);
+		m.addAttribute("categories", categoryList);
 		return "/sellForm";
 	}
 
@@ -64,16 +64,16 @@ public class SellController {
 		if ((name == null)
 				|| (categoryId == null)
 				|| (condition == null)
-				|| (image == null)
 				|| (price == null)
 				|| (detail == null)) {
 			errorList.add("必須項目が未入力です");
+			List<Category> categoryList = categoryRepository.findAll();
+			m.addAttribute("categories", categoryList);
 			m.addAttribute("errorList", errorList);
 			m.addAttribute("name", name);
 			m.addAttribute("categoryId", categoryId);
 			m.addAttribute("condition", condition);
 			m.addAttribute("price", price);
-			m.addAttribute("image", image);
 			m.addAttribute("detail", detail);
 			return "/sellForm";
 		}
@@ -81,10 +81,8 @@ public class SellController {
 		String fileName = StringUtils.cleanPath(image.getOriginalFilename());
 		byte[] images = image.getBytes();
 		item = new Item(categoryRepository.findById(categoryId).get(),
-				//new Customer(),
 				customerRepository.findById(account.getId()).get(),
 				name, price, images, condition, detail, 1);
-		//item.setImage(images);
 		String file = Base64.getEncoder().encodeToString(images);
 		System.out.println(fileName);
 
