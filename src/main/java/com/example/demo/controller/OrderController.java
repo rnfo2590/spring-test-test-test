@@ -121,7 +121,7 @@ public class OrderController {
 
 	// 住所変更画面の表示
 	@GetMapping("/order/addaddress")
-	public String enter(
+	public String change(
 			@RequestParam(name = "change", required = false) String change,
 			@RequestParam(name = "addAddress", required = false) String addAddress,
 			Model model) {

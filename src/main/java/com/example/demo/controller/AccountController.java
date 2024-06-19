@@ -38,8 +38,10 @@ public class AccountController {
 		// セッション情報を全てクリアする
 		session.invalidate();
 		// エラーパラメータのチェック
+		List<String> errorList = new ArrayList<>();
 		if (error.equals("notLoggedIn")) {
-			model.addAttribute("message", "ログインしてください");
+			errorList.add("・ログインしてください");
+			model.addAttribute("errorList", errorList);
 		}
 
 		return "login";
@@ -51,16 +53,24 @@ public class AccountController {
 			@RequestParam("email") String email,
 			@RequestParam("password") String password,
 			Model model) {
-		// 名前が空の場合にエラーとする
-		if (email.length() == 0 || password.length() == 0) {
-			model.addAttribute("message", "入力してください");
-			return "login";
+		List<String> errorList = new ArrayList<>();
+		List<Customer> customerList = new ArrayList<>();
+		if (email.length() == 0) {
+			errorList.add("・メールアドレスを入力してください");
 		}
-
-		List<Customer> customerList = customerRepository.findByEmailAndPassword(email, password);
-		if (customerList == null || customerList.size() == 0) {
-			// 存在しなかった場合
-			model.addAttribute("message", "メールアドレスとパスワードが一致しませんでした");
+		if (password.length() == 0) {
+			errorList.add("・パスワードを入力してください");
+		}
+		if (errorList.size() == 0) {
+			customerList = customerRepository.findByEmailAndPassword(email, password);
+			if (customerList == null || customerList.size() == 0) {
+				// 存在しなかった場合
+				errorList.add("・メールアドレスまたはパスワードが存在しません");
+			}
+		}
+		// エラー発生時は新規登録画面に戻す
+		if (errorList.size() > 0) {
+			model.addAttribute("errorList", errorList);
 			return "login";
 		}
 		Customer customer = customerList.get(0);
@@ -124,16 +134,16 @@ public class AccountController {
 			return "accountForm";
 		}
 
-//		Customer customer = new Customer(name, address, tel, email, password);
-//		customerRepository.save(customer);
+		//		Customer customer = new Customer(name, address, tel, email, password);
+		//		customerRepository.save(customer);
 		model.addAttribute("name", name);
 		model.addAttribute("address", address);
 		model.addAttribute("tel", tel);
 		model.addAttribute("email", email);
-		model.addAttribute("password",password);
+		model.addAttribute("password", password);
 		return "accountConfirm";
 	}
-	
+
 	@PostMapping("/addaccount")
 	public String addaccount(
 			@RequestParam("name") String name,

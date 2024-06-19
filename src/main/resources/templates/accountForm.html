@@ -26,28 +26,28 @@
 				<tr>
 					<th>名前</th>
 					<td>
-						<input type="text" name="name" th:value="${name}" placeholder="名前">
+						<input type="text" maxlength="20" name="name" th:value="${name}" placeholder="名前">
 					</td>
 				</tr>
 
 				<tr>
 					<th>パスワード</th>
 					<td>
-						<input type="text" name="password" placeholder="８文字以上12文字以下">
+						<input type="password" name="password" placeholder="８文字以上12文字以下">
 					</td>
 				</tr>
 
 				<tr>
 					<th>電話番号</th>
 					<td>
-						<input type="text" name="tel" th:value="${tel}" placeholder="ハイフン無し">
+						<input type="text" maxlength="11" name="tel" th:value="${tel}" placeholder="ハイフン無し">
 					</td>
 				</tr>
 
 				<tr>
 					<th>メールアドレス</th>
 					<td>
-						<input type="text" name="email" th:value="${email}" placeholder="メールアドレス">
+						<input type="email" name="email" th:value="${email}" placeholder="メールアドレス">
 					</td>
 				</tr>
 
@@ -57,7 +57,6 @@
 						<input type="text" name="address" th:value="${address}" placeholder="住所">
 					</td>
 				</tr>
-
 
 			</table>
 			<button class="add">登録</button>
