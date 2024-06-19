@@ -13,7 +13,7 @@
 		商品名：[[${item.name}]]<br>
 		カテゴリー：[[${item.category.name}]]<br>
 		商品の状態：[[${item.condition}]]<br>
-		価格：[[${item.price}]]<br>
+		価格：[[${item.price}]]円<br>
 		商品の説明：[[${item.detail}]]<br>
 		<form action="/cart/add" method="post">
 			<input type="hidden" name="itemId" th:value="${item.id}">

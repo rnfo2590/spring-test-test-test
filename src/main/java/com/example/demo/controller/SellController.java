@@ -60,13 +60,24 @@ public class SellController {
 			@RequestParam(name = "detail", required = false) String detail) throws IOException {
 
 		// エラーチェック
-		List<String> errorList = new ArrayList<>();
+		List<String> errorList = null;
 		if ((name == null)
 				|| (categoryId == null)
 				|| (condition == null)
 				|| (price == null)
 				|| (detail == null)) {
+			errorList = new ArrayList<>();
 			errorList.add("必須項目が未入力です");
+		}
+
+		if (price != null) {
+			if (price < 0) {
+				errorList = new ArrayList<>();
+				errorList.add("値段は0円以上で入力してください");
+			}
+		}
+
+		if (errorList != null) {
 			List<Category> categoryList = categoryRepository.findAll();
 			m.addAttribute("categories", categoryList);
 			m.addAttribute("errorList", errorList);
@@ -76,19 +87,17 @@ public class SellController {
 			m.addAttribute("price", price);
 			m.addAttribute("detail", detail);
 			return "/sellForm";
+		} else {
+			String fileName = StringUtils.cleanPath(image.getOriginalFilename());
+			byte[] images = image.getBytes();
+			item = new Item(categoryRepository.findById(categoryId).get(),
+					customerRepository.findById(account.getId()).get(),
+					name, price, images, condition, detail, 1);
+			String file = Base64.getEncoder().encodeToString(images);
+			System.out.println(fileName);
+			m.addAttribute("item", item);
+			return "/sellConfirm";
 		}
-
-		String fileName = StringUtils.cleanPath(image.getOriginalFilename());
-		byte[] images = image.getBytes();
-		item = new Item(categoryRepository.findById(categoryId).get(),
-				customerRepository.findById(account.getId()).get(),
-				name, price, images, condition, detail, 1);
-		String file = Base64.getEncoder().encodeToString(images);
-		System.out.println(fileName);
-
-		m.addAttribute("item", item);
-
-		return "/sellConfirm";
 	}
 
 	@PostMapping("/sell/regist")
