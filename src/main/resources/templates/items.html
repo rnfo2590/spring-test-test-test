@@ -25,15 +25,21 @@
 	<main>
 		<table th:each="item:${items}">
 			<tr>
+				<td colspan="3">
+					<th:block th:if="${item.stock}==1">on sell</th:block>
+					<th:block th:if="${item.stock}==0">sold out</th:block>
+				</td>
+			</tr>
+			<tr>
 				<td>
 					<th:block th:if="${item.stock}==1">
 						<form action="/items/detail" method="get">
 							<input type="hidden" name="itemId" th:value="${item.id}">
-							<button><img th:src="|data:image/png;base64,${item.image}|"></button>
+							<button><img th:src="|data:image/png;base64,${item.image}|" width="200" height="200"></button>
 						</form>
 					</th:block>
 					<th:block th:if="${item.stock}==0">
-						<img src="/images/soldout.jpg" alt="lose">
+						<img th:src="|data:image/png;base64,${item.image}|">
 					</th:block>
 				</td>
 				<td th:text="${item.name}"></td>
