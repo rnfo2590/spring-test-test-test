@@ -52,5 +52,4 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
 
 	//SELECT + FROM items WHERE customer_id = ?
 	List<Item> findByCustomerId(Integer customerId);
-
 }

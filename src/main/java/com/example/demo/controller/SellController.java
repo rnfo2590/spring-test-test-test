@@ -127,7 +127,6 @@ public class SellController {
 				itemList.remove(i);
 				i--;
 			}
-
 		}
 
 		model.addAttribute("sellAll", itemList);

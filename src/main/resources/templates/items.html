@@ -26,7 +26,16 @@
 		<ul th:if="${errorList}" class="error">
 			<div th:each="error:${errorList}" th:text="${error}" style="color: red"></div>
 		</ul>
+		<div class="item-all"><th:block th:if="${category}">
+			[[${category.name}]]
+		</th:block>
+		<th:block th:if="${cateory}==null">
+			All Category
+		</th:block>
+			<br>
+		</div>
 		<table>
+			<br><br>
 			<span th:each="item:${items}">
 			<tr>
 				<span th:each="i:${item.items}">
