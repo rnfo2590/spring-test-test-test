@@ -10,11 +10,12 @@
 	<hr>
 	<main>
 		<a href="/order/addaddress?change=change">新規追加</a>
-
+		
 		<th:block th:if="${change}">
 			<ul th:if="${errorList}" class="error">
 				<div th:each="error:${errorList}" th:text="${error}" style="color: red"></div>
 			</ul>
+			<br>
 			<form action="/order/addaddress" method="get">
 				新規追加：
 				<input type="text" name="addAddress">
@@ -27,8 +28,10 @@
 				<input type="radio" name="changeAddress" th:value="${address.address}"> [[${address.address}]]
 				<br>
 			</span>
+			<br>
 			<button>お届け先住所を変更</button>
 		</form>
+		<br>
 		<form action="/order/confirm" method="post">
 			<button>戻る</button>
 		</form>
