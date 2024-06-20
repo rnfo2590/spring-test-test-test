@@ -151,10 +151,45 @@ table.order_account th {
 	padding: 8px 0;
 }
 
+/*出品画面*/
+.selladd{
+	color: #444444;
+	font-size: 23px;
+	text-align: left;
+	margin-left: 100px;
+	font-weight: bold;
+}
+
+
+.sellForm{
+	color: #555555;
+	font-size: 20px;
+	text-align: left;
+	margin-left: 210px;
+	font-weight: bold;
+}
+
+.sellDetail{
+	color: #555555;
+	font-size: 15px;
+	text-align: left;
+	margin-left: 300px;
+	font-weight: bold;
+}
+
+.selltd{
+	color: #555555;
+	text-align: left;
+	margin-left: 50px;
+}
+
+
+
+
 /*登録ボタン*/
 .add {
 	background-color: #FFD700;
-	width: 100px;
+	width: 90px;
 	padding: 5px;
 	box-sizing: border-box;
 	text-align: center;

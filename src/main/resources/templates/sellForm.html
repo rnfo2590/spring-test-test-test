@@ -1,76 +1,106 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>出品登録</title>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>出品登録</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
+
 <body>
 	<header th:replace="header"></header>
 	<main style="padding-left: 0px; padding-right: 0px;">
 		<a href="/sells">出品一覧</a>
-		<h3>出品登録</h3>
+		<h3 class="selladd" >出品登録</h3>
 		<form action="/sell" method="post" enctype="multipart/form-data">
-			
+
 			<ul th:if="${errorList}" class="error" style="padding-left: 0px; color: red;">
 				<li th:each="error:${errorList}" th:text="${error}"></li>
 			</ul>
-			
+
 			<table>
 				<tr>
 					<td>
-<!--						<label id="AAA" style="border: 2px solid blue;padding-top: 2px;padding-bottom: 2px;padding-right: 3px;padding-left: 3px;">-->
-<!--						ファイルを選択-->
-						<input type="file" style="width: 110px;" name="image" accept="image/png" onchange="previewFile(this);" required>
-<!--						</label>-->
-<!--						<script>-->
-<!--							var label = document.querySelector("#AAA");-->
-<!--							label.addEventListener("click", f)-->
-							
-<!--							function f(){-->
-<!--								label.innerHTML="変更"-->
-<!--							}-->
-<!--						</script>-->
-						  <p>プレビュー</p>
- 							 <img id="preview" width="200" height="200">
-							 <script>
-  								function previewFile(hoge){
-    								var fileData = new FileReader();
-  									fileData.onload = (function() {
-  								    //id属性が付与されているimgタグのsrc属性に、fileReaderで取得した値の結果を入力することで
-  								    //プレビュー表示している
-      									document.getElementById('preview').src = fileData.result;
-    									});
-								   fileData.readAsDataURL(hoge.files[0]);
- 								 }
-							</script>
-					</td>
-					<td>
-						商品名：<input type="text" name="name" th:value="${name}"><br>
-						カテゴリ：
-							<select name="categoryId">
-								<span th:each="category:${categories}">
-									<option th:value="${category.id}">[[${category.name}]]</option>
-								</span>
-							</select><br>
-						状態：<select name="condition" th:value="${condition}">
-								<option value="新品、未使用">新品、未使用</option>
-								<option value="未使用に近い">未使用に近い</option>							
-								<option value="傷や汚れあり">傷や汚れあり</option>							
-								<option value="状態が悪い">状態が悪い</option>
-								</select><br>
-						価格：<input type="text" maxlength="5" name="price" th:value="${price}"><br>
-					</td>
-					<td>
-						商品の詳細<br>
-						<textarea name="detail">[[${detail}]]</textarea>
+
+						<input type="file" style="width: 110px;" name="image" accept="image/png"
+							onchange="previewFile(this);" required>
+
+						<p>プレビュー</p>
+						<img id="preview" width="200" height="200">
+						<script>
+							function previewFile(hoge) {
+								var fileData = new FileReader();
+								fileData.onload = (function () {
+									//id属性が付与されているimgタグのsrc属性に、fileReaderで取得した値の結果を入力することで
+									//プレビュー表示している
+									document.getElementById('preview').src = fileData.result;
+								});
+								fileData.readAsDataURL(hoge.files[0]);
+							}
+						</script>
 					</td>
 				</tr>
+				<tr>
+					<td>
+						<div class="sellForm" >商品名</div>
+						<input type="text" name="name" th:value="${name}">
+					</td>
+				</tr>
+				<tr><td>
+					<br>
+					<div style="border-bottom: 1px solid #7d8bae;"></div>
+				</td></tr>
+				<tr><td><div class="sellForm">
+					<br>
+					商品の詳細</div>
+				</td></tr>
+				<tr><td>
+					<div >
+				</td></tr>
+				<tr>
+					<td><div class="sellDetail">
+						カテゴリ</div>
+						<select class="selltd" name="categoryId">
+							<span th:each="category:${categories}">
+								<option th:value="${category.id}">[[${category.name}]]</option>
+							</span>
+						</select>
+					</td>
+				</tr>
+				<tr><td><div class="sellDetail">
+					商品状態</div>
+					<select class="selltd" name="condition" th:value="${condition}">
+					
+					<option value="新品、未使用">新品、未使用</option>
+					<option value="未使用に近い">未使用に近い</option>
+					<option value="傷や汚れあり">傷や汚れあり</option>
+					<option value="状態が悪い">状態が悪い</option>
+				</select>
+				</td></tr>
+				<tr><td>
+					<br>
+				</td></tr>
+				<tr><td><div class="sellDetail">
+					商品説明</div>
+					<textarea name="detail">[[${detail}]]</textarea>
+				</td></tr>
+				<tr><td>
+					<br>
+					<div style="border-bottom: 1px solid #7d8bae;"></div>
+				</td></tr>
+				<tr><td><div class="sellForm">
+					<br>
+					価格</div>
+					<tr><td>
+					<input type="text" maxlength="5" name="price" th:value="${price}">
+				</td></tr>
 			</table>
-			<button>登録</button>
+			<br>
+			<button class="add">登録</button>
 		</form>
 	</main>
 	<hr>
 	<footer th:replace="footer"></footer>
 </body>
+
 </html>
