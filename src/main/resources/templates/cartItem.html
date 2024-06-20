@@ -7,7 +7,7 @@
 </tr>
 	<tr class="table-cart" th:each="item:${@cart.items}">
 		<td>
-			<img th:src="|data:image/png;base64,${item.image}|">
+			<img th:src="|data:image/png;base64,${item.image}|" width="200" height="200">
 		</td>
 		<td class="product-details" th:text="${item.name}"></td>
 		<td class="product-price" th:text="${item.price}"></td>
