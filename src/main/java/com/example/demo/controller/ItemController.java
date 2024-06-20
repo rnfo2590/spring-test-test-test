@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.Item;
 import com.example.demo.model.Account;
+import com.example.demo.model.Cart;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.ItemRepository;
 
@@ -110,8 +111,25 @@ public class ItemController {
 			itemList = itemRepository.findByPriceLessThanEqualAndCategoryIdAndNameLike(maxPrice, categoryId,
 					"%" + keyword + "%");
 		}
-
-		model.addAttribute("items", itemList);
+		int maxList = itemList.size()/3;
+		if(itemList.size()%3 != 0) {
+			maxList++;
+		}
+		Cart[] items = new Cart[maxList];
+		for(int i = 0; i<maxList; i++) {
+			items[i] = new Cart();
+		}
+		int count1 = 0;int count2 = 0;
+		for(int i = 0; i < itemList.size(); i++) {
+			items[count1].getItems().add(itemList.get(i));
+			count2++;
+			if(count2 == 3) {
+				count2 = 0;
+				count1++;
+			}
+		}
+		
+		model.addAttribute("items", items);
 
 		return "items";
 	}
@@ -125,7 +143,6 @@ public class ItemController {
 		List<Category> categoryList = categoryRepository.findAll();
 		model.addAttribute("categories", categoryList);
 		Item item = itemRepository.findById(itemId).get();
-		System.out.println(item.getImage());
 		model.addAttribute("item", item);
 
 		return "detail";

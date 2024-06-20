@@ -27,21 +27,29 @@
 			<div th:each="error:${errorList}" th:text="${error}" style="color: red"></div>
 		</ul>
 		<table>
-			<tr th:each="item:${items}">
+			<span th:each="item:${items}">
+			<tr>
+				<span th:each="i:${item.items}">
 				<td>
-					<th:block th:if="${item.stock}==1">
+					<th:block th:if="${i.stock}==1">
 						<form action="/items/detail" method="get">
-							<input type="hidden" name="itemId" th:value="${item.id}">
-							<button><img th:src="|data:image/png;base64,${item.image}|" width="200" height="200"></button>
+							<input type="hidden" name="itemId" th:value="${i.id}">
+							<button><img th:src="|data:image/png;base64,${i.image}|" width="200" height="200"></button>
 						</form>
+
+						[[${i.name}]]<br>
+						[[${i.price}]]
 					</th:block>
-					<th:block th:if="${item.stock}==0">
+					<th:block th:if="${i.stock}==0">
 						<img src="/images/soldout.jpg" alt="lose">
+						<br>
+						[[${i.name}]]<br>
+						[[${i.price}]]
 					</th:block>
 				</td>
-				<td th:text="${item.name}"></td>
-				<td th:text="${item.price}"></td>
+				</span>
 			</tr>
+			</span>
 		</table>
 	</main>
 	<hr>
