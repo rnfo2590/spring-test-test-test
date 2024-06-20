@@ -59,7 +59,8 @@ public class Item {
 
 	private Integer ver_num = 0;
 
-	private Integer delete_flg = 0;
+	@Column(name = "delete_flg")
+	private Integer deleteFlg = 0;
 	//	@Transient // 永続化対象外
 	//	private Integer quantity; // 数量
 

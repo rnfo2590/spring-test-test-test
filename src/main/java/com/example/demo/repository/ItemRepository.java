@@ -54,6 +54,5 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
 	List<Item> findByCustomerId(Integer customerId);
 
 	//SELECT + FROM items WHERE customer_id = ? AND delete_flg = ?
-	List<Item> findByCustomerIdANDDeleteFlg(Integer customerId, Integer delete_flg);
-
+	List<Item> findByCustomerIdAndDeleteFlg(Integer customerId, Integer delete_flg);
 }
