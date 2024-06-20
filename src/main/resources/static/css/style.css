@@ -63,7 +63,7 @@ header h1 {
 	background-color: #E0FFFF;
 }
 
-
+/*ボタン*/
 .btn-square-so-pop {
 	margin-right: 50px;
   position: relative;
@@ -378,7 +378,7 @@ table.order_account th {
 
 /*総計太文字*/
 .text-bold {
-	
+	font-family: 'メイリオ';
 	font-weight: bold;
 	text-align: right;
 	font-size: 25px;

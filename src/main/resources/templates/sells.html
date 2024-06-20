@@ -1,47 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>出品一覧</title>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>出品一覧</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
+
 <body>
 	<header th:replace="header"></header>
 	<hr>
 	<main>
-		<h1>出品一覧</h1>
+		<h1 style="text-align: left;">On Sale</h1>
+		<hr class="hr1">
+
 		<th:block th:if="${sellAll}!=0">
-			
-			<table border="1">
+
+			<table>
 				<tr>
-					<th>画像</th>
-					<th>商品名</th>
-					<th>値段</th>
-					<th></th>
+					<td class="product-image1">Image</td>
+					<td class="product-details1">商品名</td>
+					<td class="product-price1">価格</td>
+					<td class="product-removal1">Remove</td>
 				</tr>
-				<tr th:each="item:${sellAll}">
-					<th:block th:if="${item.stock}==1">
+				<tr class="table-cart" th:each="item:${sellAll}">
 					<td>
 						<img th:src="|data:image/png;base64,${item.image}|" width="200" height="200">
 					</td>
-					</th:block>
-					<th:block th:if="${item.stock}==0">
+					<td class="product-details" th:text="${item.name}"></td>
+					<td class="product-price" th:text="${item.price}"></td>
 					<td>
-						<img src="/images/soldout.jpg" alt="lose">
+						<form action="/sell/delete" method="post">
+							<input type="hidden" name="itemId" th:value="${item.id}">
+							<button class="product-removal">削除</button>
+						</form>
 					</td>
-					</th:block>
-				<td th:text="${item.name}"></td>
-				<td th:text="${item.price}"></td>
-				<td>
-					<form action="/sell/delete" method="post">
-					<input type="hidden" name="itemId" th:value="${item.id}">
-					<button>削除</button>
-					</form>
-				</td>
 				</tr>
 			</table>
 		</th:block>
-		
+
 		<th:block th:if="${sellAll}==0">
 			出品した商品はありません
 		</th:block>
@@ -49,4 +46,5 @@
 	<hr>
 	<footer th:replace="footer"></footer>
 </body>
+
 </html>
