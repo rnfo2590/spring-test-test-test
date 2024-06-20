@@ -15,9 +15,9 @@
 				<input type="radio" name="categoryId" th:value="${category.id}"> [[${category.name}]]
 			</span>
 			<br>
-			名前：<input type="text" name="keyword" th:value="${session.keyword}">
-			値段：<input type="number" name="minPrice" th:value="${session.minPrice}">以上
-				  <input type="number" name="maxPrice" th:value="${session.maxPrice}">以下
+			名前：<input type="text" name="keyword" th:value="${keyword}">
+			値段：<input type="number" name="minPrice" th:value="${minPrice}">以上
+				  <input type="number" name="maxPrice" th:value="${maxPrice}">以下
 			<button>検索</button>
 		</form>
 		

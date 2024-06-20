@@ -118,8 +118,16 @@ public class SellController {
 
 	@GetMapping("/sells")
 	public String indexs(Model model) {
+		List<Item> itemList = itemRepository.findByCustomerId(account.getId());
 
-		List<Item> itemList = itemRepository.findByCustomerIdAndDeleteFlg(account.getId(), 0);
+		for (int i = 0; i < itemList.size(); i++) {
+			Item item = itemList.get(i);
+
+			if (item.getDeleteFlg() == 1) {
+				itemList.remove(i);
+				i--;
+			}
+		}
 
 		model.addAttribute("sellAll", itemList);
 		return "sells";

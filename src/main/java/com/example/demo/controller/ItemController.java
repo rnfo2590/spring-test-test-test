@@ -16,8 +16,13 @@ import com.example.demo.model.Cart;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.ItemRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class ItemController {
+
+	@Autowired
+	HttpSession httpsession;
 
 	@Autowired
 	Account account;
@@ -117,6 +122,16 @@ public class ItemController {
 					"%" + keyword + "%");
 		}
 
+		for (int i = 0; i < itemList.size(); i++) {
+			Item item = itemList.get(i);
+
+			if (item.getDeleteFlg() == 1) {
+				itemList.remove(i);
+				i--;
+			}
+
+		}
+
 		int maxList = itemList.size() / 3;
 		if (itemList.size() % 3 != 0) {
 			maxList++;
@@ -135,6 +150,10 @@ public class ItemController {
 				count1++;
 			}
 		}
+
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("maxPrice", maxPrice);
+		model.addAttribute("minPrice", minPrice);
 
 		model.addAttribute("items", items);
 
