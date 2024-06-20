@@ -34,7 +34,8 @@ public class CheckLoginAspect {
 	// 未ログインの場合ログインページにリダイレクト
 	@Around("execution(* com.example.demo.controller.ItemController.*(..)) ||"
 			+ "execution(* com.example.demo.controller.CartController.*(..)) ||"
-			+ "execution(* com.example.demo.controller.OrderController.*(..))")
+			+ "execution(* com.example.demo.controller.OrderController.*(..)) ||"
+			+ "execution(* com.example.demo.controller.SellController.*(..))")
 	public Object checkLogin(ProceedingJoinPoint jp) throws Throwable {
 
 		if (account == null || account.getName() == null

@@ -20,33 +20,37 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
 	List<Item> findByNameLike(String keyword);
 
 	// SELECT * FROM items WHERE category_id = ? AND name LIKE ?
-	List<Item> findByCategoryIdAndNameLike(Integer categoryId,String keyword);
-	
+	List<Item> findByCategoryIdAndNameLike(Integer categoryId, String keyword);
+
 	// SELECT * FROM items WHERE price >= ? AND name LIKE ?
-	List<Item> findByPriceGreaterThanEqualAndNameLike(Integer minPrice,String keyword);
-	
+	List<Item> findByPriceGreaterThanEqualAndNameLike(Integer minPrice, String keyword);
+
 	// SELECT * FROM items WHERE price <= ? AND name LIKE ?
-	List<Item> findByPriceLessThanEqualAndNameLike(Integer maxPrice,String keyword);
-	
+	List<Item> findByPriceLessThanEqualAndNameLike(Integer maxPrice, String keyword);
+
 	// SELECT * FROM items WHERE price >= ? AND category_id = ?
-	List<Item> findByPriceGreaterThanEqualAndCategoryId(Integer minPrice,Integer categoryId);
-	
+	List<Item> findByPriceGreaterThanEqualAndCategoryId(Integer minPrice, Integer categoryId);
+
 	// SELECT * FROM items WHERE price <= ? AND category_id = ?
-	List<Item> findByPriceLessThanEqualAndCategoryId(Integer maxPrice,Integer categoryId);
-	
+	List<Item> findByPriceLessThanEqualAndCategoryId(Integer maxPrice, Integer categoryId);
+
 	// SELECT * FROM items WHERE price Between ? AND ?
-	List<Item> findByPriceBetween(Integer minPrice,Integer maxPrice);
-	
+	List<Item> findByPriceBetween(Integer minPrice, Integer maxPrice);
+
 	// SELECT * FROM items WHERE price Between ? AND ? AND category_id = ?
-	List<Item> findByPriceBetweenAndCategoryId(Integer minPrice,Integer maxPrice,Integer categoryId);
-	
+	List<Item> findByPriceBetweenAndCategoryId(Integer minPrice, Integer maxPrice, Integer categoryId);
+
 	// SELECT * FROM items WHERE price Between ? AND ? AND name LIKE ?
-	List<Item> findByPriceBetweenAndNameLike(Integer minPrice,Integer maxPrice,String keyword);
-	
+	List<Item> findByPriceBetweenAndNameLike(Integer minPrice, Integer maxPrice, String keyword);
+
 	// SELECT * FROM items WHERE price >= ? AND category_id = ? AND name LIKE ?
-	List<Item> findByPriceGreaterThanEqualAndCategoryIdAndNameLike(Integer minPrice,Integer categoryId,String keyword);
-	
+	List<Item> findByPriceGreaterThanEqualAndCategoryIdAndNameLike(Integer minPrice, Integer categoryId,
+			String keyword);
+
 	// SELECT * FROM items WHERE price <= ? AND category_id = ? AND name LIKE ?
-	List<Item> findByPriceLessThanEqualAndCategoryIdAndNameLike(Integer maxPrice,Integer categoryId,String keyword);
+	List<Item> findByPriceLessThanEqualAndCategoryIdAndNameLike(Integer maxPrice, Integer categoryId, String keyword);
+
+	//SELECT + FROM items WHERE customer_id = ?
+	List<Item> findByCustomerId(Integer customerId);
 
 }

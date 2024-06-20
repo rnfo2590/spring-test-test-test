@@ -19,9 +19,9 @@
 					<th>値段</th>
 					<th></th>
 				</tr>
-				<tr th:each="item:${@sell.items}">
+				<tr th:each="item:${sellAll}">
 				<td>
-					<img th:src="|data:image/png;base64,${item.image}|">
+					<img th:src="|data:image/png;base64,${item.image}|" width="200" height="200">
 				</td>
 				<td th:text="${item.name}"></td>
 				<td th:text="${item.price}"></td>

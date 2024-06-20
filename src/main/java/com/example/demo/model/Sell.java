@@ -24,7 +24,9 @@ public class Sell {
 	// 出品した商品を削除
 	public void delete(int itemId) {
 
-		// 現在のカートの商品から同一IDの商品を探す
+		itemId = 1;
+
+		// 出品一覧から同一IDの商品を探す
 		for (Item item : items) {
 			// 対象の商品IDが見つかった場合削除する
 			if (item.getId() == itemId) {

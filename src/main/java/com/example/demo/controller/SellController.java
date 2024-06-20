@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,32 +61,29 @@ public class SellController {
 			@RequestParam(name = "name", required = false) String name,
 			@RequestParam(name = "categoryId", required = false) Integer categoryId,
 			@RequestParam(name = "condition", required = false) String condition,
-			@RequestParam(name = "price", required = false) Integer price,
+			@RequestParam(name = "price", required = false) String price,
 			@RequestParam(name = "image", required = false) MultipartFile image,
 			@RequestParam(name = "detail", required = false) String detail) throws IOException {
 
 		// エラーチェック
-		List<String> errorList = null;
+		List<String> errorList = new ArrayList<>();
 		if ((name == null)
 				|| (categoryId == null)
 				|| (condition == null)
 				|| (price == null)
 				|| (detail == null)) {
-			errorList = new ArrayList<>();
 			errorList.add("必須項目が未入力です");
 		}
 
 		if (price != null) {
-			if (price < 0) {
-				errorList = new ArrayList<>();
-				errorList.add("価格は0円以上で入力してください");
-			} else if (price > 99999) {
-				errorList = new ArrayList<>();
-				errorList.add("価格は99999円以下で入力してください");
+			if (checkLogic("^[0-9]+$", price)) {
+				errorList.add("価格は半角数字のみ入力してください");
 			}
 		}
 
-		if (errorList != null) {
+		Integer newPrice = Integer.parseInt(price);
+
+		if (errorList.size() > 0) {
 			List<Category> categoryList = categoryRepository.findAll();
 			m.addAttribute("categories", categoryList);
 			m.addAttribute("errorList", errorList);
@@ -99,7 +98,7 @@ public class SellController {
 			byte[] images = image.getBytes();
 			item = new Item(categoryRepository.findById(categoryId).get(),
 					customerRepository.findById(account.getId()).get(),
-					name, price, images, condition, detail, 1);
+					name, newPrice, images, condition, detail, 1);
 			String file = Base64.getEncoder().encodeToString(images);
 			System.out.println(fileName);
 			m.addAttribute("item", item);
@@ -117,7 +116,7 @@ public class SellController {
 
 	@GetMapping("/sells")
 	public String indexs(Model model) {
-		model.addAttribute("sellAll", itemRepository.findById(account.getId()).get());
+		model.addAttribute("sellAll", itemRepository.findByCustomerId(account.getId()));
 		return "sells";
 
 	}
@@ -126,10 +125,25 @@ public class SellController {
 	@PostMapping("/sell/delete")
 	public String deleteCart(@RequestParam("itemId") int itemId) {
 
-		// カート情報から削除
+		// 出品一覧から削除
 		sell.delete(itemId);
 		// 「/sells」にリダイレクト
 		return "redirect:/sells";
+	}
+
+	public static boolean checkLogic(String regex, String target) {
+		boolean result = false;
+		if (target == null || target.isEmpty())
+			return false;
+		// 引数に指定した正規表現regexがtargetにマッチするか確認する
+		Pattern p1 = Pattern.compile(regex); // 正規表現パターンの読み込み
+		Matcher m1 = p1.matcher(target); // パターンと検査対象文字列の照合
+		if (m1.matches()) {// 照合結果をtrueかfalseで取得
+			result = false;
+		} else {
+			result = true;
+		}
+		return result;
 	}
 
 }
