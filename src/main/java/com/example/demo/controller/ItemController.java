@@ -121,36 +121,38 @@ public class ItemController {
 			itemList = itemRepository.findByPriceLessThanEqualAndCategoryIdAndNameLike(maxPrice, categoryId,
 					"%" + keyword + "%");
 		}
+		
+		Cart[] items = null;
+		if (itemList != null) {
+			for (int i = 0; i < itemList.size(); i++) {
+				Item item = itemList.get(i);
 
-		for (int i = 0; i < itemList.size(); i++) {
-			Item item = itemList.get(i);
+				if (item.getDeleteFlg() == 1) {
+					itemList.remove(i);
+					i--;
+				}
 
-			if (item.getDeleteFlg() == 1) {
-				itemList.remove(i);
-				i--;
 			}
-
-		}
-
-		int maxList = itemList.size() / 3;
-		if (itemList.size() % 3 != 0) {
-			maxList++;
-		}
-		Cart[] items = new Cart[maxList];
-		for (int i = 0; i < maxList; i++) {
-			items[i] = new Cart();
-		}
-		int count1 = 0;
-		int count2 = 0;
-		for (int i = 0; i < itemList.size(); i++) {
-			items[count1].getItems().add(itemList.get(i));
-			count2++;
-			if (count2 == 3) {
-				count2 = 0;
-				count1++;
+			
+			int maxList = itemList.size() / 3;
+			if (itemList.size() % 3 != 0) {
+				maxList++;
+			}
+			items = new Cart[maxList];
+			for (int i = 0; i < maxList; i++) {
+				items[i] = new Cart();
+			}
+			int count1 = 0;
+			int count2 = 0;
+			for (int i = 0; i < itemList.size(); i++) {
+				items[count1].getItems().add(itemList.get(i));
+				count2++;
+				if (count2 == 3) {
+					count2 = 0;
+					count1++;
+				}
 			}
 		}
-
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("maxPrice", maxPrice);
 		model.addAttribute("minPrice", minPrice);
