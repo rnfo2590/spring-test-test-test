@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.Item;
 import com.example.demo.model.Account;
+import com.example.demo.model.Sell;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.CustomerRepository;
 import com.example.demo.repository.ItemRepository;
@@ -30,6 +31,9 @@ public class SellController {
 
 	@Autowired
 	Account account;
+
+	@Autowired
+	Sell sell;
 
 	@Autowired
 	ItemRepository itemRepository;
@@ -73,7 +77,10 @@ public class SellController {
 		if (price != null) {
 			if (price < 0) {
 				errorList = new ArrayList<>();
-				errorList.add("値段は0円以上で入力してください");
+				errorList.add("価格は0円以上で入力してください");
+			} else if (price > 99999) {
+				errorList = new ArrayList<>();
+				errorList.add("価格は99999円以下で入力してください");
 			}
 		}
 
@@ -106,6 +113,23 @@ public class SellController {
 		itemRepository.save(item);
 
 		return "/sellFinish";
+	}
+
+	@GetMapping("/sells")
+	public String indexs(Model model) {
+		model.addAttribute("sellAll", itemRepository.findById(account.getId()).get());
+		return "sells";
+
+	}
+
+	//指定した商品を出品一覧から削除
+	@PostMapping("/sell/delete")
+	public String deleteCart(@RequestParam("itemId") int itemId) {
+
+		// カート情報から削除
+		sell.delete(itemId);
+		// 「/sells」にリダイレクト
+		return "redirect:/sells";
 	}
 
 }
