@@ -1,27 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>商品一覧</title>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>商品一覧</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
+
 <body>
 	<header th:replace="header"></header>
 	<hr>
 	<main>
-		<img th:src="|data:image/png;base64,${item.image}|" width="200" height="200"><br>
-		商品名：[[${item.name}]]<br>
-		カテゴリー：[[${item.category.name}]]<br>
-		商品の状態：[[${item.condition}]]<br>
-		価格：[[${item.price}]]円<br>
-		商品の説明：[[${item.detail}]]<br>
+		<table class="detail">
+			<tr>
+				<td rowspan="5" style="text-align: center;">
+					<img th:src="|data:image/png;base64,${item.image}|" width="200" height="200"><br>
+				</td>
+				<td style="border-bottom: 1px solid #75A9FF;">
+					<h3>[[${item.name}]]</h3>
+				</td></tr>
+				<tr><td>
+					カテゴリー：[[${item.category.name}]]
+				</td></tr>
+				<tr><td>
+					商品の状態：[[${item.condition}]]
+				</td></tr>
+				<tr><td>
+					商品の説明：[[${item.detail}]]
+				</td></tr>
+				<tr><td style="text-align: right; font-weight: bold; font-size: 25px;">
+					[[${item.price}]]円
+				</td></tr>
+			
+		</table>
+		<br>
 		<form action="/cart/add" method="post">
 			<input type="hidden" name="itemId" th:value="${item.id}">
 			<input type="hidden" name="quantity" th:value="${item.stock}">
-			<button>カートに追加</button>
+			<button class="cart-add">カートに追加</button>
 		</form>
 	</main>
 	<hr>
 	<footer th:replace="footer"></footer>
 </body>
+
 </html>

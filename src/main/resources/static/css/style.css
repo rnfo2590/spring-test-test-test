@@ -121,6 +121,22 @@ table.new_account td {
 	border-left: #7d8bae;
 }
 
+/*商品詳細*/
+
+
+table.detail th {
+	color: #666666;
+	background: white;
+	padding: 6px 0;
+	text-align: right;
+}
+
+table.detail td {
+	text-align: left;
+	border-left: #7d8bae;
+}
+
+
 
 /*個人情報確認*/
 table.order_account {
@@ -185,6 +201,20 @@ table.order_account th {
 .sell :hover {
 	background-color: #E0FFFF;
 }
+
+/*カート追加ボタン*/
+.cart-add {
+	font-weight: bold;
+	background-color: #FF9933;
+	width: 100px;
+	box-sizing: border-box;
+}
+
+.cart-add :hover {
+	background-color: #E0FFFF;
+}
+
+
 
 /*注文確定ボタン*/
 .cart-order {
