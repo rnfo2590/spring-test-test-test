@@ -65,6 +65,8 @@ public class SellController {
 			@RequestParam(name = "image", required = false) MultipartFile image,
 			@RequestParam(name = "detail", required = false) String detail) throws IOException {
 
+		Integer newPrice = null;
+
 		// エラーチェック
 		List<String> errorList = new ArrayList<>();
 		if ((name == null)
@@ -78,10 +80,10 @@ public class SellController {
 		if (price != null) {
 			if (checkLogic("^[0-9]+$", price)) {
 				errorList.add("価格は半角数字のみ入力してください");
+			} else {
+				newPrice = Integer.parseInt(price);
 			}
 		}
-
-		Integer newPrice = Integer.parseInt(price);
 
 		if (errorList.size() > 0) {
 			List<Category> categoryList = categoryRepository.findAll();
