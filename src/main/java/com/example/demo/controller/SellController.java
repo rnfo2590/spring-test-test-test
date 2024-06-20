@@ -127,9 +127,10 @@ public class SellController {
 	@PostMapping("/sell/delete")
 	public String deleteCart(@RequestParam("itemId") int itemId) {
 
-		// 出品一覧から削除
-		sell.delete(itemId);
-		// 「/sells」にリダイレクト
+		Item item = itemRepository.findById(itemId).get();
+		item.setDelete_flg(1);
+		itemRepository.save(item);
+
 		return "redirect:/sells";
 	}
 

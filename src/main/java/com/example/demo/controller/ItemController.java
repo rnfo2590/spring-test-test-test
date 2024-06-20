@@ -37,23 +37,28 @@ public class ItemController {
 			@RequestParam(name = "minPrice", required = false) Integer minPrice,
 			Model model) {
 
+		Category category = null;
+		if (categoryId != null) {
+			category = categoryRepository.findById(categoryId).get();
+		}
+		model.addAttribute("category", category);
 		// 全カテゴリー一覧を取得
 		List<Category> categoryList = categoryRepository.findAll();
 		model.addAttribute("categories", categoryList);
-		
+
 		List<String> errorList = new ArrayList<>();
 		if (maxPrice != null && minPrice != null) {
-			if(maxPrice<0 || minPrice<0) {
+			if (maxPrice < 0 || minPrice < 0) {
 				errorList.add("・値段は0以上で入力してください");
-			}else if(maxPrice<minPrice) {
+			} else if (maxPrice < minPrice) {
 				errorList.add("・当てはまる金額はありません");
 			}
-		}else if(maxPrice != null) {
-			if(maxPrice<0) {
+		} else if (maxPrice != null) {
+			if (maxPrice < 0) {
 				errorList.add("・値段は0以上で入力してください");
 			}
-		}else if(minPrice != null) {
-			if(minPrice<0) {
+		} else if (minPrice != null) {
+			if (minPrice < 0) {
 				errorList.add("・値段は0以上で入力してください");
 			}
 		}
@@ -61,7 +66,7 @@ public class ItemController {
 			model.addAttribute("errorList", errorList);
 			return "items";
 		}
-		
+
 		// 商品一覧情報の取得
 		List<Item> itemList = null;
 		if (categoryId == null && keyword == null && maxPrice == null && minPrice == null) {
@@ -111,24 +116,26 @@ public class ItemController {
 			itemList = itemRepository.findByPriceLessThanEqualAndCategoryIdAndNameLike(maxPrice, categoryId,
 					"%" + keyword + "%");
 		}
-		int maxList = itemList.size()/3;
-		if(itemList.size()%3 != 0) {
+
+		int maxList = itemList.size() / 3;
+		if (itemList.size() % 3 != 0) {
 			maxList++;
 		}
 		Cart[] items = new Cart[maxList];
-		for(int i = 0; i<maxList; i++) {
+		for (int i = 0; i < maxList; i++) {
 			items[i] = new Cart();
 		}
-		int count1 = 0;int count2 = 0;
-		for(int i = 0; i < itemList.size(); i++) {
+		int count1 = 0;
+		int count2 = 0;
+		for (int i = 0; i < itemList.size(); i++) {
 			items[count1].getItems().add(itemList.get(i));
 			count2++;
-			if(count2 == 3) {
+			if (count2 == 3) {
 				count2 = 0;
 				count1++;
 			}
 		}
-		
+
 		model.addAttribute("items", items);
 
 		return "items";
