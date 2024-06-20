@@ -121,6 +121,9 @@ table.new_account td {
 	border-left: #7d8bae;
 }
 
+
+
+
 /*商品詳細*/
 
 
@@ -273,12 +276,25 @@ table.order_account th {
 }
 
 /*商品一覧*/
+.item-all{
+	color: #555555;
+	text-align: left;
+	margin-left: 50px;
+	font-weight: bold;
+	font-size: 35px;
+	font-family: "Palatino Linotype";
+	border-bottom: 1px #DDDDDD solid;
+}
+
+
 .item-name{
 	color: #4B0082;
 	text-align: left;
 	font-weight: bold;
-	font-size:25px;
+	font-size:23px;
+	font-family: "Osaka－等幅",sans-serif;
 }
+
 
 /*カート一覧*/
 
