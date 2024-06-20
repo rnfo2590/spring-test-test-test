@@ -145,6 +145,8 @@ public class OrderController {
 			}
 		// ログインしている顧客IDでアドレステーブルを検索		
 		List<Address> addressList = addressRepository.findByCustomer_id(account.getId());
+		Address customerAddress = new Address(customer,customer.getAddress());
+		addressList.add(0,customerAddress);
 		model.addAttribute("addressList", addressList);
 		return "addaddress";
 	}
