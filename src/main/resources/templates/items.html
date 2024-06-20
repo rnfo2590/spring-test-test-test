@@ -29,7 +29,7 @@
 		<div class="item-all"><th:block th:if="${category}">
 			[[${category.name}]]
 		</th:block>
-		<th:block th:if="${cateory}==null">
+		<th:block th:if="${category}==null">
 			All Category
 		</th:block>
 			<br>
@@ -49,6 +49,7 @@
 						[[${i.name}]]<br></span>
 						[[${i.price}]]円
 					</th:block>
+					<br>
 					<th:block th:if="${i.stock}==0">
 						<img src="/images/soldout.jpg" alt="lose">
 						<br>

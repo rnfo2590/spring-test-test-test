@@ -64,6 +64,62 @@ header h1 {
 }
 
 
+.btn-square-so-pop {
+	margin-right: 50px;
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #fd9535;/*色*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+  font-weight: bold;
+  border: solid 2px #d27d00;/*線色*/
+}
+
+.btn-square-so-pop:active {
+  /*押したとき*/
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+.btn-square-pop {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #444444	;
+  background: #FFFFDD	;/*色*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+  font-weight: bold;
+  border: solid 2px #d27d00;/*線色*/
+}
+
+.btn-square-pop:active {
+  /*押したとき*/
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+/*カート追加*/
+.cart-add {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #fd9535;/*背景色*/
+  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+}
+
+.cart-add:active {
+  border-bottom: solid 2px #fd9535;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
 /* 仕切り線 */
 hr {
 	border-top: 2px dashed #7d8bae;
@@ -185,36 +241,74 @@ table.order_account th {
 	text-align: left;
 	margin-left: 50px;
 }
+/*ログインボタン*/
+.btn-square-soft {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: #777777	;
+  width: 70px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 5px;
+  text-align: center;
+  overflow: hidden;
+  font-weight: bold;
+  background: linear-gradient(#fed6e3 0%, #ffaaaa 100%);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+  Border: none
+}
 
+.btn-square-soft:active {
+  /*押したとき*/
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);/*沈むように*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(#fed6e3 0%, #ffbcbc 100%);/*グラデーションを明るく*/
+}
 
 
 
 /*登録ボタン*/
 .add {
-	background-color: #FFD700;
-	width: 90px;
+  position: relative;
+  display: inline-block;
+  width: 90px;
 	padding: 5px;
-	box-sizing: border-box;
-	text-align: center;
+  text-decoration: none;
+  color: #333333;
+  background: #FFD700;/*背景色*/
+  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
 }
 
-.add :hover {
-	background-color: #E0FFFF;
+.add:active {
+  border-bottom: solid 2px #fd9535;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
-
 
 
 /*この内容で確定するボタン*/
 .order {
-	margin-right: 100px;
-	background-color: #FFD700;
-	width: 150px;
-	padding: 10px;
-	box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  width: 150px;
+  padding: 10px;
+  color: #333333	;
+  background: #FFD700;/*背景色*/
+  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
 }
 
-.order :hover {
-	background-color: #E0FFFF;
+.order:active {
+  border-bottom: solid 2px #fd9535;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
 /*住所変更ボタン*/
@@ -230,15 +324,24 @@ table.order_account th {
 
 /*出品ボタン*/
 .sell {
-	background-color: #FF4F02;
-	color: #FFFFF0;
-	width: 100px;
-	box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  text-decoration: none;
+  color: #FFFFF0;
+  background: #FF4F02;/*背景色*/
+  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
 }
 
-.sell :hover {
-	background-color: #E0FFFF;
+.sell:active {
+  border-bottom: solid 2px #fd9535;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
+
+
 
 /*カート追加ボタン*/
 .cart-add {
@@ -256,14 +359,21 @@ table.order_account th {
 
 /*注文確定ボタン*/
 .cart-order {
-	font-weight: bold;
-	background-color: #FF9933;
-	width: 170px;
-	box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #333333	;
+  background: #FFD700;/*背景色*/
+  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
 }
 
-.cart-order :hover {
-	background-color: #E0FFFF;
+.cart-order:active {
+  border-bottom: solid 2px #fd9535;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
 /*総計太文字*/
@@ -341,18 +451,6 @@ table.order_account th {
 
 
 
-
-
-/* 送信ボタン */
-/*button {*/
-/*	margin: 2px;*/
-/*	padding: 5px 20px;*/
-/*	background-color: #e5857b;*/
-/*	color: #ffffff;*/
-/*	border: none;*/
-/*	width:150px;*/
-/*	cursor: pointer;*/
-/*}*/
 /* 送信ボタン(マウスオーバー時) */
 button:hover {
 	background-color: #f1b2b2;
