@@ -20,9 +20,16 @@
 					<th></th>
 				</tr>
 				<tr th:each="item:${sellAll}">
-				<td>
-					<img th:src="|data:image/png;base64,${item.image}|" width="200" height="200">
-				</td>
+					<th:block th:if="${item.stock}==1">
+					<td>
+						<img th:src="|data:image/png;base64,${item.image}|" width="200" height="200">
+					</td>
+					</th:block>
+					<th:block th:if="${item.stock}==0">
+					<td>
+						<img src="/images/soldout.jpg" alt="lose">
+					</td>
+					</th:block>
 				<td th:text="${item.name}"></td>
 				<td th:text="${item.price}"></td>
 				<td>
