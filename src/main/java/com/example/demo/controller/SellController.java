@@ -118,7 +118,19 @@ public class SellController {
 
 	@GetMapping("/sells")
 	public String indexs(Model model) {
-		model.addAttribute("sellAll", itemRepository.findByCustomerId(account.getId()));
+		List<Item> itemList = itemRepository.findByCustomerId(account.getId());
+
+		for (int i = 0; i < itemList.size(); i++) {
+			Item item = itemList.get(i);
+
+			if (item.getDeleteFlg() == 1) {
+				itemList.remove(i);
+				i--;
+			}
+
+		}
+
+		model.addAttribute("sellAll", itemList);
 		return "sells";
 
 	}
@@ -128,7 +140,7 @@ public class SellController {
 	public String deleteCart(@RequestParam("itemId") int itemId) {
 
 		Item item = itemRepository.findById(itemId).get();
-		item.setDelete_flg(1);
+		item.setDeleteFlg(1);
 		itemRepository.save(item);
 
 		return "redirect:/sells";
