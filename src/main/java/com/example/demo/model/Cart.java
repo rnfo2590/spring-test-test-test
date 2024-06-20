@@ -41,14 +41,9 @@ public class Cart {
 				break;
 			}
 		}
-
 		// カート内に商品が存在しなかった場合はカート追加
-		// 存在した場合は、個数の更新を行う
 		if (existsItem == null) {
 			items.add(newItem);
-		} else {
-			existsItem.setStock(
-					existsItem.getStock() + newItem.getStock());
 		}
 	}
 
