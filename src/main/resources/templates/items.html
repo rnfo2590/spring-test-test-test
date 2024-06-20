@@ -26,8 +26,8 @@
 		<ul th:if="${errorList}" class="error">
 			<div th:each="error:${errorList}" th:text="${error}" style="color: red"></div>
 		</ul>
-		<table th:each="item:${items}">
-			<tr>
+		<table>
+			<tr th:each="item:${items}">
 				<td>
 					<th:block th:if="${item.stock}==1">
 						<form action="/items/detail" method="get">
