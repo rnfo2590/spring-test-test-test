@@ -272,6 +272,14 @@ table.order_account th {
 	color: red;
 }
 
+/*商品一覧*/
+.item-name{
+	color: #4B0082;
+	text-align: left;
+	font-weight: bold;
+	font-size:25px;
+}
+
 /*カート一覧*/
 
 .table-cart{

@@ -36,9 +36,9 @@
 							<input type="hidden" name="itemId" th:value="${i.id}">
 							<button><img th:src="|data:image/png;base64,${i.image}|" width="200" height="200"></button>
 						</form>
-
-						[[${i.name}]]<br>
-						[[${i.price}]]
+						<span class="item-name" style="text-align: left;">
+						[[${i.name}]]<br></span>
+						[[${i.price}]]円
 					</th:block>
 					<th:block th:if="${i.stock}==0">
 						<img src="/images/soldout.jpg" alt="lose">
