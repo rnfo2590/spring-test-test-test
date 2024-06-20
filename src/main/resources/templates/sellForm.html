@@ -8,6 +8,7 @@
 <body>
 	<header th:replace="header"></header>
 	<main style="padding-left: 0px; padding-right: 0px;">
+		<a href="/sells">出品一覧</a>
 		<h3>出品登録</h3>
 		<form action="/sell" method="post" enctype="multipart/form-data">
 			
@@ -58,7 +59,7 @@
 								<option value="傷や汚れあり">傷や汚れあり</option>							
 								<option value="状態が悪い">状態が悪い</option>
 								</select><br>
-						価格：<input type="text" name="price" th:value="${price}"><br>
+						価格：<input type="number" name="price" th:value="${price}"><br>
 					</td>
 					<td>
 						商品の詳細<br>
