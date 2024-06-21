@@ -9,7 +9,7 @@
 	<div class="sell-con">
 	<header th:replace="header"></header>
 		<form action="/sell/regist" method="post">
-			<img th:src="|data:image/png;base64,${item.image}|" width="200" height="200"><br>
+			<img th:src="|data:image/jpeg;base64,${item.image}|" width="200" height="200"><br>
 			商品名：<span th:text="${item.name}"></span><br>
 			カテゴリー：<span th:text="${item.category.name}"></span><br>
 			商品状態：<span th:text="${item.condition}"></span><br>

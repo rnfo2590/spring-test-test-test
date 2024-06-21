@@ -91,6 +91,7 @@ public class SellController {
 			return "/sellForm";
 		} else {
 			byte[] images = image.getBytes();
+			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 			item = new Item(categoryRepository.findById(categoryId).get(),
 					customerRepository.findById(account.getId()).get(),
 					name, newPrice, images, condition, detail.replaceAll("\n", "<br>"), 1);
@@ -127,7 +128,7 @@ public class SellController {
 
 	//指定した商品を出品一覧から削除
 	@PostMapping("/sell/delete")
-	public String deleteCart(@RequestParam("itemId") int itemId) {
+	public String deleteSell(@RequestParam("itemId") int itemId) {
 
 		Item item = itemRepository.findById(itemId).get();
 		item.setDeleteFlg(1);

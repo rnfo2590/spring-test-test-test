@@ -43,7 +43,7 @@
 					<th:block th:if="${i.stock}==1">
 						<form action="/items/detail" method="get">
 							<input type="hidden" name="itemId" th:value="${i.id}">
-							<button><img th:src="|data:image/png;base64,${i.image}|" width="200" height="200"></button>
+							<button><img th:src="|data:image/jpeg;base64,${i.image}|" width="200" height="200"></button>
 						</form>
 						<span class="item-name" style="text-align: left;">
 						[[${i.name}]]<br></span>
