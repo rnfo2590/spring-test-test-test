@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpSession;
 public class ItemController {
 
 	@Autowired
-	HttpSession httpsession;
+	HttpSession session;
 
 	@Autowired
 	Account account;
@@ -153,10 +153,10 @@ public class ItemController {
 				}
 			}
 		}
-		model.addAttribute("keyword", keyword);
-		model.addAttribute("maxPrice", maxPrice);
-		model.addAttribute("minPrice", minPrice);
-
+		
+		session.setAttribute("keyword", keyword);
+		session.setAttribute("maxPrice", maxPrice);
+		session.setAttribute("minPrice", minPrice);
 		model.addAttribute("items", items);
 
 		return "items";
