@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,7 +9,6 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -70,19 +68,15 @@ public class SellController {
 		// エラーチェック
 		List<String> errorList = new ArrayList<>();
 		if ((name == null)
-				|| (categoryId == null)
-				|| (condition == null)
-				|| (price == null)
-				|| (detail == null)) {
+				|| (categoryId == null||categoryId == 0)
+				|| (condition.equals("")||condition == null)
+				|| (price.equals("")||price == null)
+				|| (detail.equals("")||detail == null)) {
 			errorList.add("必須項目が未入力です");
-		}
-
-		if (price != null) {
-			if (checkLogic("^[0-9]+$", price)) {
-				errorList.add("価格は半角数字のみ入力してください");
-			} else {
-				newPrice = Integer.parseInt(price);
-			}
+		} else if (checkLogic("^[0-9]+$", price)) {
+			errorList.add("価格は半角数字のみ入力してください");
+		} else {
+			newPrice = Integer.parseInt(price);
 		}
 
 		if (errorList.size() > 0) {
@@ -96,13 +90,10 @@ public class SellController {
 			m.addAttribute("detail", detail);
 			return "/sellForm";
 		} else {
-			String fileName = StringUtils.cleanPath(image.getOriginalFilename());
 			byte[] images = image.getBytes();
 			item = new Item(categoryRepository.findById(categoryId).get(),
 					customerRepository.findById(account.getId()).get(),
-					name, newPrice, images, condition, detail, 1);
-			String file = Base64.getEncoder().encodeToString(images);
-			System.out.println(fileName);
+					name, newPrice, images, condition, detail.replaceAll("\n", "<br>"), 1);
 			m.addAttribute("item", item);
 			return "/sellConfirm";
 		}

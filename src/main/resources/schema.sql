@@ -59,7 +59,7 @@ CREATE TABLE address
 (
    id SERIAL PRIMARY KEY,
    customer_id INTEGER REFERENCES customers(id),
-   address TEXT,
+   add_address TEXT,
    creator TEXT,
    date_created DATE DEFAULT now(),
    updater TEXT,

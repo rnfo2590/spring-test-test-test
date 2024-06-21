@@ -14,7 +14,8 @@
 			カテゴリー：<span th:text="${item.category.name}"></span><br>
 			商品状態：<span th:text="${item.condition}"></span><br>
 			価格：<span th:text="${item.price}"></span>円<br>
-			商品説明：<span th:text="${item.detail}"></span><br>
+			商品説明：<br>
+			<span th:utext="${item.detail}"></span><br>
 		<br>
 		<button class="sell">出品する</button>	
 		</form><br>

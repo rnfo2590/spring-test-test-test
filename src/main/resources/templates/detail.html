@@ -26,7 +26,8 @@
 					商品状態：[[${item.condition}]]
 				</td></tr>
 				<tr><td>
-					商品説明：[[${item.detail}]]
+					商品説明：<br>
+					<span th:utext="${item.detail}"></span>
 				</td></tr>
 				<tr><td style="text-align: right; font-weight: bold; font-size: 25px;">
 					[[${item.price}]]円

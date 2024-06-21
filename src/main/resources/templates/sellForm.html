@@ -21,7 +21,8 @@
 			<table>
 				<tr>
 					<td>
-
+						※pngファイル以外やめてね　d(^_^
+						<br>
 						<input type="file" style="width: 110px;" name="image" accept="image/png"
 							onchange="previewFile(this);" required>
 
@@ -43,7 +44,7 @@
 				<tr>
 					<td>
 						<div class="sellForm" >商品名</div>
-						<input type="text" name="name" th:value="${name}">
+						<input type="text" maxlength="20" name="name" th:value="${name}">
 					</td>
 				</tr>
 				<tr><td>
@@ -61,6 +62,7 @@
 					<td><div class="sellDetail">
 						カテゴリー</div>
 						<select class="selltd" name="categoryId">
+								<option value="0">***category***</option>
 							<span th:each="category:${categories}">
 								<option th:value="${category.id}">[[${category.name}]]</option>
 							</span>
@@ -70,7 +72,7 @@
 				<tr><td><div class="sellDetail">
 					商品状態</div>
 					<select class="selltd" name="condition" th:value="${condition}">
-					
+					<option value="">***商品状態***</option>
 					<option value="新品、未使用">新品、未使用</option>
 					<option value="未使用に近い">未使用に近い</option>
 					<option value="傷や汚れあり">傷や汚れあり</option>
@@ -82,7 +84,7 @@
 				</td></tr>
 				<tr><td><div class="sellDetail">
 					商品説明</div>
-					<textarea name="detail">[[${detail}]]</textarea>
+					<textarea name="detail" maxlength="500">[[${detail}]]</textarea>
 				</td></tr>
 				<tr><td>
 					<br>
