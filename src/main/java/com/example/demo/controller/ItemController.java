@@ -144,6 +144,16 @@ public class ItemController {
 
 			}
 			
+			for (int i = 0; i < itemList.size(); i++) {
+				Item item = itemList.get(i);
+				if(item.getName().length()>10) {
+					StringBuilder sb = new StringBuilder(item.getName());
+					sb.insert(10,"<br>");
+					item.setName(sb.toString());
+				itemList.set(i,item);
+				}
+			}
+			
 			int maxList = itemList.size() / 3;
 			if (itemList.size() % 3 != 0) {
 				maxList++;
@@ -200,6 +210,5 @@ public class ItemController {
 		}
 		return result;
 	}
-
 
 }
