@@ -154,8 +154,8 @@ public class ItemController {
 				}
 			}
 			
-			int maxList = itemList.size() / 3;
-			if (itemList.size() % 3 != 0) {
+			int maxList = itemList.size() / 5;
+			if (itemList.size() % 5 != 0) {
 				maxList++;
 			}
 			items = new Cart[maxList];
@@ -167,7 +167,7 @@ public class ItemController {
 			for (int i = 0; i < itemList.size(); i++) {
 				items[count1].getItems().add(itemList.get(i));
 				count2++;
-				if (count2 == 3) {
+				if (count2 == 5) {
 					count2 = 0;
 					count1++;
 				}
