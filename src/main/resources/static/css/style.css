@@ -66,58 +66,67 @@ header h1 {
 /*ボタン*/
 .btn-square-so-pop {
 	margin-right: 50px;
-  position: relative;
-  display: inline-block;
-  padding: 0.25em 0.5em;
-  text-decoration: none;
-  color: #FFF;
-  background: #fd9535;/*色*/
-  border-radius: 4px;/*角の丸み*/
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
-  font-weight: bold;
-  border: solid 2px #d27d00;/*線色*/
+	position: relative;
+	display: inline-block;
+	padding: 0.25em 0.5em;
+	text-decoration: none;
+	color: #FFF;
+	background: #fd9535;
+	/*色*/
+	border-radius: 4px;
+	/*角の丸み*/
+	box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+	font-weight: bold;
+	border: solid 2px #d27d00;
+	/*線色*/
 }
 
 .btn-square-so-pop:active {
-  /*押したとき*/
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+	/*押したとき*/
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
 .btn-square-pop {
-  position: relative;
-  display: inline-block;
-  padding: 0.25em 0.5em;
-  text-decoration: none;
-  color: #444444	;
-  background: #FFFFDD	;/*色*/
-  border-radius: 4px;/*角の丸み*/
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
-  font-weight: bold;
-  border: solid 2px #d27d00;/*線色*/
+	position: relative;
+	display: inline-block;
+	padding: 0.25em 0.5em;
+	text-decoration: none;
+	color: #444444;
+	background: #FFFFDD;
+	/*色*/
+	border-radius: 4px;
+	/*角の丸み*/
+	box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+	font-weight: bold;
+	border: solid 2px #d27d00;
+	/*線色*/
 }
 
 .btn-square-pop:active {
-  /*押したとき*/
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+	/*押したとき*/
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
 /*カート追加*/
 .cart-add {
-  position: relative;
-  display: inline-block;
-  padding: 0.25em 0.5em;
-  text-decoration: none;
-  color: #FFF;
-  background: #fd9535;/*背景色*/
-  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
-  border-radius: 4px;/*角の丸み*/
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
-  font-weight: bold;
+	position: relative;
+	display: inline-block;
+	padding: 0.25em 0.5em;
+	text-decoration: none;
+	color: #FFF;
+	background: #fd9535;
+	/*背景色*/
+	border-bottom: solid 2px #d27d00;
+	/*少し濃い目の色に*/
+	border-radius: 4px;
+	/*角の丸み*/
+	box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+	font-weight: bold;
 }
 
 .cart-add:active {
-  border-bottom: solid 2px #fd9535;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+	border-bottom: solid 2px #fd9535;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
 /* 仕切り線 */
@@ -125,7 +134,7 @@ hr {
 	border-top: 2px dashed #7d8bae;
 }
 
-.hr1{
+.hr1 {
 	border-top: 1px solid #808080;
 }
 
@@ -142,6 +151,7 @@ th,
 td {
 	border-collapse: collapse;
 	/*	border: 1px solid #7d8bae;*/
+	color: #ffffff;
 }
 
 /* 表 */
@@ -211,7 +221,7 @@ table.order_account th {
 }
 
 /*出品画面*/
-.selladd{
+.selladd {
 	color: #444444;
 	font-size: 23px;
 	text-align: left;
@@ -220,7 +230,7 @@ table.order_account th {
 }
 
 
-.sellForm{
+.sellForm {
 	color: #555555;
 	font-size: 20px;
 	text-align: left;
@@ -228,7 +238,7 @@ table.order_account th {
 	font-weight: bold;
 }
 
-.sellDetail{
+.sellDetail {
 	color: #555555;
 	font-size: 15px;
 	text-align: left;
@@ -236,79 +246,88 @@ table.order_account th {
 	font-weight: bold;
 }
 
-.selltd{
+.selltd {
 	color: #555555;
 	text-align: left;
 	margin-left: 50px;
 }
+
 /*ログインボタン*/
 .btn-square-soft {
-  display: inline-block;
-  position: relative;
-  text-decoration: none;
-  color: #777777	;
-  width: 70px;
-  height: 35px;
-  line-height: 35px;
-  border-radius: 5px;
-  text-align: center;
-  overflow: hidden;
-  font-weight: bold;
-  background: linear-gradient(#fed6e3 0%, #ffaaaa 100%);
-  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
-  Border: none
+	display: inline-block;
+	position: relative;
+	text-decoration: none;
+	color: #777777;
+	width: 70px;
+	height: 35px;
+	line-height: 35px;
+	border-radius: 5px;
+	text-align: center;
+	overflow: hidden;
+	font-weight: bold;
+	background: linear-gradient(#fed6e3 0%, #ffaaaa 100%);
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+	Border: none
 }
 
 .btn-square-soft:active {
-  /*押したとき*/
-  -webkit-transform: translateY(2px);
-  transform: translateY(2px);/*沈むように*/
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
-  background-image: linear-gradient(#fed6e3 0%, #ffbcbc 100%);/*グラデーションを明るく*/
+	/*押したとき*/
+	-webkit-transform: translateY(2px);
+	transform: translateY(2px);
+	/*沈むように*/
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+	background-image: linear-gradient(#fed6e3 0%, #ffbcbc 100%);
+	/*グラデーションを明るく*/
 }
 
 
 
 /*登録ボタン*/
 .add {
-  position: relative;
-  display: inline-block;
-  width: 90px;
+	position: relative;
+	display: inline-block;
+	width: 90px;
 	padding: 5px;
-  text-decoration: none;
-  color: #333333;
-  background: #FFD700;/*背景色*/
-  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
-  border-radius: 4px;/*角の丸み*/
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
-  font-weight: bold;
+	text-decoration: none;
+	color: #333333;
+	background: #FFD700;
+	/*背景色*/
+	border-bottom: solid 2px #d27d00;
+	/*少し濃い目の色に*/
+	border-radius: 4px;
+	/*角の丸み*/
+	box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+	font-weight: bold;
 }
 
 .add:active {
-  border-bottom: solid 2px #fd9535;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+	border-bottom: solid 2px #fd9535;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
 
 /*この内容で確定するボタン*/
 .order {
-  position: relative;
-  display: inline-block;
-  text-decoration: none;
-  width: 150px;
-  padding: 10px;
-  color: #333333	;
-  background: #FFD700;/*背景色*/
-  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
-  border-radius: 4px;/*角の丸み*/
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
-  font-weight: bold;
+	position: relative;
+	display: inline-block;
+	text-decoration: none;
+	width: 150px;
+	padding: 10px;
+	color: #333333;
+	background: #FFD700;
+	/*背景色*/
+	border-bottom: solid 2px #d27d00;
+	/*少し濃い目の色に*/
+	border-radius: 4px;
+	/*角の丸み*/
+	box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+	font-weight: bold;
 }
 
 .order:active {
-  border-bottom: solid 2px #fd9535;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+	border-bottom: solid 2px #fd9535;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
 /*住所変更ボタン*/
@@ -324,21 +343,24 @@ table.order_account th {
 
 /*出品ボタン*/
 .sell {
-  position: relative;
-  display: inline-block;
-  width: 100px;
-  text-decoration: none;
-  color: #FFFFF0;
-  background: #FF4F02;/*背景色*/
-  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
-  border-radius: 4px;/*角の丸み*/
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
-  font-weight: bold;
+	position: relative;
+	display: inline-block;
+	width: 100px;
+	text-decoration: none;
+	color: #FFFFF0;
+	background: #FF4F02;
+	/*背景色*/
+	border-bottom: solid 2px #d27d00;
+	/*少し濃い目の色に*/
+	border-radius: 4px;
+	/*角の丸み*/
+	box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+	font-weight: bold;
 }
 
 .sell:active {
-  border-bottom: solid 2px #fd9535;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+	border-bottom: solid 2px #fd9535;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
 
@@ -359,21 +381,24 @@ table.order_account th {
 
 /*注文確定ボタン*/
 .cart-order {
-  position: relative;
-  display: inline-block;
-  padding: 0.25em 0.5em;
-  text-decoration: none;
-  color: #333333	;
-  background: #FFD700;/*背景色*/
-  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
-  border-radius: 4px;/*角の丸み*/
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
-  font-weight: bold;
+	position: relative;
+	display: inline-block;
+	padding: 0.25em 0.5em;
+	text-decoration: none;
+	color: #333333;
+	background: #FFD700;
+	/*背景色*/
+	border-bottom: solid 2px #d27d00;
+	/*少し濃い目の色に*/
+	border-radius: 4px;
+	/*角の丸み*/
+	box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+	font-weight: bold;
 }
 
 .cart-order:active {
-  border-bottom: solid 2px #fd9535;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+	border-bottom: solid 2px #fd9535;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
 /*総計太文字*/
@@ -386,7 +411,7 @@ table.order_account th {
 }
 
 /*商品一覧*/
-.item-all{
+.item-all {
 	color: #555555;
 	text-align: left;
 	margin-left: 50px;
@@ -397,34 +422,34 @@ table.order_account th {
 }
 
 
-.item-name{
+.item-name {
 	color: #4B0082;
 	text-align: left;
 	font-weight: bold;
-	font-size:23px;
-	font-family: "Osaka－等幅",sans-serif;
+	font-size: 20px;
+	font-family: "Osaka－等幅", sans-serif;
 }
 
 
 /*カート一覧*/
 
-.table-cart{
-	border-bottom:1px #DDDDDD solid;
+.table-cart {
+	border-bottom: 1px #DDDDDD solid;
 }
 
-.product-details1{
+.product-details1 {
 	color: #999999;
 }
 
-.product-price1{
+.product-price1 {
 	color: #999999;
 }
 
-.product-image1{
+.product-image1 {
 	visibility: hidden;
 }
 
-.product-removal1{
+.product-removal1 {
 	visibility: hidden;
 }
 
@@ -435,17 +460,211 @@ table.order_account th {
 }
 
 .product-details {
-	
+
 	width: 37%;
 }
 
 .product-price {
-	
+
 	width: 12%;
 }
 
 .product-removal {
 	width: 50%;
+}
+
+/*検索フォーム*/
+/*フォーム全体を中央へ*/
+#form1{
+  display: flex;
+  justify-content: center; /*中央へ固定*/	
+  height:70px;/*高さ*/	
+}
+/*入力フォーム*/
+#sbox1{
+  width:250px;/*横幅*/
+  height: 30px;
+  padding:0 15px;/*プレースホルダーの位置調整*/
+  border-radius:4px 0 0 4px;/*左側の角を少し丸める*/		
+  background:#eee;/*検背景カラー*/
+  border:none;/*枠線を消す*/ 
+  outline:0;/*クリック時の青い枠線消す*/
+  border-radius:10px;	
+  margin-right:10px;
+}
+/*検索ボタン*/
+#sbtn1{
+  width:70px;/*横幅*/ 
+  border-radius:0 4px 4px 0;/*右側の角を少し丸める*/ 
+  background:#7fbfff;/*背景カラー*/ 
+  border:none;/*枠線を消す*/ 
+  color:#fff;/*テキストカラー*/ 
+  font-size:16px;/*フォントサイズ指定*/ 
+  cursor: pointer;/*マウスを乗せると指差しポインターになる*/
+  border-radius:10px;	
+}
+/*検索ボタンマウスオーバー時*/
+#sbtn1:hover {
+  background: #92dbff;/*背景カラー変更*/
+}
+
+
+/*items画像*/
+#picture {
+	margin: 0 auto;
+	width: 850px;
+	max-width: 100%;
+	text-align: center;
+}
+
+#picture input[type=radio] {
+	display: none;
+}
+
+#picture label {
+	cursor: pointer;
+	text-decoration: none;
+	padding: 5px;
+}
+
+#bg-pic {
+	background: #fff;
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	/* ボックスのはみ打た部分を隠す */
+}
+
+/* スライダー画像の位置を比率で指定 */
+#pic1:checked~#bg-pic .inside {
+	margin-left: 0;
+}
+
+#pic2:checked~#bg-pic .inside {
+	margin-left: -100%;
+}
+
+#pic3:checked~#bg-pic .inside {
+	margin-left: -200%;
+}
+
+#pic4:checked~#bg-pic .inside {
+	margin-left: -300%;
+}
+
+#pic1:hover~#bg-pic .inside {
+	margin-left: 0;
+}
+
+#pic2:hover~#bg-pic .inside {
+	margin-left: -100%;
+}
+
+#pic3:hover~#bg-pic .inside {
+	margin-left: -200%;
+}
+
+#pic4:hover~#bg-pic .inside {
+	margin-left: -300%;
+}
+
+#bg-pic .inside {
+	transition-duration: .8s;
+	/* アニメーションの開始から終了までの時間を指定 */
+	width: 400%;
+	line-height: 0;
+	height: 400px;
+}
+
+#bg-pic .pic {
+	width: 25%;
+	float: left;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* 上３行でボックスをど真ん中に指定 */
+	height: 100%;
+	background-size: cover;
+}
+
+/* 画像urlを指定 */
+#bg-pic .pic_1 {
+	background-image: url("/images/summer.jfif");
+}
+
+#bg-pic .pic_2 {
+	background-image: url("/images/hon.jpg");
+}
+
+#bg-pic .pic_3 {
+	background-image: url("/images/game.jpg");
+}
+
+#bg-pic .pic_4 {
+	background-image: url("/images/rec-sale-r.jpg");
+}
+
+/* スライダーの送りボタンを指定 */
+#slide-buttons #btn img {
+	width: 100%;
+}
+
+#slide-buttons #btn {
+	width: 71px;
+	margin: 0 10px;
+	box-shadow: -3px 3px 5px 1px gray;
+	/* ボックスに影をつける（左から水平方向の長さ、垂直方向の長さ、ぼかしの長さ、広がりの長さ、色） */
+	transition-duration: .5s;
+	/* アニメーションの開始から終了までの時間を指定 */
+	padding: 0;
+}
+
+#slide-buttons {
+	display: inline-block;
+	height: 50px;
+	margin: 30px 10px;
+	transform: scale(1.45, 1.45);
+	/* XY軸(横縦)の伸縮率を指定 */
+}
+
+#slide-buttons label {
+	cursor: pointer;
+	display: inline-block;
+	filter: opacity(50%) saturate(100%) contrast(100%);
+	/* hover前：filterプロパティの「透明度」＋「彩度」＋「コントラスト」 */
+}
+
+#slide-buttons label:hover {
+	transform: scale(1.1, 1.1);
+	/* XY軸(横縦)の伸縮率を指定 */
+	filter: opacity(100%) saturate(130%) contrast(130%);
+	/* hover後：filterプロパティの「透明度」＋「彩度」＋「コントラスト」 */
+}
+
+/* ナビゲーションボタンをcheckした時の透明度を指定 */
+#pic1:checked~#slide-buttons label:nth-child(1),
+#pic2:checked~#slide-buttons label:nth-child(2),
+#pic3:checked~#slide-buttons label:nth-child(3),
+#pic4:checked~#slide-buttons label:nth-child(4) {
+	filter: opacity(100%) saturate(130%) contrast(130%);
+	/* check後：filterプロパティの「透明度」＋「彩度」＋「コントラスト」 */
+}
+
+/*画像拡大*/
+.image_mouseover_1 {
+overflow: visible;
+width: 100%;
+height: 100%;
+}
+.image_mouseover_1 img {
+display: block;
+transition-duration: 0.5s;
+}
+.image_mouseover_1 img:hover {
+transform: scale(1.2,1.2);
+transition-duration: 0.5s;
 }
 
 

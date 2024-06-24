@@ -59,6 +59,6 @@ VALUES(2, 1,  'マリオパーティ DS', 300,pg_read_binary_file('C:/mario.jpg'
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
 VALUES(3, 1,  '呪術廻戦　ならぶんです　コンプ品', 5000,pg_read_binary_file('C:/jyu_jyu.jpg'), '新品、未使用', 'コンプしてます。', 1,'香穂','香穂',0,0);
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
-VALUES(4, 1,  'カプシーヌ 2024 SS', 9999999,pg_read_binary_file('C:/bag.jfif'), '未使用に近い', '頂き物です。家で保管していましたが、使用する目処がないので主品しました。', 1,'香穂','香穂',0,0);
+VALUES(4, 1,  'カプシーヌ 2024 SS', 9999999,pg_read_binary_file('C:/bag.jfif'), '未使用に近い', '頂き物です。家で保管していましたが、使用する目処がないので出品しました。', 1,'香穂','香穂',0,0);
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
 VALUES(5, 1,  '超音波トリートメント', 10000,pg_read_binary_file('C:/yaman.jpg'), '未使用に近い', '同期からおすすめしてもらいましたが、自分には合わなかったので出品しました。同期曰く髪質改善するみたいです。', 1,'香穂','香穂',0,0);

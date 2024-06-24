@@ -1,68 +1,112 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>商品一覧</title>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>商品一覧</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
+
 <body>
 	<header th:replace="header"></header>
 	<hr>
 	<nav style="background-color: #3CB371;">
 
-		<form action="/items" method="get">
+		<form action="/items" method="get" id="form1">
+			<span>
 			<span th:each="category:${categories}">
 				<input type="radio" name="categoryId" th:value="${category.id}"> [[${category.name}]]
 			</span>
-			<br>
-			名前：<input type="text" name="keyword" th:value="${session.keyword}">
-			値段：<input type="text" name="minPrice" maxlength="7" th:value="${session.minPrice}">以上
-				  <input type="text" name="maxPrice" maxlength="7" th:value="${session.maxPrice}">以下
-			<button>検索</button>
+				<br>
+				<br>
+				<input type="text" name="keyword" th:value="${session.keyword}" placeholder="キーワードを入力" id="sbox1">
+				<input type="text" name="minPrice" maxlength="7" th:value="${session.minPrice}" placeholder="値段を入力"id="sbox1">以上
+				<input type="text" name="maxPrice" maxlength="7" th:value="${session.maxPrice}" placeholder="値段を入力"id="sbox1">以下
+				<input type="submit" value="検索" id="sbtn1">
+		</span>
 		</form>
-		
 	</nav>
+		<br>
+		<div id="picture">
+			<!-- チェックボックス -->
+			<input type="radio" name="picture" id="pic1" checked>
+			<input type="radio" name="picture" id="pic2">
+			<input type="radio" name="picture" id="pic3">
+			<input type="radio" name="picture" id="pic4">
+			<div id="bg-pic">
+				<div class="inside">
+					<div class="pic pic_1">
+					</div>
+					<div class="pic pic_2">
+					</div>
+					<div class="pic pic_3">
+					</div>
+					<div class="pic pic_4">
+					</div>
+				</div>
+			</div>
+			<!-- スライダーのナビゲーションボタン -->
+			<div id="slide-buttons">
+				<label for="pic1" id="btn">
+					<img src="/images/summer.jfif">
+				</label>
+				<label for="pic2" id="btn">
+					<img src="/images/hon.jpg">
+				</label>
+				<label for="pic3" id="btn">
+					<img src="/images/game.jpg">
+				</label>
+				<label for="pic4" id="btn">
+					<img src="/images/rec-sale-r.jpg">
+				</label>
+			</div>
+		</div>
+
 	<main>
 		<ul th:if="${errorList}" class="error">
 			<div th:each="error:${errorList}" th:text="${error}" style="color: red"></div>
 		</ul>
-		<div class="item-all"><th:block th:if="${category}">
-			[[${category.name}]]
-		</th:block>
-		<th:block th:if="${category}==null">
-			All Category
-		</th:block>
+		<div class="item-all">
+			<th:block th:if="${category}">
+				[[${category.name}]]
+			</th:block>
+			<th:block th:if="${category}==null">
+				All Category
+			</th:block>
 			<br>
 		</div>
 		<table>
 			<br><br>
 			<span th:each="item:${items}">
-			<tr>
-				<span th:each="i:${item.items}">
-				<td>
-					<th:block th:if="${i.stock}==1">
-						<form action="/items/detail" method="get">
-							<input type="hidden" name="itemId" th:value="${i.id}">
-							<button><img th:src="|data:image/jpeg;base64,${i.image}|" width="200" height="200"></button>
-						</form>
-						<span class="item-name" style="text-align: left;">
-						[[${i.name}]]<br></span>
-						[[${i.price}]]円
-					</th:block>
-					<br>
-					<th:block th:if="${i.stock}==0">
-						<img src="/images/soldout.jpg" alt="lose">
-						<br>
-						[[${i.name}]]<br>
-						[[${i.price}]]
-					</th:block>
-				</td>
-				</span>
-			</tr>
+				<tr>
+					<span th:each="i:${item.items}">
+						<td>
+							<th:block th:if="${i.stock}==1">
+								<form action="/items/detail" method="get">
+									<input type="hidden" name="itemId" th:value="${i.id}">
+									<div class="image_mouseover_1">
+									<button><img th:src="|data:image/jpeg;base64,${i.image}|" width="200"
+											height="200"></button></div>
+								</form>
+								<span class="item-name" style="text-align: left;">
+									<span th:utext="${i.name}"></span><br>
+								[[${i.price}]]円
+							</th:block>
+							<br>
+							<th:block th:if="${i.stock}==0">
+								<img src="/images/soldout.jpg" alt="lose">
+								<br>
+								[[${i.name}]]<br>
+								[[${i.price}]]
+							</th:block>
+						</td>
+					</span>
+				</tr>
 			</span>
 		</table>
 	</main>
 	<hr>
 	<footer th:replace="footer"></footer>
 </body>
+
 </html>
