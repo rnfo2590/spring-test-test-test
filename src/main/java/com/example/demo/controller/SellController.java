@@ -64,17 +64,19 @@ public class SellController {
 			@RequestParam(name = "detail", required = false) String detail) throws IOException {
 
 		Integer newPrice = null;
-
-		// エラーチェック
+//		// エラーチェック
 		List<String> errorList = new ArrayList<>();
+
 		if ((name == null)
-				|| (categoryId == null||categoryId == 0)
-				|| (condition.equals("")||condition == null)
-				|| (price.equals("")||price == null)
-				|| (detail.equals("")||detail == null)) {
+				|| (categoryId == null || categoryId == 0)
+				|| (condition.equals("") || condition == null)
+				|| (price.equals("") || price == null)
+				|| (detail.equals("") || detail == null)) {
 			errorList.add("必須項目が未入力です");
 		} else if (checkLogic("^[0-9]+$", price)) {
 			errorList.add("価格は半角数字のみ入力してください");
+//		} else if (image.getSize() > 30000) {
+//			errorList.add("画像ファイルのサイズが大きすぎます");
 		} else {
 			newPrice = Integer.parseInt(price);
 		}
@@ -91,7 +93,6 @@ public class SellController {
 			return "/sellForm";
 		} else {
 			byte[] images = image.getBytes();
-			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 			item = new Item(categoryRepository.findById(categoryId).get(),
 					customerRepository.findById(account.getId()).get(),
 					name, newPrice, images, condition, detail.replaceAll("\n", "<br>"), 1);

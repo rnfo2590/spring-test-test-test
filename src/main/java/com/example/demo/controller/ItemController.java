@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,8 +40,8 @@ public class ItemController {
 	public String index(
 			@RequestParam(value = "categoryId", required = false) Integer categoryId,
 			@RequestParam(name = "keyword", required = false) String keyword,
-			@RequestParam(name = "maxPrice", required = false) Integer maxPrice,
-			@RequestParam(name = "minPrice", required = false) Integer minPrice,
+			@RequestParam(name = "maxPrice", required = false) String maxPrice,
+			@RequestParam(name = "minPrice", required = false) String minPrice,
 			Model model) {
 
 		Category category = null;
@@ -50,38 +52,48 @@ public class ItemController {
 		// 全カテゴリー一覧を取得
 		List<Category> categoryList = categoryRepository.findAll();
 		model.addAttribute("categories", categoryList);
+		
+		Integer maxprice = null;Integer minprice = null;
 
 		List<String> errorList = new ArrayList<>();
-		if (maxPrice != null && minPrice != null) {
-			if (maxPrice < 0 || minPrice < 0) {
-				errorList.add("・値段は0以上で入力してください");
-			} else if (maxPrice < minPrice) {
+		if (maxPrice.length()>0 && minPrice.length()>0) {
+			if (checkLogic("^[0-9]+$", maxPrice) == true || checkLogic("^[0-9]+$", minPrice) == true) {
+				errorList.add("・値段は半角数字で入力してください");
+			} else if (Integer.parseInt(maxPrice) < Integer.parseInt(maxPrice)) {
 				errorList.add("・当てはまる金額はありません");
+			} else {
+				maxprice = Integer.parseInt(maxPrice);
+				minprice = Integer.parseInt(maxPrice);
 			}
-		} else if (maxPrice != null) {
-			if (maxPrice < 0) {
-				errorList.add("・値段は0以上で入力してください");
+		} else if (maxPrice.length()>0) {
+			if (checkLogic("^[0-9]+$", maxPrice)) {
+				errorList.add("・値段は半角数字で入力してください");
+			}else {
+				maxprice = Integer.parseInt(maxPrice);
 			}
-		} else if (minPrice != null) {
-			if (minPrice < 0) {
-				errorList.add("・値段は0以上で入力してください");
+		} else if (minPrice.length()>0) {
+			if (checkLogic("^[0-9]+$", minPrice)) {
+				errorList.add("・値段は半角数字で入力してください");
+			}else {
+				minprice = Integer.parseInt(maxPrice);
 			}
 		}
 		if (errorList.size() > 0) {
 			model.addAttribute("errorList", errorList);
 			return "items";
 		}
+			
 
 		// 商品一覧情報の取得
 		List<Item> itemList = null;
-		if (categoryId == null && keyword == null && maxPrice == null && minPrice == null) {
+		if (categoryId == null && keyword == null && maxPrice.length()==0 && minPrice.length()==0) {
 			itemList = itemRepository.findAll();
 		} else if (categoryId == null && keyword == null && maxPrice == null) {
 			// itemsテーブルを最低額を指定して一覧を取得
-			itemList = itemRepository.findByPriceGreaterThanEqual(minPrice);
+			itemList = itemRepository.findByPriceGreaterThanEqual(minprice);
 		} else if (categoryId == null && keyword == null && minPrice == null) {
 			// itemsテーブルを最高額を指定して一覧を取得
-			itemList = itemRepository.findByPriceLessThanEqual(maxPrice);
+			itemList = itemRepository.findByPriceLessThanEqual(maxprice);
 		} else if (categoryId == null && minPrice == null && maxPrice == null) {
 			// itemsテーブルをキーワードを指定して一覧を取得
 			itemList = itemRepository.findByNameLike("%" + keyword + "%");
@@ -93,32 +105,32 @@ public class ItemController {
 			itemList = itemRepository.findByCategoryIdAndNameLike(categoryId, "%" + keyword + "%");
 		} else if (categoryId == null && maxPrice == null) {
 			// itemsテーブルを最低額とキーワードを指定して一覧を取得
-			itemList = itemRepository.findByPriceGreaterThanEqualAndNameLike(minPrice, "%" + keyword + "%");
+			itemList = itemRepository.findByPriceGreaterThanEqualAndNameLike(minprice, "%" + keyword + "%");
 		} else if (categoryId == null && minPrice == null) {
 			// itemsテーブルを最高額とキーワードを指定して一覧を取得
-			itemList = itemRepository.findByPriceLessThanEqualAndNameLike(maxPrice, "%" + keyword + "%");
+			itemList = itemRepository.findByPriceLessThanEqualAndNameLike(maxprice, "%" + keyword + "%");
 		} else if (keyword == null && maxPrice == null) {
 			// itemsテーブルを最低額とカテゴリーIDを指定して一覧を取得
-			itemList = itemRepository.findByPriceGreaterThanEqualAndCategoryId(minPrice, categoryId);
+			itemList = itemRepository.findByPriceGreaterThanEqualAndCategoryId(minprice, categoryId);
 		} else if (keyword == null && minPrice == null) {
 			// itemsテーブルを最高額とカテゴリーIDを指定して一覧を取得
-			itemList = itemRepository.findByPriceLessThanEqualAndCategoryId(maxPrice, categoryId);
+			itemList = itemRepository.findByPriceLessThanEqualAndCategoryId(maxprice, categoryId);
 		} else if (keyword == null && categoryId == null) {
 			// itemsテーブルを最低額と最高額を指定して一覧を取得
-			itemList = itemRepository.findByPriceBetween(minPrice, maxPrice);
+			itemList = itemRepository.findByPriceBetween(minprice, maxprice);
 		} else if (keyword == null) {
 			// itemsテーブルを最低額と最高額とカテゴリーIDを指定して一覧を取得
-			itemList = itemRepository.findByPriceBetweenAndCategoryId(minPrice, maxPrice, categoryId);
+			itemList = itemRepository.findByPriceBetweenAndCategoryId(minprice, maxprice, categoryId);
 		} else if (categoryId == null) {
 			// itemsテーブルを最低額と最高額とキーワードを指定して一覧を取得
-			itemList = itemRepository.findByPriceBetweenAndNameLike(minPrice, maxPrice, "%" + keyword + "%");
+			itemList = itemRepository.findByPriceBetweenAndNameLike(minprice, maxprice, "%" + keyword + "%");
 		} else if (maxPrice == null) {
 			// itemsテーブルを最低額とカテゴリーIDとキーワードを指定して一覧を取得
-			itemList = itemRepository.findByPriceGreaterThanEqualAndCategoryIdAndNameLike(minPrice, categoryId,
+			itemList = itemRepository.findByPriceGreaterThanEqualAndCategoryIdAndNameLike(minprice, categoryId,
 					"%" + keyword + "%");
 		} else if (minPrice == null) {
 			// itemsテーブルを最高額とカテゴリーIDとキーワードを指定して一覧を取得
-			itemList = itemRepository.findByPriceLessThanEqualAndCategoryIdAndNameLike(maxPrice, categoryId,
+			itemList = itemRepository.findByPriceLessThanEqualAndCategoryIdAndNameLike(maxprice, categoryId,
 					"%" + keyword + "%");
 		}
 		
@@ -174,6 +186,21 @@ public class ItemController {
 		model.addAttribute("item", item);
 
 		return "detail";
+	}
+	
+	public static boolean checkLogic(String regex, String target) {
+		boolean result = false;
+		if (target == null || target.isEmpty())
+			return false;
+		// 引数に指定した正規表現regexがtargetにマッチするか確認する
+		Pattern p1 = Pattern.compile(regex); // 正規表現パターンの読み込み
+		Matcher m1 = p1.matcher(target); // パターンと検査対象文字列の照合
+		if (m1.matches()) {// 照合結果をtrueかfalseで取得
+			result = false;
+		} else {
+			result = true;
+		}
+		return result;
 	}
 
 }
