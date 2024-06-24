@@ -24,7 +24,7 @@ VALUES(5, 2, '家', 10000,pg_read_binary_file('C:/ouchi.png'),'状態が悪い',
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
 VALUES(4, 2, 'とあるブランドの紙袋', 300,pg_read_binary_file('C:/celine.png'),'傷や汚れあり','celineの紙袋です。', 1,'梨乃','梨乃',0,0);
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
-VALUES(3, 2, '家', 1200,pg_read_binary_file('C:/toilet.png'),'未使用に近い','トイレのスリッパです。デザインが好みではありませんでした。', 1,'梨乃','梨乃',0,0);
+VALUES(3, 2, 'トイレのスリッパ', 1200,pg_read_binary_file('C:/toilet.png'),'未使用に近い','トイレのスリッパです。デザインが好みではありませんでした。', 1,'梨乃','梨乃',0,0);
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
 VALUES(2, 2, 'ドラえもん毎日すごろく', 4200,pg_read_binary_file('C:/doraemon.png'),'未使用に近い','ドラえもんのゲームです。', 1,'梨乃','梨乃',0,0);
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
@@ -40,3 +40,25 @@ INSERT INTO items(category_id, customer_id, name, price, image, condition, detai
 VALUES(4, 1,  '紳士靴', 9400,pg_read_binary_file('C:/kutu.jpg'), '新品、未使用', 'その辺に落ちてた靴', 1,'謙汰','謙汰',0,0);
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
 VALUES(5, 1,  '冷蔵庫', 50000,pg_read_binary_file('C:/rei.jpg'), '新品、未使用', '扉の開かない冷蔵庫', 1,'謙汰','謙汰',0,0);
+
+INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
+VALUES(1, 1,  '人間失格/太宰治', 150,pg_read_binary_file('C:/ningen.jpg'), '新品、未使用', 'かっこつけて買いましたが、読みませんでした。', 1,'久瑠美','久瑠美',0,0);
+INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
+VALUES(2, 1,  'NieR:Automata', 2300,pg_read_binary_file('C:/nier.avif'), '未使用に近い', 'RPGは向いてなかったので出品します。', 1,'久瑠美','久瑠美',0,0);
+INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
+VALUES(3, 1,  'カチューシャ（アリエルVer.）', 800,pg_read_binary_file('C:/Disney.jpg'), '傷や汚れあり', '使用は一度だけですが、めっちゃ汗かいた日に使ったので傷や汚れありにしています。', 1,'久瑠美','久瑠美',0,0);
+INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
+VALUES(4, 1,  'Travis×Fragment×NIKE AJ1', 129800,pg_read_binary_file('C:/AJ1.jpg'), '未使用に近い', '24.5cmです。シューグーとインソール入れて使っていたので美品です。付属品そろっています。<br>スニダンでは安くても15万くらいするので、お買い得だと思います。', 1,'久瑠美','久瑠美',0,0);
+INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
+VALUES(5, 1,  '女子大生の使用済みPC', 6666,pg_read_binary_file('C:/PC.png'), '状態が悪い', '大学4年間使用した思い出の品です。<br>ステッカー大量に貼ってあります。多分使えます。', 1,'久瑠美','久瑠美',0,0);
+
+INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
+VALUES(1, 1,  'ハイキューセカンドシーズンDVD', 15000,pg_read_binary_file('C:/haikyu.png'), '新品、未使用', '泣けます。もう一度青春を味わいたい人におすすめです。', 1,'香穂','香穂',0,0);
+INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
+VALUES(2, 1,  'マリオパーティ DS', 300,pg_read_binary_file('C:/mario.jpg'), '傷や汚れあり', 'DS用です。傷や汚れがありますので、神経質な方はお控えください。', 1,'香穂','香穂',0,0);
+INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
+VALUES(3, 1,  '呪術廻戦　ならぶんです　コンプ品', 5000,pg_read_binary_file('C:/jyu_jyu.jpg'), '新品、未使用', 'コンプしてます。', 1,'香穂','香穂',0,0);
+INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
+VALUES(4, 1,  'カプシーヌ 2024 SS', 9999999,pg_read_binary_file('C:/bag.jfif'), '未使用に近い', '頂き物です。家で保管していましたが、使用する目処がないので主品しました。', 1,'香穂','香穂',0,0);
+INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
+VALUES(5, 1,  '超音波トリートメント', 10000,pg_read_binary_file('C:/yaman.jpg'), '未使用に近い', '同期からおすすめしてもらいましたが、自分には合わなかったので出品しました。同期曰く髪質改善するみたいです。', 1,'香穂','香穂',0,0);
