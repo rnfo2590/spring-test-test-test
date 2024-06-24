@@ -420,8 +420,17 @@ table.order_account th {
 	border-bottom: 1px #DDDDDD solid;
 }
 
-
+/*items商品名*/
 .item-name {
+	color: #4B0082;
+	text-align: left;
+	font-weight: bold;
+	font-size: 20px;
+	font-family: "Osaka－等幅", sans-serif;
+}
+
+/*items価格*/
+.item-price {
 	color: #4B0082;
 	text-align: left;
 	font-weight: bold;
@@ -666,7 +675,96 @@ transform: scale(1.2,1.2);
 transition-duration: 0.5s;
 }
 
+/*フッター*/
+html {
+  font-family: sans-serif;
+}
 
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: #4b5564;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+}
+
+hr {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+address {
+  font-style: normal;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer {
+  padding: 2rem;
+  font-size: 15px;
+  color: #4b5564;
+  background: #fff;
+}
+
+.footer__navi-heading {
+  font-weight: 600;
+}
+
+.footer__logo {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.footer__navi li {
+  margin-bottom: 0.75rem;
+}
+
+.footer__address {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.footer__address a {
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .md-flex {
+    display: flex;
+  }
+
+  .md-justify-between {
+    justify-content: space-between;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .footer__address a {
+    text-decoration: none;
+    pointer-events: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg-flex {
+    display: flex;
+  }
+}
 
 
 /* 送信ボタン(マウスオーバー時) */

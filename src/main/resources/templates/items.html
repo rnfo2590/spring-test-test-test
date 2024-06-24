@@ -90,7 +90,8 @@
 								</form>
 								<span class="item-name" style="text-align: left;">
 									<span th:utext="${i.name}"></span><br>
-								[[${i.price}]]円
+								<span class="item-price">
+								[[${i.price}]]円</span>
 							</th:block>
 							<br>
 							<th:block th:if="${i.stock}==0">
