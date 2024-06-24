@@ -54,65 +54,63 @@ public class ItemController {
 		model.addAttribute("categories", categoryList);
 		
 		Integer maxprice = null;Integer minprice = null;
-
 		List<String> errorList = new ArrayList<>();
-		if (maxPrice.length()>0 && minPrice.length()>0) {
-			if (checkLogic("^[0-9]+$", maxPrice) == true || checkLogic("^[0-9]+$", minPrice) == true) {
+		if (maxPrice != null&& !maxPrice.equals("") && minPrice != null&& !minPrice.equals("")) {
+			if (checkLogic("^[0-9]+$", maxPrice) || checkLogic("^[0-9]+$", maxPrice)) {
 				errorList.add("・値段は半角数字で入力してください");
-			} else if (Integer.parseInt(maxPrice) < Integer.parseInt(maxPrice)) {
+			} else if (Integer.parseInt(maxPrice) < Integer.parseInt(minPrice)) {
 				errorList.add("・当てはまる金額はありません");
 			} else {
 				maxprice = Integer.parseInt(maxPrice);
-				minprice = Integer.parseInt(maxPrice);
+				minprice = Integer.parseInt(minPrice);
 			}
-		} else if (maxPrice.length()>0) {
+		} else if (maxPrice != null&& !maxPrice.equals("")) {
 			if (checkLogic("^[0-9]+$", maxPrice)) {
 				errorList.add("・値段は半角数字で入力してください");
-			}else {
+			} else {
 				maxprice = Integer.parseInt(maxPrice);
 			}
-		} else if (minPrice.length()>0) {
-			if (checkLogic("^[0-9]+$", minPrice)) {
+		} else if (minPrice != null&& !minPrice.equals("")) {
+			if (checkLogic("^[0-9]+$", maxPrice)) {
 				errorList.add("・値段は半角数字で入力してください");
-			}else {
-				minprice = Integer.parseInt(maxPrice);
+			} else {
+				minprice = Integer.parseInt(minPrice);
 			}
 		}
 		if (errorList.size() > 0) {
 			model.addAttribute("errorList", errorList);
 			return "items";
 		}
-			
 
 		// 商品一覧情報の取得
 		List<Item> itemList = null;
-		if (categoryId == null && keyword == null && maxPrice.length()==0 && minPrice.length()==0) {
+		if (categoryId == null && keyword == null && (maxPrice == null||maxPrice.equals("")) && (minPrice == null||minPrice.equals(""))) {
 			itemList = itemRepository.findAll();
-		} else if (categoryId == null && keyword == null && maxPrice == null) {
+		} else if (categoryId == null && keyword == null && (maxPrice == null||maxPrice.equals(""))) {
 			// itemsテーブルを最低額を指定して一覧を取得
 			itemList = itemRepository.findByPriceGreaterThanEqual(minprice);
-		} else if (categoryId == null && keyword == null && minPrice == null) {
+		} else if (categoryId == null && keyword == null && (minPrice == null||minPrice.equals(""))) {
 			// itemsテーブルを最高額を指定して一覧を取得
 			itemList = itemRepository.findByPriceLessThanEqual(maxprice);
-		} else if (categoryId == null && minPrice == null && maxPrice == null) {
+		} else if (categoryId == null && (minPrice == null||minPrice.equals("")) && (maxPrice == null||maxPrice.equals(""))) {
 			// itemsテーブルをキーワードを指定して一覧を取得
 			itemList = itemRepository.findByNameLike("%" + keyword + "%");
-		} else if (keyword == null && minPrice == null && maxPrice == null) {
+		} else if (keyword == null && (minPrice == null||minPrice.equals("")) && (maxPrice == null||maxPrice.equals(""))) {
 			// itemsテーブルをカテゴリーIDを指定して一覧を取得
 			itemList = itemRepository.findByCategoryId(categoryId);
-		} else if (minPrice == null && maxPrice == null) {
+		} else if ((minPrice == null||minPrice.equals("")) && (maxPrice == null||maxPrice.equals(""))) {
 			// itemsテーブルをカテゴリーIDとキーワードを指定して一覧を取得
 			itemList = itemRepository.findByCategoryIdAndNameLike(categoryId, "%" + keyword + "%");
-		} else if (categoryId == null && maxPrice == null) {
+		} else if (categoryId == null && (maxPrice == null||maxPrice.equals(""))) {
 			// itemsテーブルを最低額とキーワードを指定して一覧を取得
 			itemList = itemRepository.findByPriceGreaterThanEqualAndNameLike(minprice, "%" + keyword + "%");
-		} else if (categoryId == null && minPrice == null) {
+		} else if (categoryId == null && (minPrice == null||minPrice.equals(""))) {
 			// itemsテーブルを最高額とキーワードを指定して一覧を取得
 			itemList = itemRepository.findByPriceLessThanEqualAndNameLike(maxprice, "%" + keyword + "%");
-		} else if (keyword == null && maxPrice == null) {
+		} else if (keyword == null && (maxPrice == null||maxPrice.equals(""))) {
 			// itemsテーブルを最低額とカテゴリーIDを指定して一覧を取得
 			itemList = itemRepository.findByPriceGreaterThanEqualAndCategoryId(minprice, categoryId);
-		} else if (keyword == null && minPrice == null) {
+		} else if (keyword == null && (minPrice == null||minPrice.equals(""))) {
 			// itemsテーブルを最高額とカテゴリーIDを指定して一覧を取得
 			itemList = itemRepository.findByPriceLessThanEqualAndCategoryId(maxprice, categoryId);
 		} else if (keyword == null && categoryId == null) {
@@ -124,11 +122,11 @@ public class ItemController {
 		} else if (categoryId == null) {
 			// itemsテーブルを最低額と最高額とキーワードを指定して一覧を取得
 			itemList = itemRepository.findByPriceBetweenAndNameLike(minprice, maxprice, "%" + keyword + "%");
-		} else if (maxPrice == null) {
+		} else if ((maxPrice == null||maxPrice.equals(""))) {
 			// itemsテーブルを最低額とカテゴリーIDとキーワードを指定して一覧を取得
 			itemList = itemRepository.findByPriceGreaterThanEqualAndCategoryIdAndNameLike(minprice, categoryId,
 					"%" + keyword + "%");
-		} else if (minPrice == null) {
+		} else if ((minPrice == null||minPrice.equals(""))) {
 			// itemsテーブルを最高額とカテゴリーIDとキーワードを指定して一覧を取得
 			itemList = itemRepository.findByPriceLessThanEqualAndCategoryIdAndNameLike(maxprice, categoryId,
 					"%" + keyword + "%");
@@ -202,5 +200,6 @@ public class ItemController {
 		}
 		return result;
 	}
+
 
 }

@@ -75,8 +75,8 @@ public class SellController {
 			errorList.add("必須項目が未入力です");
 		} else if (checkLogic("^[0-9]+$", price)) {
 			errorList.add("価格は半角数字のみ入力してください");
-//		} else if (image.getSize() > 30000) {
-//			errorList.add("画像ファイルのサイズが大きすぎます");
+		} else if (image.getSize() > 31457280) {
+			errorList.add("画像ファイルのサイズが大きすぎます");
 		} else {
 			newPrice = Integer.parseInt(price);
 		}
