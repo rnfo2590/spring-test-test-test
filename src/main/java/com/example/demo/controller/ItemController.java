@@ -40,8 +40,8 @@ public class ItemController {
 	public String index(
 			@RequestParam(value = "categoryId", required = false) Integer categoryId,
 			@RequestParam(name = "keyword", required = false) String keyword,
-			@RequestParam(name = "maxPrice", defaultValue="") String maxPrice,
-			@RequestParam(name = "minPrice", defaultValue="") String minPrice,
+			@RequestParam(name = "maxPrice", defaultValue = "") String maxPrice,
+			@RequestParam(name = "minPrice", defaultValue = "") String minPrice,
 			Model model) {
 
 		Category category = null;
@@ -52,10 +52,11 @@ public class ItemController {
 		// 全カテゴリー一覧を取得
 		List<Category> categoryList = categoryRepository.findAll();
 		model.addAttribute("categories", categoryList);
-		System.out.println(maxPrice+" "+minPrice);
-		Integer maxprice = null;Integer minprice = null;
+		System.out.println(maxPrice + " " + minPrice);
+		Integer maxprice = null;
+		Integer minprice = null;
 		List<String> errorList = new ArrayList<>();
-		if (maxPrice.length()>0 && minPrice.length()>0) {
+		if (maxPrice.length() > 0 && minPrice.length() > 0) {
 			if (checkLogic("^[0-9]+$", maxPrice) || checkLogic("^[0-9]+$", minPrice)) {
 				errorList.add("・値段は半角数字で入力してください");
 			} else if (Integer.parseInt(maxPrice) < Integer.parseInt(minPrice)) {
@@ -64,13 +65,13 @@ public class ItemController {
 				maxprice = Integer.parseInt(maxPrice);
 				minprice = Integer.parseInt(minPrice);
 			}
-		} else if (maxPrice.length()>0) {
+		} else if (maxPrice.length() > 0) {
 			if (checkLogic("^[0-9]+$", maxPrice)) {
 				errorList.add("・値段は半角数字で入力してください");
 			} else {
 				maxprice = Integer.parseInt(maxPrice);
 			}
-		} else if (minPrice.length()>0) {
+		} else if (minPrice.length() > 0) {
 			if (checkLogic("^[0-9]+$", minPrice)) {
 				errorList.add("・値段は半角数字で入力してください");
 			} else {
@@ -131,7 +132,7 @@ public class ItemController {
 			itemList = itemRepository.findByPriceLessThanEqualAndCategoryIdAndNameLike(maxprice, categoryId,
 					"%" + keyword + "%");
 		}
-		
+
 		Cart[] items = null;
 		if (itemList != null) {
 			for (int i = 0; i < itemList.size(); i++) {
@@ -143,17 +144,20 @@ public class ItemController {
 				}
 
 			}
-			
+
 			for (int i = 0; i < itemList.size(); i++) {
 				Item item = itemList.get(i);
-				if(item.getName().length()>10) {
-					StringBuilder sb = new StringBuilder(item.getName());
-					sb.insert(10,"<br>");
+				StringBuilder sb = new StringBuilder(item.getName());
+				if (item.getName().length() > 10) {
+					sb.insert(10, "<br>");
 					item.setName(sb.toString());
-				itemList.set(i,item);
+					itemList.set(i, item);
+				} else {
+					item.setName(sb.toString() + "<br>");
+					itemList.set(i, item);
 				}
 			}
-			
+
 			int maxList = itemList.size() / 5;
 			if (itemList.size() % 5 != 0) {
 				maxList++;
@@ -173,7 +177,7 @@ public class ItemController {
 				}
 			}
 		}
-		
+
 		session.setAttribute("keyword", keyword);
 		session.setAttribute("maxPrice", maxPrice);
 		session.setAttribute("minPrice", minPrice);
@@ -195,7 +199,7 @@ public class ItemController {
 
 		return "detail";
 	}
-	
+
 	public static boolean checkLogic(String regex, String target) {
 		boolean result = false;
 		if (target == null || target.isEmpty())
