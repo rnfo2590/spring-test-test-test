@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.Item;
 import com.example.demo.model.Account;
-import com.example.demo.model.Sell;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.CustomerRepository;
 import com.example.demo.repository.ItemRepository;
@@ -31,9 +30,6 @@ public class SellController {
 
 	@Autowired
 	Account account;
-
-	@Autowired
-	Sell sell;
 
 	@Autowired
 	ItemRepository itemRepository;
@@ -64,7 +60,7 @@ public class SellController {
 			@RequestParam(name = "detail", required = false) String detail) throws IOException {
 
 		Integer newPrice = null;
-//		// エラーチェック
+		//		// エラーチェック
 		List<String> errorList = new ArrayList<>();
 
 		if ((name == null)

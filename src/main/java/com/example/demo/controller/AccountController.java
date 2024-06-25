@@ -37,6 +37,10 @@ public class AccountController {
 			Model model) {
 		// セッション情報を全てクリアする
 		session.invalidate();
+
+		System.out.println(account.getId());
+		System.out.println(account.getName());
+
 		// エラーパラメータのチェック
 		List<String> errorList = new ArrayList<>();
 		if (error.equals("notLoggedIn")) {

@@ -14,7 +14,7 @@
 	<hr>
 	<main>
 		<h3>以下の内容で登録します</h3>
-		<a href="#" onclick="history.back()">前の画面に戻る</a>
+
 		<form action="/addaccount" method="post">
 			名前：[[${name}]]<br>
 			パスワード：[[${password}]]<br>
@@ -28,6 +28,7 @@
 			<input type="hidden" name="address" th:value="${address}">
 			<button>送信</button>
 		</form>
+		<button onclick="history.back()">前の画面に戻る</button>
 
 	</main>
 	<hr>

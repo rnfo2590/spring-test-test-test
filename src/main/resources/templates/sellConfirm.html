@@ -8,7 +8,6 @@
 <body>
 	<div class="sell-con">
 	<header th:replace="header"></header>
-		<a href="#" onclick="history.back()">出品登録に戻る</a>
 		<form action="/sell/regist" method="post">
 			<img th:src="|data:image/jpeg;base64,${item.image}|" width="200" height="200"><br>
 			商品名：<span th:text="${item.name}"></span><br>
@@ -19,7 +18,8 @@
 			<span th:utext="${item.detail}"></span><br>
 		<br>
 		<button class="sell">出品する</button>	
-		</form><br>
+		</form>
+		<button onclick="history.back()">出品登録に戻る</button>
 		</div>
 	</main>
 	<hr>
