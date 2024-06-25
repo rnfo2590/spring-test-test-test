@@ -24,20 +24,30 @@
 						
 						<br>
 						<input type="file" style="width: 110px;" name="image" accept="image/png"
-							onchange="previewFile(this);" required>
+							 onchange="previewFile(this);" required>
 
 						<p>プレビュー</p>
 						<img id="preview" width="200" height="200">
 						<script>
-							function previewFile(hoge) {
-								var fileData = new FileReader();
-								fileData.onload = (function () {
-									//id属性が付与されているimgタグのsrc属性に、fileReaderで取得した値の結果を入力することで
-									//プレビュー表示している
-									document.getElementById('preview').src = fileData.result;
-								});
-								fileData.readAsDataURL(hoge.files[0]);
+						function previewFile(hoge) {
+							let fileData = new FileReader();
+							fileData.onload = (function () {
+								//id属性が付与されているimgタグのsrc属性に、fileReaderで取得した値の結果を入力することで
+								//プレビュー表示している
+								document.getElementById('preview').src = fileData.result;
+							});
+			
+							setTimeout(() => {
+							if (hoge.value.length) {
+						  		fileData.readAsDataURL(hoge.files[0]);
+							} else {
+						  		//fileData.readAsDataURL(null);
+						  		document.getElementById('preview').src = "";
 							}
+				
+							}, 500);
+
+						}
 						</script>
 					</td>
 				</tr>

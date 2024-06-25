@@ -94,9 +94,9 @@
 							</th:block>
 							<br>
 							<th:block th:if="${i.stock}==0">
-								<img src="/images/soldout.jpg" alt="lose">
+								<img src="/images/soldout.png" alt="lose">
 								<br>
-								[[${i.name}]]<br>
+								<span th:utext="${i.name}"></span><br>
 								[[${i.price}]]
 							</th:block>
 						</td>
