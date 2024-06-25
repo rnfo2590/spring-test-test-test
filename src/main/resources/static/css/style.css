@@ -686,32 +686,32 @@ transition-duration: 0.5s;
 }
 
 /*フッター*/
-html {
+.footer_all {
   font-family: sans-serif;
 }
 
 
-ul {
+.footer_all ul {
   padding: 0;
   list-style: none;
 }
 
-a {
+.footer_all a {
   color: #4b5564;
   text-decoration: none;
 }
 
-a:hover {
+.footer_all a:hover {
   color: #000;
 }
 
-hr {
+.footer_all hr {
   height: 1px;
   border: 0;
   border-top: 1px solid #e5e7eb;
 }
 
-address {
+.footer_all address {
   font-style: normal;
 }
 
@@ -726,7 +726,6 @@ address {
   padding: 2rem;
   font-size:20px;
   color: #4b5564;
-  background: #fff;
 }
 
 .footer__navi-heading {
