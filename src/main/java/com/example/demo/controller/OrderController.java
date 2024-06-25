@@ -87,34 +87,48 @@ public class OrderController {
 		//		customerRepository.save(customer);
 
 		// 2. 注文情報をDBに格納する
-		Order order = new Order(
-				account.getId(),
-				LocalDate.now(),
-				cart.getTotalPrice());
-		orderRepository.save(order);
-
-		// 3. 注文詳細情報をDBに格納する
-		List<Item> itemList = cart.getItems();
-		List<OrderDetail> orderDetails = new ArrayList<>();
-		for (Item item : itemList) {
-			orderDetails.add(
-					new OrderDetail(
-							order.getId(),
-							item.getId(),
-							item.getStock()));
+		boolean deleteflg = true;
+		for (int i = 0; i < cart.getItems().size(); i++) {
+			Item item = itemRepository.findById(cart.getItems().get(i).getId()).get();
+			if (item.getDeleteFlg() == 1) {
+				deleteflg = false;
+				cart.getItems().remove(i);
+				i--;
+			}
 		}
-		orderDetailRepository.saveAll(orderDetails);
+		if (deleteflg) {
+			Order order = new Order(
+					account.getId(),
+					LocalDate.now(),
+					cart.getTotalPrice());
+			orderRepository.save(order);
 
-		for (Item data : cart.getItems()) {
-			data.setStock(0);
-			itemRepository.save(data);
+			// 3. 注文詳細情報をDBに格納する
+			List<Item> itemList = cart.getItems();
+			List<OrderDetail> orderDetails = new ArrayList<>();
+			for (Item item : itemList) {
+				orderDetails.add(
+						new OrderDetail(
+								order.getId(),
+								item.getId(),
+								item.getStock()));
+			}
+			orderDetailRepository.saveAll(orderDetails);
+
+			for (Item data : cart.getItems()) {
+				data.setStock(0);
+				itemRepository.save(data);
+			}
+
+			// セッションスコープのカート情報をクリアする
+			cart.clear();
+
+			// 画面返却用注文番号を設定する
+			model.addAttribute("orderNumber", order.getId());
+		} else {
+			model.addAttribute("error", "・出品者によって商品が削除されました");
+			return "cart";
 		}
-
-		// セッションスコープのカート情報をクリアする
-		cart.clear();
-
-		// 画面返却用注文番号を設定する
-		model.addAttribute("orderNumber", order.getId());
 
 		return "ordered";
 	}
@@ -131,22 +145,22 @@ public class OrderController {
 
 		// エラーチェック
 		List<String> errorList = new ArrayList<>();
-			if(addAddress != null && addAddress.equals("")){
-				errorList.add("新規住所が未入力です");
-				model.addAttribute("change", "erorr");
-			}else if(addAddress != null) {
-				Address address = new Address(customer, addAddress);
-				addressRepository.save(address);
-			}
+		if (addAddress != null && addAddress.equals("")) {
+			errorList.add("新規住所が未入力です");
+			model.addAttribute("change", "erorr");
+		} else if (addAddress != null) {
+			Address address = new Address(customer, addAddress);
+			addressRepository.save(address);
+		}
 
-			// エラー発生時は新規登録画面に戻す
-			if (errorList.size() > 0) {
-				model.addAttribute("errorList", errorList);
-			}
+		// エラー発生時は新規登録画面に戻す
+		if (errorList.size() > 0) {
+			model.addAttribute("errorList", errorList);
+		}
 		// ログインしている顧客IDでアドレステーブルを検索		
 		List<Address> addressList = addressRepository.findByCustomer_id(account.getId());
-		Address customerAddress = new Address(customer,customer.getAddress());
-		addressList.add(0,customerAddress);
+		Address customerAddress = new Address(customer, customer.getAddress());
+		addressList.add(0, customerAddress);
 		model.addAttribute("addressList", addressList);
 		return "addaddress";
 	}

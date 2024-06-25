@@ -182,7 +182,8 @@ public class ItemController {
 		session.setAttribute("maxPrice", maxPrice);
 		session.setAttribute("minPrice", minPrice);
 		model.addAttribute("items", items);
-
+		System.out.println(account.getId());
+		System.out.println(account.getName());
 		return "items";
 	}
 

@@ -9,6 +9,7 @@
 	<header th:replace="header"></header>
 	<hr>
 	<main>
+		<span th:text="${error}" style="color: red"></span>
 		<h1 style="text-align: left;">My Cart</h1>
 		<hr class="hr1">
 		<th:block th:if="${cartSize}!=0">
