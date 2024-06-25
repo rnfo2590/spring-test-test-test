@@ -26,10 +26,12 @@
 			<input type="hidden" name="tel" th:value="${tel}">
 			<input type="hidden" name="email" th:value="${email}">
 			<input type="hidden" name="address" th:value="${address}">
+			<br>
 			<button>送信</button>
 		</form>
+		<div style="text-align: left;">
 		<a href="#" onclick="history.back()">前の画面に戻る</a>
-
+</div>
 	</main>
 	<hr>
 	<footer th:replace="footer"></footer>

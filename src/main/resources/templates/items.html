@@ -48,10 +48,10 @@
 			<!-- スライダーのナビゲーションボタン -->
 			<div id="slide-buttons">
 				<label for="pic1" id="btn">
-					<img src="/images/summer.jfif">
+					<img src="/images/sale.jpg">
 				</label>
 				<label for="pic2" id="btn">
-					<img src="/images/hon.jpg">
+					<img src="/images/hon.png">
 				</label>
 				<label for="pic3" id="btn">
 					<img src="/images/game.jpg">
@@ -94,11 +94,12 @@
 							</th:block>
 							<br>
 							<th:block th:if="${i.stock}==0">
+								<div class="merukari_out">
 								<img src="/images/soldout.png" alt="lose">
 								<br>
 								<span th:utext="${i.name}"></span><br>
-								[[${i.price}]]
-							</th:block>
+								<p style="color: white;">[[${i.price}]]</p>
+							</th:block></div>
 						</td>
 								</span>
 				</tr>

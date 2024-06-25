@@ -35,12 +35,15 @@
 			
 		</table>
 		<br>
+		<div style="display: flex; justify-content:right;">
+		<button onclick="history.back()">前の場面に戻る</button>
 		<form action="/cart/add" method="post">
 			<input type="hidden" name="itemId" th:value="${item.id}">
 			<input type="hidden" name="quantity" th:value="${item.stock}">
 			<button class="cart-add">カートに追加</button>
 		</form>
-		<button onclick="history.back()">前の場面に戻る</button>
+		
+		</div>
 	</main>
 	<hr>
 	<footer th:replace="footer"></footer>

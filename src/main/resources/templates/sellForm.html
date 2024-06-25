@@ -10,7 +10,10 @@
 <body>
 	<header th:replace="header"></header>
 	<main style="padding-left: 0px; padding-right: 0px;">
-		<a href="/items">トップに戻る</a> <a href="/sells">出品一覧</a>
+		<div style="text-align: left;">
+		<a href="/items">トップに戻る</a> 
+		</div>
+		<a href="/sells">出品一覧</a>
 		<h3 class="selladd" >出品登録</h3>
 		<form action="/sell" method="post" enctype="multipart/form-data">
 

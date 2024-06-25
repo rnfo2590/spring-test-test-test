@@ -47,7 +47,6 @@ nav a {
 header h1 {
 	font-size: 50pt;
 	margin: 10px auto;
-	font-style: Brush Script MT;
 }
 
 /* ヘッダー出品ボタン */
@@ -109,6 +108,7 @@ header h1 {
 
 /*カート追加*/
 .cart-add {
+	margin-left: 50px;
 	position: relative;
 	display: inline-block;
 	padding: 0.25em 0.5em;
@@ -362,8 +362,6 @@ table.order_account th {
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
-
-
 /*カート追加ボタン*/
 .cart-add {
 	font-weight: bold;
@@ -375,8 +373,6 @@ table.order_account th {
 .cart-add :hover {
 	background-color: #E0FFFF;
 }
-
-
 
 /*注文確定ボタン*/
 .cart-order {
@@ -450,7 +446,6 @@ table.order_account th {
 .product-removal1 {
 	visibility: hidden;
 }
-
 
 .product-image {
 	float: left;
@@ -589,11 +584,11 @@ table.order_account th {
 
 /* 画像urlを指定 */
 #bg-pic .pic_1 {
-	background-image: url("/images/summer.jfif");
+	background-image: url("/images/sale.jpg");
 }
 
 #bg-pic .pic_2 {
-	background-image: url("/images/hon.jpg");
+	background-image: url("/images/hon.png");
 }
 
 #bg-pic .pic_3 {
@@ -668,6 +663,25 @@ table.order_account th {
   font-family: "Osaka－等幅", sans-serif;
   opacity: 0.8; /* 50% の透明度 */
   }
+  
+  /*soldout値段を画像に表示*/
+.merukari_out {
+  position: relative;
+  }
+
+.merukari_out p {
+  position: absolute;
+  bottom: 0;/*画像の左下に配置*/
+  left: 0;
+  margin-bottom: 90px; /*余計な隙間を除く*/
+  background: #222222	;/*背景色*/
+  border-radius: 0px 25px 25px 0px;/*左側の角を丸く*/
+  line-height: 1;/*行高は1に*/
+  padding: 5px 10px;/*文字周りの余白*/
+  font-size: 19px;
+  font-family: "Osaka－等幅", sans-serif;
+  opacity: 0.8; /* 50% の透明度 */
+  }
 
 /*画像拡大*/
 
@@ -724,7 +738,7 @@ transition-duration: 0.5s;
 
 .footer_all {
   padding: 2rem;
-  font-size:20px;
+  font-size:15px;
   color: #4b5564;
 }
 
