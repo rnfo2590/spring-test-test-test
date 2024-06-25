@@ -45,6 +45,8 @@ public class Cart {
 		if (existsItem == null) {
 			items.add(newItem);
 		}
+
+		System.out.println(items);
 	}
 
 	// カートから商品を削除
