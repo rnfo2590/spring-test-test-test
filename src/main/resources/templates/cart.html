@@ -21,9 +21,8 @@
 		<th:block th:if="${cartSize}==0">
 			カートに何もありません
 		</th:block>
-		<form action="/items">
-			<input type="submit" value="トップに戻る">
-		</form>
+
+		<a href="/items">トップに戻る</a>
 	</main>
 	<hr>
 	<footer th:replace="footer"></footer>
