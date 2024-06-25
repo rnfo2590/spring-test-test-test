@@ -64,3 +64,8 @@ INSERT INTO items(category_id, customer_id, name, price, image, condition, detai
 VALUES(3, 1,  '♡様 専用', 10000,pg_read_binary_file('C:/Image.jfif'), '新品、未使用', '♡様以外のご購入はお控えください', 1,'香穂','香穂',0,0);
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
 VALUES(5, 1,  '超音波トリートメント', 10000,pg_read_binary_file('C:/yaman.jpg'), '未使用に近い', '同期からおすすめしてもらいましたが、自分には合わなかったので出品しました。同期曰く髪質改善するみたいです。', 1,'香穂','香穂',0,0);
+
+INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
+VALUES(3, 2, 'ヒトカゲ', 3200,pg_read_binary_file('C:/kage.png'),'新品、未使用','野球部', 1,'香穂','香穂',0,0);
+INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
+VALUES(3, 2, 'ゼニガメ', 7000,pg_read_binary_file('C:/zeni.png'),'新品、未使用','一番かわいいです', 1,'香穂','香穂',0,0);
