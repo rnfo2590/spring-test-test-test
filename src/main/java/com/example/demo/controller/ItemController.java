@@ -42,6 +42,7 @@ public class ItemController {
 			@RequestParam(name = "keyword", required = false) String keyword,
 			@RequestParam(name = "maxPrice", defaultValue = "") String maxPrice,
 			@RequestParam(name = "minPrice", defaultValue = "") String minPrice,
+			@RequestParam(name = "page", required = false) Integer page,
 			Model model) {
 
 		Category category = null;
@@ -56,6 +57,7 @@ public class ItemController {
 		Integer maxprice = null;
 		Integer minprice = null;
 		List<String> errorList = new ArrayList<>();
+
 		if (maxPrice.length() > 0 && minPrice.length() > 0) {
 			if (checkLogic("^[0-9]+$", maxPrice) || checkLogic("^[0-9]+$", minPrice)) {
 				errorList.add("・値段は半角数字で入力してください");
@@ -78,6 +80,7 @@ public class ItemController {
 				minprice = Integer.parseInt(minPrice);
 			}
 		}
+		
 		if (errorList.size() > 0) {
 			model.addAttribute("errorList", errorList);
 			return "items";
@@ -133,7 +136,8 @@ public class ItemController {
 					"%" + keyword + "%");
 		}
 
-		Cart[] items = null;
+		Cart[] items = new Cart[5];
+
 		if (itemList != null) {
 			for (int i = 0; i < itemList.size(); i++) {
 				Item item = itemList.get(i);
@@ -158,29 +162,49 @@ public class ItemController {
 				}
 			}
 
-			int maxList = itemList.size() / 5;
-			if (itemList.size() % 5 != 0) {
-				maxList++;
-			}
-			items = new Cart[maxList];
-			for (int i = 0; i < maxList; i++) {
+			//			int maxList = itemList.size() / 5;
+			//			if (itemList.size() % 5 != 0) {
+			//				maxList++;
+			//			}
+			//			items = new Cart[maxList];
+			for (int i = 0; i < 5; i++) {
 				items[i] = new Cart();
 			}
 			int count1 = 0;
 			int count2 = 0;
 			for (int i = 0; i < itemList.size(); i++) {
-				items[count1].getItems().add(itemList.get(i));
+				if (page == null || page == 1) {
+					if (i < 25) {
+						items[count1].getItems().add(itemList.get(i));
+					}
+				} else {
+					if ((page - 1) * 5 < i && i < page * 5) {
+						items[count1].getItems().add(itemList.get(i));
+					}
+				}
 				count2++;
 				if (count2 == 5) {
 					count2 = 0;
 					count1++;
 				}
 			}
+			
+			int maxPages = itemList.size()/25;
+			List<Integer> maxPage = new ArrayList<>();
+			if(itemList.size()%25 != 0) {
+				maxPages++;
+			}
+			for(int i = 0; i < maxPages; i++) {
+				maxPage.add(i);
+			}
+			model.addAttribute("maxPage",maxPage);
 		}
 
-		session.setAttribute("keyword", keyword);
-		session.setAttribute("maxPrice", maxPrice);
-		session.setAttribute("minPrice", minPrice);
+		session.setAttribute("keyword", keyword != null ? keyword : "");
+		session.setAttribute("maxPrice", maxPrice != null ? maxPrice : "");
+		session.setAttribute("minPrice", minPrice != null ? minPrice : "");
+		model.addAttribute("categoryId",categoryId != null ? categoryId : "");
+
 		model.addAttribute("items", items);
 		System.out.println(account.getId());
 		System.out.println(account.getName());

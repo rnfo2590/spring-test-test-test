@@ -105,6 +105,9 @@
 				</tr>
 			</span>
 		</table>
+		<span th:each="page,c:${maxPage}">
+			<a th:href="|items?categoryId=${categoryId}&minPrice=${session.minPrice}&maxPrice=${session.maxPrice}&keyword=${session.keyword}&page=${c.count}|">[[${c.count}]]</a>
+		</span>
 	</main>
 	<hr>
 	<footer th:replace="footer"></footer>
