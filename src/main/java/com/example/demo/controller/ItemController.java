@@ -50,6 +50,13 @@ public class ItemController {
 			category = categoryRepository.findById(categoryId).get();
 		}
 		model.addAttribute("category", category);
+		int maxPage = 1;
+		model.addAttribute("maxPage",maxPage);
+		session.setAttribute("keyword", keyword != null ? keyword : "");
+		session.setAttribute("maxPrice", maxPrice != null ? maxPrice : "");
+		session.setAttribute("minPrice", minPrice != null ? minPrice : "");
+		model.addAttribute("categoryId",categoryId != null ? categoryId : "");
+		model.addAttribute("page",page != null ? page : "");
 		// 全カテゴリー一覧を取得
 		List<Category> categoryList = categoryRepository.findAll();
 		model.addAttribute("categories", categoryList);
@@ -136,7 +143,7 @@ public class ItemController {
 					"%" + keyword + "%");
 		}
 
-		Cart[] items = new Cart[5];
+		Cart[] items = new Cart[3];
 
 		if (itemList != null) {
 			for (int i = 0; i < itemList.size(); i++) {
@@ -162,24 +169,19 @@ public class ItemController {
 				}
 			}
 
-			//			int maxList = itemList.size() / 5;
-			//			if (itemList.size() % 5 != 0) {
-			//				maxList++;
-			//			}
-			//			items = new Cart[maxList];
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 3; i++) {
 				items[i] = new Cart();
 			}
 			int count1 = 0;
 			int count2 = 0;
 			for (int i = 0; i < itemList.size(); i++) {
 				if (page == 1) {
-					if (i < 25) {
+					if (i < 15) {
 						items[count1].getItems().add(itemList.get(i));
 						count2++;
 					}
 				} else if(page >= 2){
-					if ((page - 1) * 25 < i && i < page * 25) {
+					if ((page - 1) * 15 < i && i < page * 15) {
 						items[count1].getItems().add(itemList.get(i));
 						count2++;
 					}
@@ -191,18 +193,15 @@ public class ItemController {
 				}
 			}
 			
-			int maxPage = itemList.size()/25;
-			if(itemList.size()%25 != 0) {
+			maxPage = itemList.size()/15;
+			if(itemList.size()%15 != 0) {
+				maxPage++;
+			}
+			if(maxPage == 0) {
 				maxPage++;
 			}
 			model.addAttribute("maxPage",maxPage);
 		}
-
-		session.setAttribute("keyword", keyword != null ? keyword : "");
-		session.setAttribute("maxPrice", maxPrice != null ? maxPrice : "");
-		session.setAttribute("minPrice", minPrice != null ? minPrice : "");
-		model.addAttribute("categoryId",categoryId != null ? categoryId : "");
-		model.addAttribute("page",page != null ? page : "");
 
 		model.addAttribute("items", items);
 		System.out.println(account.getId());
