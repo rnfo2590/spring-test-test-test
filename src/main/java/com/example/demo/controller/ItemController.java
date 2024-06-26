@@ -181,7 +181,7 @@ public class ItemController {
 						count2++;
 					}
 				} else if(page >= 2){
-					if ((page - 1) * 15 < i && i < page * 15) {
+					if (((page - 1) * 15)-1 < i && i < page * 15) {
 						items[count1].getItems().add(itemList.get(i));
 						count2++;
 					}
