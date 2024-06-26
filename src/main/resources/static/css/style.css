@@ -584,7 +584,7 @@ table.order_account th {
 
 /* 画像urlを指定 */
 #bg-pic .pic_1 {
-	background-image: url("/images/sale.jpg");
+	background-image: url("/images/tarogo.png");
 }
 
 #bg-pic .pic_2 {
@@ -596,7 +596,7 @@ table.order_account th {
 }
 
 #bg-pic .pic_4 {
-	background-image: url("/images/rec-sale-r.jpg");
+	background-image: url("/images/sale.jpg");
 }
 
 /* スライダーの送りボタンを指定 */
