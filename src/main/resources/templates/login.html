@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>ログイン</title>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>ログイン</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
+
 <body>
-	<header>
-		<h1><font color="#FF5192">Shibakari</font></h1>
-	</header>
-	<main>
-		<ul th:if="${errorList}" class="error">
-			<div th:each="error:${errorList}" th:text="${error}" style="color: red"></div>
-		</ul>
-		<form action="/login" method="post">
-			<input type="email" name="email" placeholder="メールアドレス"><br>
-			<input type="password" name="password" placeholder="パスワード"><br>
+	<!--	<header>-->
+	<!--		<h1><font color="#FF5192">Shibakari</font></h1>-->
+	<!--	</header>-->
+		<div class="over-image">
+			<img src="/images/OIP.jfif" />
+			<ul th:if="${errorList}" class="error">
+				<div th:each="error:${errorList}" th:text="${error}" style="color: red"></div>
+			</ul>
+			<span class="image-name">
+			<form action="/login" method="post">
+				<input type="email" name="email" placeholder="メールアドレス"><br>
+				<input type="password" name="password" placeholder="パスワード"><br>
+				<br>
+				<button class="btn-square-soft">ログイン</button>
+			</form>
 			<br>
-			<button class="btn-square-soft">ログイン</button>
-		</form>
-		<br>
-		<a href="/account">新規会員登録はこちら</a>
-	</main>
+			<a href="/account">新規会員登録はこちら</a></span>
+		</div>
 </body>
+
 </html>

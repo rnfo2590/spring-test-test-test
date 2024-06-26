@@ -75,8 +75,10 @@
 			</th:block>
 			<br>
 		</div>
+		<span align="left">
 		<table>
 			<br><br>
+		
 			<span th:each="item:${items}">
 				<tr>
 					<span th:each="i:${item.items}">
@@ -87,24 +89,33 @@
 									<div class="merukari">
 									<span class="image_mouseover_1">
 									<button><img th:src="|data:image/jpeg;base64,${i.image}|" width="200"
-											height="200"></button></span></form>
-								<p style="color: white;">[[${i.price}]]円</p></div>
+											height="200"></button>
+									</span>
+								
+									<p style="color: white;">[[${i.price}]]円</p>
+									</div>									
+								</form>
+					
 								<span class="item-name" style="text-align: left;">
 									<span th:utext="${i.name}"></span><br>
+								</span>
 							</th:block>
 							<br>
 							<th:block th:if="${i.stock}==0">
 								<div class="merukari_out">
-								<img src="/images/soldout.png" alt="lose">
-								<br>
-								<span th:utext="${i.name}"></span><br>
-								<p style="color: white;">[[${i.price}]]</p>
-							</th:block></div>
+									<img src="/images/soldout.png" alt="lose">
+									<br>
+									<span th:utext="${i.name}"></span><br>
+									<p style="color: white;">[[${i.price}]]</p>
+								</div>
+							</th:block>
 						</td>
-								</span>
+					</span>
 				</tr>
 			</span>
+
 		</table>
+		</span>
 		<span th:each="pages,c:${#numbers.sequence(1,maxPage)}">
 			<th:block th:if="${page}!=${c.count}">
 				<a th:href="|items?categoryId=${categoryId}&minPrice=${session.minPrice}

@@ -784,6 +784,44 @@ transition-duration: 0.5s;
   }
 }
 
+/*ログイン画像*/
+/* 画像の設定 */
+.over-image {
+  background-image: url(/images/OIP.jfif);
+  background-repeat: no-repeat;
+  }
+
+/* テキストの設定 */
+.image-name {
+  position: absolute; /* 親要素の表示位置に対して絶対的な位置を設定 */
+  color: red;         /* 文字の色 */
+  top:50%;            /* 親要素の上部からの位置 */
+  left:50%;           /* 親要素の左部からの位置 */
+  -ms-transform: translate(-50%,-50%);      /*テキスト半分の長さ上部・左部に移動 */
+  -webkit-transform: translate(-50%,-50%);  /*テキスト半分の長さ上部・左部に移動 */
+  transform: translate(-50%,-50%);          /*テキスト半分の長さ上部・左部に移動 */
+  margin:0;
+  padding:0;
+}
+
+.image-name{
+  position: absolute; /* 親要素の表示位置に対して絶対的な位置を設定 */
+  color: red;         /* 文字の色 */
+  top:50%;            /* 親要素の上部からの位置 */
+  left:50%;           /* 親要素の左部からの位置 */
+  -ms-transform: translate(-50%,-50%);      /*テキスト半分の長さ上部・左部に移動 */
+  -webkit-transform: translate(-50%,-50%);  /*テキスト半分の長さ上部・左部に移動 */
+  transform: translate(-50%,-50%);          /*テキスト半分の長さ上部・左部に移動 */
+  margin:0;
+  padding:0;
+}
+
+.over-image img {
+  width: 100%;            /* 画像自体の幅 */
+  -ms-filter: blur(2px);  /* ぼかしの設定(マイクロソフト) */
+  filter: blur(2px);      /* ぼかしの設定 */
+}
+
 
 /* 送信ボタン(マウスオーバー時) */
 button:hover {
