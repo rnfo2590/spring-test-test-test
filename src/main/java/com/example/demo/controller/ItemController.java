@@ -42,7 +42,7 @@ public class ItemController {
 			@RequestParam(name = "keyword", required = false) String keyword,
 			@RequestParam(name = "maxPrice", defaultValue = "") String maxPrice,
 			@RequestParam(name = "minPrice", defaultValue = "") String minPrice,
-			@RequestParam(name = "page", required = false) Integer page,
+			@RequestParam(name = "page", defaultValue = "1") Integer page,
 			Model model) {
 
 		Category category = null;
@@ -173,29 +173,27 @@ public class ItemController {
 			int count1 = 0;
 			int count2 = 0;
 			for (int i = 0; i < itemList.size(); i++) {
-				if (page == null || page == 1) {
+				if (page == 1) {
 					if (i < 25) {
 						items[count1].getItems().add(itemList.get(i));
+						count2++;
 					}
-				} else {
-					if ((page - 1) * 5 < i && i < page * 5) {
+				} else if(page >= 2){
+					if ((page - 1) * 25 < i && i < page * 25) {
 						items[count1].getItems().add(itemList.get(i));
+						count2++;
 					}
 				}
-				count2++;
+				
 				if (count2 == 5) {
 					count2 = 0;
 					count1++;
 				}
 			}
 			
-			int maxPages = itemList.size()/25;
-			List<Integer> maxPage = new ArrayList<>();
+			int maxPage = itemList.size()/25;
 			if(itemList.size()%25 != 0) {
-				maxPages++;
-			}
-			for(int i = 0; i < maxPages; i++) {
-				maxPage.add(i);
+				maxPage++;
 			}
 			model.addAttribute("maxPage",maxPage);
 		}
@@ -204,6 +202,7 @@ public class ItemController {
 		session.setAttribute("maxPrice", maxPrice != null ? maxPrice : "");
 		session.setAttribute("minPrice", minPrice != null ? minPrice : "");
 		model.addAttribute("categoryId",categoryId != null ? categoryId : "");
+		model.addAttribute("page",page != null ? page : "");
 
 		model.addAttribute("items", items);
 		System.out.println(account.getId());

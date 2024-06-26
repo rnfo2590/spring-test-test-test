@@ -74,11 +74,11 @@ INSERT INTO items(category_id, customer_id, name, price, image, condition, detai
 VALUES(3, 1,  'フシギダネ', 5000,pg_read_binary_file('C:/fusi.png'), '新品、未使用', 'バケモノの子', 1,'謙汰','謙汰',0,0);
 
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
-VALUES(3, 1, 'りの', 1025,pg_read_binary_file('C:/momotarou.png'),'新品、未使用','絶対支配者', 1,'香穂','香穂',0,0);
+VALUES(3, 1, 'りの', 5000,pg_read_binary_file('C:/momotarou.png'),'新品、未使用','小悪魔', 1,'香穂','香穂',0,0);
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
-VALUES(3, 1, 'かほ', 1016,pg_read_binary_file('C:/kiji.png'),'新品、未使用','おしゃべり', 1,'香穂','香穂',0,0);
+VALUES(3, 1, 'かほ', 5000,pg_read_binary_file('C:/kiji.png'),'新品、未使用','おしゃべり', 1,'香穂','香穂',0,0);
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
-VALUES(3, 1,  'くるみ', 1014,pg_read_binary_file('C:/inu.png'), '新品、未使用', 'よく食べる<br>よく寝る', 1,'謙汰','謙汰',0,0);
+VALUES(3, 1,  'くるみ', 5000,pg_read_binary_file('C:/inu.png'), '新品、未使用', 'よく食べる', 1,'謙汰','謙汰',0,0);
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
-VALUES(3, 1,  'けんた', 1015,pg_read_binary_file('C:/saru.png'), '新品、未使用', 'お散歩好き', 1,'謙汰','謙汰',0,0);
+VALUES(3, 1,  'けんた', 5000,pg_read_binary_file('C:/saru.png'), '新品、未使用', 'お散歩好き', 1,'謙汰','謙汰',0,0);
 

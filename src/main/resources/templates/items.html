@@ -105,8 +105,14 @@
 				</tr>
 			</span>
 		</table>
-		<span th:each="page,c:${maxPage}">
-			<a th:href="|items?categoryId=${categoryId}&minPrice=${session.minPrice}&maxPrice=${session.maxPrice}&keyword=${session.keyword}&page=${c.count}|">[[${c.count}]]</a>
+		<span th:each="pages,c:${#numbers.sequence(1,maxPage)}">
+			<th:block th:if="${page}!=${c.count}">
+				<a th:href="|items?categoryId=${categoryId}&minPrice=${session.minPrice}
+					&maxPrice=${session.maxPrice}&keyword=${session.keyword}&page=${c.count}|">[[${c.count}]]</a>
+			</th:block>
+			<th:block th:if="${page}==${c.count}">
+				[[${c.count}]]
+			</th:block>
 		</span>
 	</main>
 	<hr>
