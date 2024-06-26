@@ -746,13 +746,6 @@ transition-duration: 0.5s;
   font-weight: 600;
 }
 
-.footer__logo {
-	font-family: Garamond;
-	color: #E0FFFF;
-  display: inline-block;
-  margin-bottom: 1.5rem;
-}
-
 .footer__navi li {
   margin-bottom: 0.75rem;
 }
