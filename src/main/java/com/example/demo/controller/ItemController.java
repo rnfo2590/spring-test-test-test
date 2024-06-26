@@ -51,12 +51,12 @@ public class ItemController {
 		}
 		model.addAttribute("category", category);
 		int maxPage = 1;
-		model.addAttribute("maxPage",maxPage);
+		model.addAttribute("maxPage", maxPage);
 		session.setAttribute("keyword", keyword != null ? keyword : "");
 		session.setAttribute("maxPrice", maxPrice != null ? maxPrice : "");
 		session.setAttribute("minPrice", minPrice != null ? minPrice : "");
-		model.addAttribute("categoryId",categoryId != null ? categoryId : "");
-		model.addAttribute("page",page != null ? page : "");
+		model.addAttribute("categoryId", categoryId != null ? categoryId : "");
+		model.addAttribute("page", page != null ? page : "");
 		// 全カテゴリー一覧を取得
 		List<Category> categoryList = categoryRepository.findAll();
 		model.addAttribute("categories", categoryList);
@@ -87,7 +87,7 @@ public class ItemController {
 				minprice = Integer.parseInt(minPrice);
 			}
 		}
-		
+
 		if (errorList.size() > 0) {
 			model.addAttribute("errorList", errorList);
 			return "items";
@@ -169,6 +169,15 @@ public class ItemController {
 				}
 			}
 
+			maxPage = itemList.size() / 15;
+			if (itemList.size() % 15 != 0) {
+				maxPage++;
+			}
+			if (maxPage == 0) {
+				maxPage++;
+			}
+			model.addAttribute("maxPage", maxPage);
+
 			for (int i = 0; i < 3; i++) {
 				items[i] = new Cart();
 			}
@@ -180,27 +189,18 @@ public class ItemController {
 						items[count1].getItems().add(itemList.get(i));
 						count2++;
 					}
-				} else if(page >= 2){
-					if (((page - 1) * 15)-1 < i && i < page * 15) {
+				} else if (page >= 2) {
+					if (((page - 1) * 15) - 1 < i && i < page * 15) {
 						items[count1].getItems().add(itemList.get(i));
 						count2++;
+
 					}
 				}
-				
 				if (count2 == 5) {
 					count2 = 0;
 					count1++;
 				}
 			}
-			
-			maxPage = itemList.size()/15;
-			if(itemList.size()%15 != 0) {
-				maxPage++;
-			}
-			if(maxPage == 0) {
-				maxPage++;
-			}
-			model.addAttribute("maxPage",maxPage);
 		}
 
 		model.addAttribute("items", items);

@@ -71,7 +71,7 @@ public class Item {
 	public Item() {
 
 	}
-
+	
 	public Item(Category category, Customer customer, String name, Integer price,
 			byte[] image, String condition, String detail, Integer stock) {
 		this.category = category;
