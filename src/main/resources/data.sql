@@ -65,7 +65,7 @@ INSERT INTO items(category_id, customer_id, name, price, image, condition, detai
 VALUES(5, 1,  '超音波トリートメント', 10000,pg_read_binary_file('C:/yaman.jpg'), '未使用に近い', '同期からおすすめしてもらいましたが、自分には合わなかったので出品しました。同期曰く髪質改善するみたいです。', 1,'香穂','香穂',0,0);
 
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
-VALUES(3, 1,  'ミュウ', 1510000,pg_read_binary_file('C:/151.png'), '新品、未使用', '分類：しんしゅポケモン<br>タイプ：エスパータイプ<br>高さ：0.4m　重さ：4.0kg<br>特性：シンクロ<br>あらゆる技を使うためポケモンの先祖と考える学者がたくさんいる', 1,'謙汰','謙汰',0,0);
+VALUES(3, 1,  'ミュウ', 15100,pg_read_binary_file('C:/151.png'), '新品、未使用', '分類：しんしゅポケモン<br>タイプ：エスパータイプ<br>高さ：0.4m　重さ：4.0kg<br>特性：シンクロ<br>あらゆる技を使うためポケモンの先祖と考える学者がたくさんいる', 1,'謙汰','謙汰',0,0);
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
 VALUES(3, 2, 'ヒトカゲ', 3200,pg_read_binary_file('C:/kage.png'),'新品、未使用','野球部', 1,'香穂','香穂',0,0);
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 

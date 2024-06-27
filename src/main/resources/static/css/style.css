@@ -468,37 +468,56 @@ table.order_account th {
 
 /*検索フォーム*/
 /*フォーム全体を中央へ*/
-#form1{
-  display: flex;
-  justify-content: center; /*中央へ固定*/	
-  height:70px;/*高さ*/	
+#form1 {
+	display: flex;
+	justify-content: center;
+	/*中央へ固定*/
+	height: 70px;
+	/*高さ*/
 }
+
 /*入力フォーム*/
-#sbox1{
-  width:250px;/*横幅*/
-  height: 30px;
-  padding:0 15px;/*プレースホルダーの位置調整*/
-  border-radius:4px 0 0 4px;/*左側の角を少し丸める*/		
-  background:#eee;/*検背景カラー*/
-  border:none;/*枠線を消す*/ 
-  outline:0;/*クリック時の青い枠線消す*/
-  border-radius:10px;	
-  margin-right:10px;
+#sbox1 {
+	width: 250px;
+	/*横幅*/
+	height: 30px;
+	padding: 0 15px;
+	/*プレースホルダーの位置調整*/
+	border-radius: 4px 0 0 4px;
+	/*左側の角を少し丸める*/
+	background: #eee;
+	/*検背景カラー*/
+	border: none;
+	/*枠線を消す*/
+	outline: 0;
+	/*クリック時の青い枠線消す*/
+	border-radius: 10px;
+	margin-right: 10px;
 }
+
 /*検索ボタン*/
-#sbtn1{
-  width:70px;/*横幅*/ 
-  border-radius:0 4px 4px 0;/*右側の角を少し丸める*/ 
-  background:#7fbfff;/*背景カラー*/ 
-  border:none;/*枠線を消す*/ 
-  color:#fff;/*テキストカラー*/ 
-  font-size:16px;/*フォントサイズ指定*/ 
-  cursor: pointer;/*マウスを乗せると指差しポインターになる*/
-  border-radius:10px;	
+#sbtn1 {
+	width: 70px;
+	/*横幅*/
+	border-radius: 0 4px 4px 0;
+	/*右側の角を少し丸める*/
+	background: #7fbfff;
+	/*背景カラー*/
+	border: none;
+	/*枠線を消す*/
+	color: #fff;
+	/*テキストカラー*/
+	font-size: 16px;
+	/*フォントサイズ指定*/
+	cursor: pointer;
+	/*マウスを乗せると指差しポインターになる*/
+	border-radius: 10px;
 }
+
 /*検索ボタンマウスオーバー時*/
 #sbtn1:hover {
-  background: #92dbff;/*背景カラー変更*/
+	background: #92dbff;
+	/*背景カラー変更*/
 }
 
 
@@ -647,181 +666,288 @@ table.order_account th {
 
 /*値段を画像に表示*/
 .merukari {
-  position: relative;
-  }
+	position: relative;
+}
 
 .merukari p {
-  position: absolute;
-  bottom: 0;/*画像の左下に配置*/
-  left: 0;
-  margin-bottom: 10px; /*余計な隙間を除く*/
-  background: #222222	;/*背景色*/
-  border-radius: 0px 25px 25px 0px;/*左側の角を丸く*/
-  line-height: 1;/*行高は1に*/
-  padding: 5px 10px;/*文字周りの余白*/
-  font-size: 19px;
-  font-family: "Osaka－等幅", sans-serif;
-  opacity: 0.8; /* 50% の透明度 */
-  }
-  
-  /*soldout値段を画像に表示*/
+	position: absolute;
+	bottom: 0;
+	/*画像の左下に配置*/
+	left: 0;
+	margin-bottom: 10px;
+	/*余計な隙間を除く*/
+	background: #222222;
+	/*背景色*/
+	border-radius: 0px 25px 25px 0px;
+	/*左側の角を丸く*/
+	line-height: 1;
+	/*行高は1に*/
+	padding: 5px 10px;
+	/*文字周りの余白*/
+	font-size: 19px;
+	font-family: "Osaka－等幅", sans-serif;
+	opacity: 0.8;
+	/* 50% の透明度 */
+}
+
+/*soldout値段を画像に表示*/
 .merukari_out {
-  position: relative;
-  }
+	position: relative;
+}
 
 .merukari_out p {
-  position: absolute;
-  bottom: 0;/*画像の左下に配置*/
-  left: 0;
-  margin-bottom: 90px; /*余計な隙間を除く*/
-  background: #222222	;/*背景色*/
-  border-radius: 0px 25px 25px 0px;/*左側の角を丸く*/
-  line-height: 1;/*行高は1に*/
-  padding: 5px 10px;/*文字周りの余白*/
-  font-size: 19px;
-  font-family: "Osaka－等幅", sans-serif;
-  opacity: 0.8; /* 50% の透明度 */
-  }
+	position: absolute;
+	bottom: 0;
+	/*画像の左下に配置*/
+	left: 0;
+	margin-bottom: 90px;
+	/*余計な隙間を除く*/
+	background: #222222;
+	/*背景色*/
+	border-radius: 0px 25px 25px 0px;
+	/*左側の角を丸く*/
+	line-height: 1;
+	/*行高は1に*/
+	padding: 5px 10px;
+	/*文字周りの余白*/
+	font-size: 19px;
+	font-family: "Osaka－等幅", sans-serif;
+	opacity: 0.8;
+	/* 50% の透明度 */
+}
 
 /*画像拡大*/
 
 .image_mouseover_1 {
-overflow: visible;
-width: 100%;
-height: 100%;
+	overflow: visible;
+	width: 100%;
+	height: 100%;
 }
+
 .image_mouseover_1 img {
-display: block;
-transition-duration: 0.5s;
+	display: block;
+	transition-duration: 0.5s;
 }
+
 .image_mouseover_1 img:hover {
-transform: scale(1.2,1.2);
-transition-duration: 0.5s;
+	transform: scale(1.2, 1.2);
+	transition-duration: 0.5s;
 }
 
 /*フッター*/
 .footer_all {
-  font-family: sans-serif;
+	font-family: sans-serif;
 }
 
 
 .footer_all ul {
-  padding: 0;
-  list-style: none;
+	padding: 0;
+	list-style: none;
 }
 
 .footer_all a {
-  color: #4b5564;
-  text-decoration: none;
+	color: #4b5564;
+	text-decoration: none;
 }
 
 .footer_all a:hover {
-  color: #000;
+	color: #000;
 }
 
 .footer_all hr {
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #e5e7eb;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #e5e7eb;
 }
 
 .footer_all address {
-  font-style: normal;
+	font-style: normal;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.25rem;
-  margin-bottom: 1.5rem;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.25rem;
+	margin-bottom: 1.5rem;
 }
 
 .footer_all {
-  padding: 2rem;
-  font-size:15px;
-  color: #4b5564;
+	padding: 2rem;
+	font-size: 15px;
+	color: #4b5564;
 }
 
 .footer__navi-heading {
-  font-weight: 600;
+	font-weight: 600;
 }
 
 .footer__navi li {
-  margin-bottom: 0.75rem;
+	margin-bottom: 0.75rem;
 }
 
 .footer__address {
-  margin-bottom: 2rem;
-  text-align: center;
+	margin-bottom: 2rem;
+	text-align: center;
 }
 
 .footer__address a {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 @media (min-width: 768px) {
-  .md-flex {
-    display: flex;
-  }
+	.md-flex {
+		display: flex;
+	}
 
-  .md-justify-between {
-    justify-content: space-between;
-  }
+	.md-justify-between {
+		justify-content: space-between;
+	}
 
-  .grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  
-  .footer__address a {
-    text-decoration: none;
-    pointer-events: none;
-  }
+	.grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.footer__address a {
+		text-decoration: none;
+		pointer-events: none;
+	}
 }
 
 @media (min-width: 1024px) {
-  .lg-flex {
-    display: flex;
-  }
+	.lg-flex {
+		display: flex;
+	}
 }
 
-/*ログイン画像*/
-/* 画像の設定 */
-.over-image {
-  background-image: url(/images/OIP.jfif);
-  background-repeat: no-repeat;
-  }
-
-/* テキストの設定 */
-.image-name {
-  position: absolute; /* 親要素の表示位置に対して絶対的な位置を設定 */
-  color: red;         /* 文字の色 */
-  top:50%;            /* 親要素の上部からの位置 */
-  left:50%;           /* 親要素の左部からの位置 */
-  -ms-transform: translate(-50%,-50%);      /*テキスト半分の長さ上部・左部に移動 */
-  -webkit-transform: translate(-50%,-50%);  /*テキスト半分の長さ上部・左部に移動 */
-  transform: translate(-50%,-50%);          /*テキスト半分の長さ上部・左部に移動 */
-  margin:0;
-  padding:0;
+/*ログイン*/
+.momo1 {
+	margin: 10em -3em auto;
+	padding: 0 1em;
 }
 
-.image-name{
-  position: absolute; /* 親要素の表示位置に対して絶対的な位置を設定 */
-  color: red;         /* 文字の色 */
-  top:50%;            /* 親要素の上部からの位置 */
-  left:50%;           /* 親要素の左部からの位置 */
-  -ms-transform: translate(-50%,-50%);      /*テキスト半分の長さ上部・左部に移動 */
-  -webkit-transform: translate(-50%,-50%);  /*テキスト半分の長さ上部・左部に移動 */
-  transform: translate(-50%,-50%);          /*テキスト半分の長さ上部・左部に移動 */
-  margin:0;
-  padding:0;
+.momo2 {
+	margin: 10em 10em auto;
+	padding: 0 1em;
 }
 
-.over-image img {
-  width: 100%;            /* 画像自体の幅 */
-  -ms-filter: blur(2px);  /* ぼかしの設定(マイクロソフト) */
-  filter: blur(2px);      /* ぼかしの設定 */
+.momo3 {
+	margin: 10em 22em auto;
+	padding: 0 1em;
 }
 
+.momo6 {
+	margin: 10em 67em auto;
+	padding: 0 1em;
+}
+
+/* Fonts */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400);
+
+/* fontawesome */
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+[class*="fontawesome-"]:before {
+	font-family: 'FontAwesome', sans-serif;
+}
+
+/* Simple Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* body */
+.form-log {
+	background: white	;
+	color: #5e5e5e;
+	font: 400 87.5%/1.5em 'Open Sans', sans-serif;
+}
+
+/* Form Layout */
+.form-h{
+	background-color: white;
+	color: #000;
+	text-align: left;
+	
+}
+.form-wrapper {
+	background: #fafafa;
+	margin: 3em auto;
+	padding: 0 1em;
+	max-width: 370px;
+}
+
+.form-h {
+	text-align: center;
+	padding: 1em 0;
+}
+
+form {
+	padding: 0 1.5em;
+}
+
+.form-item {
+	margin-bottom: 0.75em;
+	width: 100%;
+}
+
+.form-item input {
+	background: #fafafa;
+	border: none;
+	border-bottom: 2px solid #e9e9e9;
+	color: #666;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+	height: 50px;
+	transition: border-color 0.3s;
+	width: 100%;
+}
+
+.form-item input:focus {
+	border-bottom: 2px solid #c0c0c0;
+	outline: none;
+}
+
+.button-panel {
+	margin: 2em 0 0;
+	width: 100%;
+}
+
+.button-panel .button {
+	background: #f16272;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	height: 50px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.2em;
+	letter-spacing: 0.05em;
+	text-align: center;
+	text-transform: uppercase;
+	transition: background 0.3s ease-in-out;
+	width: 100%;
+}
+
+.button:hover {
+	background: #ee3e52;
+}
+
+.form-footer {
+	font-size: 1em;
+	padding: 2em 0;
+	text-align: center;
+}
+
+.form-footer a {
+	color: #8c8c8c;
+	text-decoration: none;
+	transition: border-color 0.3s;
+}
+
+.form-footer a:hover {
+	border-bottom: 1px dotted #8c8c8c;
+}
 
 /* 送信ボタン(マウスオーバー時) */
 button:hover {
