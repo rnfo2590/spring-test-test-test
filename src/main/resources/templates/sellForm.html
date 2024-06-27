@@ -17,9 +17,9 @@
 		<h3 class="selladd" >出品登録</h3>
 		<form action="/sell" method="post" enctype="multipart/form-data">
 
-			<ul th:if="${errorList}" class="error" style="padding-left: 0px; color: red;">
+			<div th:if="${errorList}" class="error" style="padding-left: 0px; color: red;">
 				<li th:each="error:${errorList}" th:text="${error}"></li>
-			</ul>
+			</div>
 
 			<table>
 				<tr>
