@@ -28,6 +28,9 @@
 			</span>
 		</form>
 	</nav>
+		<ul th:if="${errorList}" class="error">
+			<div th:each="error:${errorList}" th:text="${error}" style="color: red"></div>
+		</ul>
 	<br>
 	<div id="picture">
 		<!-- チェックボックス -->
@@ -47,6 +50,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<!-- スライダーのナビゲーションボタン -->
 		<div id="slide-buttons">
 			<label for="pic1" id="btn">
@@ -65,9 +69,7 @@
 	</div>
 
 	<main>
-		<ul th:if="${errorList}" class="error">
-			<div th:each="error:${errorList}" th:text="${error}" style="color: red"></div>
-		</ul>
+
 		<div class="item-all">
 			<th:block th:if="${category}">
 				[[${category.name}]]

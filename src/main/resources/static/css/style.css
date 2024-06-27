@@ -819,6 +819,11 @@ table.order_account th {
 }
 
 /*ログイン*/
+.oni {
+	margin: -3em 7.5em auto;
+	
+}
+
 .momo1 {
 	margin: 10em -3em auto;
 	padding: 0 1em;
@@ -835,7 +840,12 @@ table.order_account th {
 }
 
 .momo6 {
-	margin: 10em 67em auto;
+	margin: 10em 60em auto;
+	padding: 0 1em;
+}
+
+.oni1 {
+	margin: 10em 83em auto;
 	padding: 0 1em;
 }
 
