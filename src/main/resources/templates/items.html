@@ -14,53 +14,55 @@
 
 		<form action="/items" method="get" id="form1">
 			<span>
-			<span th:each="category:${categories}">
-				<input type="radio" name="categoryId" th:value="${category.id}"> [[${category.name}]]
-			</span>
+				<span th:each="category:${categories}">
+					<input type="radio" name="categoryId" th:value="${category.id}"> [[${category.name}]]
+				</span>
 				<br>
 				<br>
 				<input type="text" name="keyword" th:value="${session.keyword}" placeholder="キーワードを入力" id="sbox1">
-				<input type="text" name="minPrice" maxlength="7" th:value="${session.minPrice}" placeholder="値段を入力"id="sbox1">以上
-				<input type="text" name="maxPrice" maxlength="7" th:value="${session.maxPrice}" placeholder="値段を入力"id="sbox1">以下
+				<input type="text" name="minPrice" maxlength="7" th:value="${session.minPrice}" placeholder="値段を入力"
+					id="sbox1">以上
+				<input type="text" name="maxPrice" maxlength="7" th:value="${session.maxPrice}" placeholder="値段を入力"
+					id="sbox1">以下
 				<input type="submit" value="検索" id="sbtn1">
-		</span>
+			</span>
 		</form>
 	</nav>
-		<br>
-		<div id="picture">
-			<!-- チェックボックス -->
-			<input type="radio" name="picture" id="pic1" checked>
-			<input type="radio" name="picture" id="pic2">
-			<input type="radio" name="picture" id="pic3">
-			<input type="radio" name="picture" id="pic4">
-			<div id="bg-pic">
-				<div class="inside">
-					<div class="pic pic_1">
-					</div>
-					<div class="pic pic_2">
-					</div>
-					<div class="pic pic_3">
-					</div>
-					<div class="pic pic_4">
-					</div>
+	<br>
+	<div id="picture">
+		<!-- チェックボックス -->
+		<input type="radio" name="picture" id="pic1" checked>
+		<input type="radio" name="picture" id="pic2">
+		<input type="radio" name="picture" id="pic3">
+		<input type="radio" name="picture" id="pic4">
+		<div id="bg-pic">
+			<div class="inside">
+				<div class="pic pic_1">
+				</div>
+				<div class="pic pic_2">
+				</div>
+				<div class="pic pic_3">
+				</div>
+				<div class="pic pic_4">
 				</div>
 			</div>
-			<!-- スライダーのナビゲーションボタン -->
-			<div id="slide-buttons">
-				<label for="pic1" id="btn">
-					<img src="/images/tarogo.png">
-				</label>
-				<label for="pic2" id="btn">
-					<img src="/images/hon.png">
-				</label>
-				<label for="pic3" id="btn">
-					<img src="/images/game.jpg">
-				</label>
-				<label for="pic4" id="btn">
-					<img src="/images/sale.jpg">
-				</label>
-			</div>
 		</div>
+		<!-- スライダーのナビゲーションボタン -->
+		<div id="slide-buttons">
+			<label for="pic1" id="btn">
+				<img src="/images/tarogo.png">
+			</label>
+			<label for="pic2" id="btn">
+				<img src="/images/hon.png">
+			</label>
+			<label for="pic3" id="btn">
+				<img src="/images/game.jpg">
+			</label>
+			<label for="pic4" id="btn">
+				<img src="/images/sale.jpg">
+			</label>
+		</div>
+	</div>
 
 	<main>
 		<ul th:if="${errorList}" class="error">
@@ -76,45 +78,46 @@
 			<br>
 		</div>
 		<span align="left">
-		<table>
-			<br><br>
-		
-			<span th:each="item:${items}">
-				<tr>
-					<span th:each="i:${item.items}">
-						<td>
-							<th:block th:if="${i.stock}==1">
-								<form action="/items/detail" method="get">
-									<input type="hidden" name="itemId" th:value="${i.id}">
-									<div class="merukari">
-									<span class="image_mouseover_1">
-									<button><img th:src="|data:image/jpeg;base64,${i.image}|" width="200"
-											height="200"></button>
-									</span>
-								
-									<p style="color: white;">[[${i.price}]]円</p>
-									</div>									
-								</form>
-					
-								<span class="item-name" style="text-align: left;">
-									<span th:utext="${i.name}"></span><br>
-								</span>
-							</th:block>
-							<br>
-							<th:block th:if="${i.stock}==0">
-								<div class="merukari_out">
-									<img src="/images/soldout.png" alt="lose">
-									<br>
-									<span th:utext="${i.name}"></span><br>
-									<p style="color: white;">[[${i.price}]]</p>
-								</div>
-							</th:block>
-						</td>
-					</span>
-				</tr>
-			</span>
+			<table>
+				<br><br>
 
-		</table>
+				<span th:each="item:${items}">
+					<tr>
+						<span th:each="i:${item.items}">
+							<td>
+								<th:block th:if="${i.stock}==1">
+									<form action="/items/detail" method="get">
+										<input type="hidden" name="itemId" th:value="${i.id}">
+										<div class="merukari">
+											<span class="image_mouseover_1">
+												<button><img th:src="|data:image/jpeg;base64,${i.image}|" width="200"
+														height="200"></button>
+											</span>
+
+											<p style="color: white;">[[${i.price}]]円</p>
+										</div>
+										<span class="item-name" style="text-align: left;">
+											<span th:utext="${i.name}"></span><br>
+										</span>
+									</form>
+
+
+								</th:block>
+								<br>
+								<th:block th:if="${i.stock}==0">
+									<div class="merukari_out">
+										<img src="/images/soldout.png" alt="lose">
+										<br>
+										<span th:utext="${i.name}"></span><br>
+										<p style="color: white;">[[${i.price}]]</p>
+									</div>
+								</th:block>
+							</td>
+						</span>
+					</tr>
+				</span>
+
+			</table>
 		</span>
 		<span th:each="pages,c:${#numbers.sequence(1,maxPage)}">
 			<th:block th:if="${page}!=${c.count}">
