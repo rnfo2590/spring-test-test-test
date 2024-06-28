@@ -49,7 +49,7 @@ VALUES(3, 1,  'カチューシャ（アリエルVer.）', 800,pg_read_binary_fil
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
 VALUES(4, 1,  'Travis×Fragment×NIKE AJ1', 129800,pg_read_binary_file('C:/AJ1.jpg'), '未使用に近い', '24.5cmです。シューグーとインソール入れて使っていたので美品です。付属品そろっています。<br>スニダンでは安くても15万くらいするので、お買い得だと思います。', 1,'久瑠美','久瑠美',0,0);
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
-VALUES(5, 1,  '女子大生の使用済みPC', 6666,pg_read_binary_file('C:/PC.png'), '状態が悪い', '大学4年間使用した思い出の品です。<br>ステッカー大量に貼ってあります。多分使えます。', 1,'久瑠美','久瑠美',0,0);
+VALUES(5, 1,  'PC(2020年製)', 6666,pg_read_binary_file('C:/PC.png'), '状態が悪い', '大学4年間使用した思い出の品です。<br>ステッカー大量に貼ってあります。多分使えます。', 1,'久瑠美','久瑠美',0,0);
 
 INSERT INTO items(category_id, customer_id, name, price, image, condition, detail, stock, creator,updater,ver_num,delete_flg) 
 VALUES(1, 1,  'ハイキューセカンドシーズンDVD', 15000,pg_read_binary_file('C:/haikyu.png'), '新品、未使用', '泣けます。もう一度青春を味わいたい人におすすめです。', 1,'香穂','香穂',0,0);
